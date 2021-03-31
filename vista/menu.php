@@ -49,7 +49,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                 <!-- Cuerpo Inicio -->
                 <div class="container-fluid shadow bg-white" id="formulario">
                     <div class="pt-5 row d-flex justify-content-center">
-                        <div class="col-md-2 col-sm-3 col-6">
+                        <div class="col-md-2 col-sm-3 col-6  d-flex justify-content-center">
                             <img src="../img/logo.png" class="w-50 my-auto">
                         </div>
                         <div class="col-md-5 col-sm-5 col-6">
@@ -58,7 +58,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                     </div>
                     <div class="row pt-5 d-flex justify-content-center">
                         <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
-                            <div class="card border-aqua mb-3 w-100">
+                            <div class="card card-hover border-aqua mb-3 w-100">
                                 <div class="card-header bg-transparent">CLIENTES</div>
                                 <div class="card-body text-primary">
                                     <button class="btn btn-aqua btn-block text-dark modelo" data-tabla="clientes">Compromiso con el cliente</button>
@@ -69,54 +69,54 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                             </div>
                         </div>
                         <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
-                            <div class="card border-warning mb-3 w-100">
+                            <div class="card card-hover border-warning mb-3 w-100">
                                 <div class="card-header bg-transparent">ESTRATEGIA</div>
                                 <div class="card-body text-primary">
-                                    <a class="btn btn-warning btn-block text-dark">Gestión de la marca</a>
-                                    <a class="btn btn-warning btn-block text-dark">Gestión de ecosistemas</a>
-                                    <a class="btn btn-warning btn-block text-dark">Finanzas e inversiones, cartera</a>
-                                    <a class="btn btn-warning btn-block text-dark">Clientes & mercados</a>
-                                    <a class="btn btn-warning btn-block text-dark">Portafolio, ideación e innovación</a>
-                                    <a class="btn btn-warning btn-block text-dark">Gestión de partes interesadas</a>
-                                    <a class="btn btn-warning btn-block text-dark">Gestión estrategica</a>
+                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Gestión de la marca</button>
+                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Gestión de ecosistemas</button>
+                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Finanzas e inversiones, cartera</button>
+                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Clientes & mercados</button>
+                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Portafolio, ideación e innovación</button>
+                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Gestión de partes interesadas</button>
+                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Gestión estrategica</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
-                            <div class="card border-cyan mb-3 w-100">
+                            <div class="card card-hover border-cyan mb-3 w-100">
                                 <div class="card-header bg-transparent">TECNOLOGÍA</div>
                                 <div class="card-body text-primary">
-                                    <a class="btn btn-cyan btn-block text-dark">Aplicaciones</a>
-                                    <a class="btn btn-cyan btn-block text-dark">Cosas conectadas</a>
-                                    <a class="btn btn-cyan btn-block text-dark">Analiticas & datos</a>
-                                    <a class="btn btn-cyan btn-block text-dark">Politicas de entregas</a>
-                                    <a class="btn btn-cyan btn-block text-dark">Red</a>
-                                    <a class="btn btn-cyan btn-block text-dark">Seguridad</a>
-                                    <a class="btn btn-cyan btn-block text-dark">Arquitectura tecnológica</a>
+                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Aplicaciones</button>
+                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Cosas conectadas</button>
+                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Analiticas & datos</button>
+                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Politicas de entregas</button>
+                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Red</button>
+                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Seguridad</button>
+                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Arquitectura tecnológica</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
-                            <div class="card border-verde mb-3 w-100">
+                            <div class="card card-hover border-verde mb-3 w-100">
                                 <div class="card-header bg-transparent">OPERACIONES</div>
                                 <div class="card-body text-primary">
-                                    <a class="btn btn-verde btn-block text-dark">Gestión ágil del cambio</a>
-                                    <a class="btn btn-verde btn-block text-dark">Gestión automatizada de recursos</a>
-                                    <a class="btn btn-verde btn-block text-dark">Gestión de servicios integrados</a>
-                                    <a class="btn btn-verde btn-block text-dark">Analíticas e información en tiempo real</a>
-                                    <a class="btn btn-verde btn-block text-dark">Procesos inteligentes y adaptables</a>
-                                    <a class="btn btn-verde btn-block text-dark">Estándares y automatización de procesos</a>
+                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Gestión ágil del cambio</button>
+                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Gestión automatizada de recursos</button>
+                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Gestión de servicios integrados</button>
+                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Analíticas e información en tiempo real</button>
+                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Procesos inteligentes y adaptables</button>
+                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Estándares y automatización de procesos</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
-                            <div class="card border-lila mb-3 w-100">
+                            <div class="card card-hover border-lila mb-3 w-100">
                                 <div class="card-header bg-transparent">ORGANIZACIÓN & CULTURA</div>
                                 <div class="card-body text-primary">
-                                    <a class="btn btn-lila btn-block text-light">Cultura</a>
-                                    <a class="btn btn-lila btn-block text-light">Liderazgo & Gobierno</a>
-                                    <a class="btn btn-lila btn-block text-light">Gestión del talento & Diseño organizacional</a>
-                                    <a class="btn btn-lila btn-block text-light">Habilitación de la fuerza laboral</a>
+                                    <button class="btn btn-lila btn-block text-light modelo" data-tabla="cultura">Cultura</button>
+                                    <button class="btn btn-lila btn-block text-light modelo" data-tabla="cultura">Liderazgo & Gobierno</button>
+                                    <button class="btn btn-lila btn-block text-light modelo" data-tabla="cultura">Gestión del talento & Diseño organizacional</button>
+                                    <button class="btn btn-lila btn-block text-light modelo" data-tabla="cultura">Habilitación de la fuerza laboral</button>
                                 </div>
                             </div>
                         </div>
@@ -127,8 +127,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy;
-                            Dexcon <?php echo date( 'Y' ); ?></span>
+                        <span>Copyright &copy; Dexcon <?php echo date( 'Y' ); ?></span>
                     </div>
                 </div>
             </footer>
@@ -151,7 +150,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                     <form id="frm">
                         <div id="contenido_preguntas"></div>
                         <div class="modal-footer border-0 d-flex justify-content-center">
-                            <button class="btn btn-cyan" href="#!">Guardar Puntaje</button>
+                            <div id="accion_btn"></div>
                         </div>
                     </form>
                 </div>
@@ -159,7 +158,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
         </div>
     </div>
     <!-- Fin Modal preguntas -->
-    
+
     <!-- Modal salir -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -185,8 +184,6 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="js/menu.js" type="text/javascript"></script>
 <script src="../js/sb-admin-2.min.js"></script>
-<script src="../js/jquery-ui.js"></script>
-<script src="../js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/usuario/gestionusuario.js?v=<?php echo uniqid(); ?>" type="text/javascript"></script>
 
 </html>
