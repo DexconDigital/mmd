@@ -45,9 +45,16 @@ class GestionUsuarioControlador extends GenericoControlador {
     public function consultar_preguntas() {
         try {
             Validacion::validar( ['tabla' => 'obligatorio', 'contenido' => 'obligatorio'], $_POST );
+            session_start();
             $tabla = $_POST ['tabla'];
             $contenido = $_POST ['contenido'];
             $datos = $this->usuarioDAO->consultar_preguntas( $tabla, $contenido );
+            if ( $datos != "" ) {
+                foreach ( $datos as $t ) {
+                    $t->usuario = $_SESSION ['usuario'];
+                    $t->respta = explode( "|", $t->respuestas );
+                }
+            }
             $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'datos' => $datos] );
         } catch ( ValidacionExcepcion $error ) {
             $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
@@ -63,6 +70,40 @@ class GestionUsuarioControlador extends GenericoControlador {
             $id_usuario = $_SESSION ['usuario'];
             $this->usuarioDAO->guardar_respuesta( $id_pregunta, $respuestas, $id_usuario );
             $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se insertó correctamente'] );
+        } catch ( ValidacionExcepcion $error ) {
+            $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
+        }
+    }
+
+    public function modificar_respuesta() {
+        try {
+            Validacion::validar( ['id_respuestas' => 'obligatorio', 'respuestas' => 'obligatorio'], $_POST );
+            $id_respuestas = $_POST ['id_respuestas'];
+            $respuestas = $_POST ['respuestas'];
+            $this->usuarioDAO->modificar_respuesta( $id_respuestas, $respuestas );
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se modificó correctamente'] );
+        } catch ( ValidacionExcepcion $error ) {
+            $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
+        }
+    }
+
+    public function consultar_datos() {
+        try {
+            session_start();
+            $id_usuario = $_SESSION ['usuario'];
+            $datos = $this->usuarioDAO->consultar_datos( $id_usuario );
+            if ( $datos != "" ) {
+                foreach ( $datos as $t ) {
+                    $suma = 0;
+                    $rsp = explode( "|", $t->respuestas );
+                    foreach ( $rsp as $rs ) {
+                        $suma += $rs;
+                        $t->rspta_suma = $suma;
+                    }
+                    
+                }
+            }
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'datos' => $datos] );
         } catch ( ValidacionExcepcion $error ) {
             $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
         }
