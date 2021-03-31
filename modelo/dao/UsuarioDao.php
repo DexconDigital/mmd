@@ -32,7 +32,8 @@ class UsuarioDAO {
     }
 
     public function consultar_preguntas( $tabla, $contenido ) {
-        $sql = "SELECT * FROM  preguntas WHERE tabla=:tabla AND contenido=:contenido";
+        $sql = "select prg.*, res.respuestas, res.id_usuario, res.id_respuestas from preguntas prg LEFT JOIN respuestas res on prg.id_pregunta = res.id_pregunta 
+                WHERE prg.tabla=:tabla AND prg.contenido=:contenido";
         $sentencia = $this->cnn->prepare( $sql );
         $sentencia->execute( [
             'tabla' => $tabla,
@@ -51,5 +52,24 @@ class UsuarioDAO {
             'id_usuario' => $id_usuario
         ] );
         return $this->cnn->lastInsertId();
+    }
+    
+    public function modificar_respuesta($id_respuestas, $respuestas) {
+        $sql = "UPDATE respuestas SET respuestas=:respuestas WHERE id_respuestas=:id_respuestas";
+        $sentencia = $this->cnn->prepare($sql);
+        $sentencia->execute([
+            'id_respuestas' => $id_respuestas,
+            'respuestas' => $respuestas
+        ]);
+        return $this->cnn->lastInsertId();
+    }
+    
+    public function consultar_datos( $id_usuario ) {
+        $sql = "SELECT res.id_pregunta, prg.tabla, res.respuestas FROM preguntas prg INNER JOIN respuestas res on res.id_pregunta = prg.id_pregunta WHERE res.id_usuario =:id_usuario ORDER BY (prg.tabla)";
+        $sentencia = $this->cnn->prepare( $sql );
+        $sentencia->execute( [
+            'id_usuario' => $id_usuario
+        ] );
+        return $sentencia->fetchAll( PDO::FETCH_OBJ );
     }
 }
