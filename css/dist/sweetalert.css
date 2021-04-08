@@ -227,7 +227,7 @@ body.stop-scrolling {
   top: 0;
   bottom: 0;
   display: none;
-  z-index: 1040;
+  z-index: 1050;
 }
 .sweet-alert {
   background-color: #ffffff;
@@ -295,6 +295,7 @@ body.stop-scrolling {
   margin: 20px auto;
   position: relative;
   box-sizing: content-box;
+  z-index: -1;
 }
 .sweet-alert .sa-icon.sa-error {
   border-color: #d43f3a;
