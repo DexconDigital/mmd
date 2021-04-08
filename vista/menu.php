@@ -29,10 +29,11 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <h4 class="text-dark"><span class="font-weight-bold"> Dexcon. </span> Digital</h4>
+                    <label class="text-dark h4"><span class="font-weight-bold" id="razon">Dexcon.</span> Digital</label>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600" id="razon_menu"></span>
                                 <img class="img-profile rounded-circle" src="../img/perfil.png">
                             </a>
                             <!-- Dropdown - Salir -->
@@ -49,15 +50,16 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                 <!-- Cuerpo Inicio -->
                 <div class="container-fluid shadow bg-white" id="formulario">
                     <div class="pt-5 row d-flex justify-content-center">
-                        <div class="col-md-2 col-sm-3 col-6  d-flex justify-content-center">
-                            <img src="../img/logo.png" class="w-50 my-auto">
+                        <div class="col-md-5 col-sm-3 col-6 d-flex justify-content-center">
+                            <img src="../img/logo.png" class="w-12 my-auto mr-30">
                         </div>
-                        <div class="col-md-5 col-sm-5 col-6">
-                            <p class="text-dark font-weight-bold h5">MODELO DE EVALUACIÓN DE MADUREZ DIGITAL</p>
+                        <div class="col-md-7 col-sm-5 col-6">
+                            <h5 class="text-dark font-weight-bold">MODELO DE EVALUACIÓN DE MADUREZ DIGITAL</h5>
+                            <button class="btn btn-negro" id="results">Resultados</button>
                         </div>
                     </div>
                     <div class="row pt-5 d-flex justify-content-center">
-                        <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
                             <div class="card card-hover border-aqua mb-3 w-100">
                                 <div class="card-header bg-transparent">CLIENTES</div>
                                 <div class="card-body text-primary">
@@ -68,35 +70,35 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
-                            <div class="card card-hover border-warning mb-3 w-100">
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
+                            <div class="card card-hover border-amarillo mb-3 w-100">
                                 <div class="card-header bg-transparent">ESTRATEGIA</div>
                                 <div class="card-body text-primary">
-                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Gestión de la marca</button>
-                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Gestión de ecosistemas</button>
-                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Finanzas e inversiones, cartera</button>
-                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Clientes & mercados</button>
-                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Portafolio, ideación e innovación</button>
-                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Gestión de partes interesadas</button>
-                                    <button class="btn btn-warning btn-block text-dark modelo" data-tabla="estrategia">Gestión estrategica</button>
+                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Gestión de la marca</button>
+                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Gestión de ecosistemas</button>
+                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Finanzas e inversiones, cartera</button>
+                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Clientes & mercados</button>
+                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Portafolio, ideación e innovación</button>
+                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Gestión de partes interesadas</button>
+                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Gestión estratégica</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
                             <div class="card card-hover border-cyan mb-3 w-100">
                                 <div class="card-header bg-transparent">TECNOLOGÍA</div>
                                 <div class="card-body text-primary">
                                     <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Aplicaciones</button>
                                     <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Cosas conectadas</button>
                                     <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Analiticas & datos</button>
-                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Politicas de entregas</button>
+                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Políticas de entregas</button>
                                     <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Red</button>
                                     <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Seguridad</button>
                                     <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Arquitectura tecnológica</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
                             <div class="card card-hover border-verde mb-3 w-100">
                                 <div class="card-header bg-transparent">OPERACIONES</div>
                                 <div class="card-body text-primary">
@@ -109,7 +111,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-md-4 col-sm-6 d-flex justify-content-center">
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">
                             <div class="card card-hover border-lila mb-3 w-100">
                                 <div class="card-header bg-transparent">ORGANIZACIÓN & CULTURA</div>
                                 <div class="card-body text-primary">
@@ -127,7 +129,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Dexcon <?php echo date( 'Y' ); ?></span>
+                        <span>Diseñado y Desarrollado por Dexcon Digital. ©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</span>
                     </div>
                 </div>
             </footer>
@@ -139,7 +141,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
     <!-- Modal preguntas -->
     <div class="modal fade bd-example-modal-lg" id="prgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content bg-dark">
+            <div class="modal-content bg-negro">
                 <div class="modal-header border-0">
                     <h6 class="modal-title text-uppercase text-light" id="exampleModalLabel1"></h6>
                     <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
@@ -159,6 +161,261 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
     </div>
     <!-- Fin Modal preguntas -->
 
+    <!-- Modal resultados -->
+    <div class="modal fade modal-fullscreen" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModallabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-negro">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-uppercase text-light" id="resultModallabel">RESULTADOS MODELO DE EVALUACIÓN DE MADUREZ DIGITAL</h5>
+                    <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
+                        <span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body text-light container-fluid">
+                    <form id="frm1">
+                        <ul class="nav nav-pills bg-negro" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" id="dimensiones-tab" data-toggle="tab" href="#dimensiones" role="tab" aria-controls="dimensiones" aria-selected="true">Por Dimensiones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" id="Clientes-tab" data-info="clientes" data-toggle="tab" href="#Clientes" role="tab" aria-controls="Clientes" aria-selected="false">Clientes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" id="Estrategia-tab" data-info="estrategia" data-toggle="tab" href="#Estrategia" role="tab" aria-controls="Estrategia" aria-selected="false">Estrategia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" id="Tecnologia-tab" data-info="tecnología" data-toggle="tab" href="#Tecnologia" role="tab" aria-controls="Tecnologia" aria-selected="false">Tecnología</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" id="Operaciones-tab" data-info="operaciones" data-toggle="tab" href="#Operaciones" role="tab" aria-controls="Operaciones" aria-selected="false">Operaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" id="Estrategia-tab" data-info="cultura" data-toggle="tab" href="#Cultura" role="tab" aria-controls="Cultura" aria-selected="false">Organización & Cultura</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" id="Mapa_calor-tab" data-info="mapa_calor" data-toggle="tab" href="#Mapa_calor" role="tab" aria-controls="Mapa_calor" aria-selected="false">Mapa de calor</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content mt-2" id="myTabContent">
+                            <div class="tab-pane fade show active" id="dimensiones" role="tabpanel" aria-labelledby="dimensiones-tab">
+                                <div class="bg-white pt-2 rounded container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-7 ">
+                                            <div class="table-responsive">
+                                                <div class="graficas">
+                                                    <canvas id="dimension_grafica" class="pb-5"></canvas>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS POR DIMENSION (%)</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm table-bordered">
+                                                    <thead class="bg-red text-light">
+                                                        <th>Dimensión</th>
+                                                        <th>Resultado</th>
+                                                        <th>Estandar</th>
+                                                    </thead>
+                                                    <tbody id="dimension"></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Clientes" role="tabpanel" aria-labelledby="Clientes-tab">
+                                <div class="bg-white pt-2 rounded container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-7 table-responsive">
+                                            <div class="table-responsive">
+                                                <div class="graficas">
+                                                    <canvas id="clientes_grafica" class="pb-5"></canvas>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION CLIENTES (%)</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm table-bordered">
+                                                    <thead class="bg-aqua text-dark">
+                                                        <th>Sub-Dimensión</th>
+                                                        <th>Resultado</th>
+                                                        <th>Estandar</th>
+                                                        <th>% Desviación</th>
+                                                    </thead>
+                                                    <tbody class="tabla" data-info="clientes"></tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th scope="row">Total</th>
+                                                            <th class="total_tabla" scope="row"></th>
+                                                            <th class="total_estandar" scope="row"></th>
+                                                            <th class="total_desviación" scope="row"></th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Estrategia" role="tabpanel" aria-labelledby="Estrategia-tab">
+                                <div class="bg-white pt-2 rounded container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-7">
+                                            <div class="table-responsive">
+                                                <div class="graficas">
+                                                    <canvas id="estrategia_grafica" class="pb-5"></canvas>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION ESTRATEGIA (%)</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm table-bordered">
+                                                    <thead class="bg-amarillo text-dark">
+                                                        <th>Sub-Dimensión</th>
+                                                        <th>Resultado</th>
+                                                        <th>Estandar</th>
+                                                        <th>% Desviación</th>
+                                                    </thead>
+                                                    <tbody class="tabla"></tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th scope="row">Total</th>
+                                                            <th class="total_tabla" scope="row"></th>
+                                                            <th class="total_estandar" scope="row"></th>
+                                                            <th class="total_desviación" scope="row"></th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Tecnologia" role="tabpanel" aria-labelledby="Tecnologia-tab">
+                                <div class="bg-white pt-2 rounded container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-7 table-responsive">
+                                            <div class="table-responsive">
+                                                <div class="graficas">
+                                                    <canvas id="tecnología_grafica" class="pb-5"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION TECNOLOGÍA (%)</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm table-bordered">
+                                                    <thead class="bg-cyan text-dark">
+                                                        <th>Sub-Dimensión</th>
+                                                        <th>Resultado</th>
+                                                        <th>Estandar</th>
+                                                        <th>% Desviación</th>
+                                                    </thead>
+                                                    <tbody class="tabla"></tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th scope="row">Total</th>
+                                                            <th class="total_tabla" scope="row"></th>
+                                                            <th class="total_estandar" scope="row"></th>
+                                                            <th class="total_desviación" scope="row"></th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Operaciones" role="tabpanel" aria-labelledby="Operaciones-tab">
+                                <div class="bg-white pt-2 rounded container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-7">
+                                            <div class="table-responsive">
+                                                <div class="graficas">
+                                                    <canvas id="operaciones_grafica" class="pb-5"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION OPERACIONES (%)</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm table-bordered">
+                                                    <thead class="bg-verde text-dark">
+                                                        <th>Sub-Dimensión</th>
+                                                        <th>Resultado</th>
+                                                        <th>Estandar</th>
+                                                        <th>% Desviación</th>
+                                                    </thead>
+                                                    <tbody class="tabla"></tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th scope="row">Total</th>
+                                                            <th class="total_tabla" scope="row"></th>
+                                                            <th class="total_estandar" scope="row"></th>
+                                                            <th class="total_desviación" scope="row"></th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Cultura" role="tabpanel" aria-labelledby="Cultura-tab">
+                                <div class="bg-white pt-2 rounded container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-7 table-responsive">
+                                            <div class="table-responsive">
+                                                <div class="graficas">
+                                                    <canvas id="cultura_grafica" class="pb-5"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION CULTURA (%)</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm table-bordered">
+                                                    <thead class="bg-lila text-light">
+                                                        <th>Sub-Dimensión</th>
+                                                        <th>Resultado</th>
+                                                        <th>Estandar</th>
+                                                        <th>% Desviación</th>
+                                                    </thead>
+                                                    <tbody class="tabla"></tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th scope="row">Total</th>
+                                                            <th class="total_tabla" scope="row"></th>
+                                                            <th class="total_estandar" scope="row"></th>
+                                                            <th class="total_desviación" scope="row"></th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Mapa_calor" role="tabpanel" aria-labelledby="Mapa_calor-tab">
+                                <div class="bg-white pt-2 rounded pb-2">
+                                    <div class="table-responsive container-fluid" style="max-height:48rem;">
+                                        <div class="row flex-nowrap" id="tabla_mapa"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Modal resultados -->
+
     <!-- Modal salir -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -171,8 +428,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                 </div>
                 <div class="modal-body">Seleccione "Salir" si está listo para finalizar su sesión actual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary text-light" href="iniciosesion.php">Salir</a>
+                    <button class="btn btn-negro" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-cyan text-dark" href="iniciosesion.php">Salir</a>
                 </div>
             </div>
         </div>
@@ -184,6 +441,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="js/menu.js" type="text/javascript"></script>
 <script src="../js/sb-admin-2.min.js"></script>
+<script src="../vendor/chart.js/Chart.min.js"></script>
 <script src="js/usuario/gestionusuario.js?v=<?php echo uniqid(); ?>" type="text/javascript"></script>
 
 </html>
