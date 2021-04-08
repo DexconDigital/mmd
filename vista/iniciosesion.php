@@ -11,6 +11,7 @@ session_destroy();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="dexcon" content="">
     <title>Ingreso</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="../css/dist/sweetalert.css">
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
