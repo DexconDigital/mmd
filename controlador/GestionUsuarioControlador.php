@@ -1,7 +1,7 @@
 <?php
 require_once '../modelo/basedatos/Conexion.php';
 require_once '../modelo/vo/Usuario.php';
-require_once '../modelo/dao/UsuarioDAO.php';
+require_once '../modelo/dao/UsuarioDao.php';
 require_once './GenericoControlador.php';
 require_once './excepcion/ValidacionExcepcion.php';
 require_once './util/Validacion.php';
