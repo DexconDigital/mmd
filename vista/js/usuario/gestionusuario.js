@@ -7,7 +7,9 @@ var gestionUsuario = {
     constructor: function () {
         var results = $('#results');
         var modelo = $('.modelo');
+
         gestionUsuario.consultatrespuestas();
+        results.click(gestionUsuario.consultatgraficas);
 
         results.click(function () {
             $('#resultModal').modal('show')
@@ -177,10 +179,17 @@ var gestionUsuario = {
                 }
             })
         }
-
+    },
+    consultatgraficas: function (e) {
+        var data = {};
+        app.ajax('../controlador/GestionUsuarioControlador.php?opcion=consultar_datos', data, gestionUsuario.respuestaConsultatgraficas);
+    },
+    respuestaConsultatgraficas: function (respuesta) {
+        var datos = respuesta.datos;
         //Arreglos de graficas dimensión
         var dimension = $("#dimension");
         var rs_dm = respuesta.resultados_dimension;
+
         dimension.empty();
         $.each(rs_dm, function (key, value) {
             var estandar = "0";
@@ -204,47 +213,84 @@ var gestionUsuario = {
                     estandar = "100";
                     break;
             }
-
+            
+            var resul_dim = ((value - estandar) / estandar) * 100;
             var campos = '<tr>' +
                 '<th scope="row">' + key + '</th>' +
                 '<td>' + value + '%</td>' +
                 '<td>' + estandar + '%</td>' +
+                '<td>' + Number(resul_dim).toFixed(2) + '%</td>' +
                 '</tr>';
             dimension.append(campos);
         });
 
         //Graficas dimensión
         var marksCanvas = document.getElementById("dimension_grafica");
+
         var marksData = {
             labels: ["Clientes", "Estrategia", "Tecnología", "Operaciones", "Cultura"],
             datasets: [{
                 data: [rs_dm.Clientes, rs_dm.Estrategia, rs_dm.Tecnología, rs_dm.Operaciones, rs_dm.Cultura],
                 borderColor: "rgba(0,0,255,0.3)",
                 backgroundColor: "rgba(255,255,255,0)"
+                },{
+                data: [20, 30, 15, 25, 10],
+                borderColor: "rgba(255,0,0,0.3)",
+                backgroundColor: "rgba(255,255,255,0)"
                 }]
         };
+
+        var options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+            hover: {
+                animationDuration: 0
+            },
+            animation: {
+                onComplete: function () {
+                    const chartInstance = this.chart,
+                        ctx = chartInstance.ctx;
+
+                    ctx.font = Chart.helpers.fontString(
+                        15,
+                        Chart.defaults.global.defaultFontStyle,
+                        Chart.defaults.global.defaultFontFamily
+                    );
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "bottom";
+
+                    this.data.datasets.forEach(function (dataset, i) {
+                        const meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function (bar, index) {
+                            const data = dataset.data[index];
+                            ctx.fillStyle = "black";
+                            ctx.fillText(data, bar._model.x, bar._model.y - 2);
+                        });
+                    });
+                }
+            },
+            tooltips: {
+                enabled: true
+            },
+            scale: {
+                gridLines: {
+                    color: '#D4D4D4'
+                },
+                ticks: {
+                    display: false
+                }
+            },
+            events: false,
+        };
+
+
         var radarChart = new Chart(marksCanvas, {
             type: 'radar',
             data: marksData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    display: false
-                },
-                tooltips: {
-                    callbacks: {
-                        label: function (tooltipItem) {
-                            return Number(tooltipItem.yLabel) + "%";
-                        }
-                    }
-                },
-                scale: {
-                    gridLines: {
-                        color: 'gray'
-                    }
-                }
-            }
+            options: options
         });
         //Fin  graficas dimensión
 
@@ -295,36 +341,21 @@ var gestionUsuario = {
                 var Data = {
                     labels: cadena_info,
                     datasets: [{
-                            label: "Sub-dimensión",
-                            data: cadena_total,
-                            borderColor: "rgba(0,0,255,0.3)",
-                            backgroundColor: "rgba(255,255,255,0)"
+                        label: "Sub-dimensión",
+                        data: cadena_total,
+                        borderColor: "rgba(0,0,255,0.3)",
+                        backgroundColor: "rgba(255,255,255,0)"
                     }, {
-                            label: "Estandar",
-                            data: cadena_estandar,
-                            borderColor: "rgba(255,0,0,0.3)",
-                            backgroundColor: "rgba(255,255,255,0)"
+                        label: "Estandar",
+                        data: cadena_estandar,
+                        borderColor: "rgba(255,0,0,0.3)",
+                        backgroundColor: "rgba(255,255,255,0)"
                     }]
                 };
                 var radarChart = new Chart(Canvas, {
                     type: 'radar',
                     data: Data,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        tooltips: {
-                            callbacks: {
-                                label: function (tooltipItem) {
-                                    return Number(tooltipItem.yLabel) + "%";
-                                }
-                            }
-                        },
-                        scale: {
-                            gridLines: {
-                                color: 'gray'
-                            }
-                        }
-                    }
+                    options: options
                 });
             }
         });
@@ -334,6 +365,7 @@ var gestionUsuario = {
         var resultset = respuesta.resultados;
         var mapa_calor = $("#tabla_mapa");
         mapa_calor.empty();
+
         $.each(resultset, function (key, value) {
             var title_color = (value.color == "lila") ? "light" : "dark";
 
@@ -554,6 +586,6 @@ var gestionUsuario = {
                 '</div>';
             mapa_calor.append(mapa);
         });
-    },
+    }
 };
 gestionUsuario.constructor();
