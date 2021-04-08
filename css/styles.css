@@ -258,6 +258,10 @@ input[type=number] {
     text-transform: uppercase !important;
 }
 
+.first-uppercase::first-letter {
+    text-transform: uppercase !important;
+}
+
 @media (max-width: 1199.98px) {
     .ml-21 {
         margin-left: 0% !important;
@@ -270,8 +274,8 @@ input[type=number] {
     }
 
     .graficas {
-        width: 30rem !important;
-        height: 15rem !important;
+        width: 35rem !important;
+        height: 30rem !important;
     }
 }
 
@@ -300,3 +304,31 @@ input[type=number] {
 .modal.modal-fullscreen .modal-body {
     overflow-y: auto;
 }
+
+/* Colores en modal de graficas*/
+.nav-pills .nav-link.clientes.active {
+    color: black !important;
+    background-color: #3EFAC5;
+}
+
+.nav-pills .nav-link.estrategia.active {
+    color: black !important;
+    background-color: #FDD300;
+}
+
+.nav-pills .nav-link.tecnologia.active {
+    color: black !important;
+    background-color: #34F0FF;
+}
+
+.nav-pills .nav-link.operaciones.active {
+    color: black !important;
+    background-color: #71c904;
+}
+
+.nav-pills .nav-link.cultura.active {
+    color: white !important;
+    background-color: #AB2765;
+}
+
+
