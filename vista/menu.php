@@ -210,8 +210,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS POR DIMENSION (%)</h6>
+                                            <div class="table-responsive text-nowrap">
+                                                <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS POR DIMENSION (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-red text-light">
                                                         <th>Dimensión</th>
@@ -237,8 +237,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION CLIENTES (%)</h6>
+                                            <div class="table-responsive text-nowrap">
+                                                <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION CLIENTES (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-aqua text-dark">
                                                         <th>Sub-Dimensión</th>
@@ -273,8 +273,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION ESTRATEGIA (%)</h6>
+                                            <div class="table-responsive text-nowrap">
+                                                <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION ESTRATEGIA (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-amarillo text-dark">
                                                         <th>Sub-Dimensión</th>
@@ -308,8 +308,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION TECNOLOGÍA (%)</h6>
+                                            <div class="table-responsive text-nowrap">
+                                                <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION TECNOLOGÍA (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-cyan text-dark">
                                                         <th>Sub-Dimensión</th>
@@ -343,8 +343,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION OPERACIONES (%)</h6>
+                                            <div class="table-responsive text-nowrap">
+                                                <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION OPERACIONES (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-verde text-dark">
                                                         <th>Sub-Dimensión</th>
@@ -378,8 +378,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION CULTURA (%)</h6>
+                                            <div class="table-responsive text-nowrap">
+                                                <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION CULTURA (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-lila text-light">
                                                         <th>Sub-Dimensión</th>
