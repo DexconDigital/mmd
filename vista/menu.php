@@ -49,9 +49,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
 
                 <!-- Cuerpo Inicio -->
                 <div class="container-fluid shadow bg-white" id="formulario">
-                    <div class="pt-5 row d-flex justify-content-center">
-                        <div class="col-md-5 col-sm-3 col-6 d-flex justify-content-center">
-                            <img src="../img/logo.png" class="w-12 my-auto mr-30">
+                    <div class="pt-5 row">
+                        <div class="col-md-5 col-sm-3 col-6">
+                            <img src="../img/logo.png" class="w-12 my-auto ml-21">
                         </div>
                         <div class="col-md-7 col-sm-5 col-6">
                             <h5 class="text-dark font-weight-bold">MODELO DE EVALUACIÓN DE MADUREZ DIGITAL</h5>
