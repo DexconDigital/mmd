@@ -129,7 +129,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Diseñado y Desarrollado por Dexcon Digital. ©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</span>
+                        <span>Diseñado y Desarrollado por Dexcon Digital.</span>
+                        <span>©Copyright <?php echo date('Y') ?>.</span>
+                        <span>Todos los derechos reservados.</span>
                     </div>
                 </div>
             </footer>
@@ -178,19 +180,19 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                 <a class="nav-link active text-light" id="dimensiones-tab" data-toggle="tab" href="#dimensiones" role="tab" aria-controls="dimensiones" aria-selected="true">Por Dimensiones</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" id="Clientes-tab" data-info="clientes" data-toggle="tab" href="#Clientes" role="tab" aria-controls="Clientes" aria-selected="false">Clientes</a>
+                                <a class="nav-link text-light clientes" id="Clientes-tab" data-info="clientes" data-toggle="tab" href="#Clientes" role="tab" aria-controls="Clientes" aria-selected="false">Clientes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" id="Estrategia-tab" data-info="estrategia" data-toggle="tab" href="#Estrategia" role="tab" aria-controls="Estrategia" aria-selected="false">Estrategia</a>
+                                <a class="nav-link text-light estrategia" id="Estrategia-tab" data-info="estrategia" data-toggle="tab" href="#Estrategia" role="tab" aria-controls="Estrategia" aria-selected="false">Estrategia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" id="Tecnologia-tab" data-info="tecnología" data-toggle="tab" href="#Tecnologia" role="tab" aria-controls="Tecnologia" aria-selected="false">Tecnología</a>
+                                <a class="nav-link text-light tecnologia" id="Tecnologia-tab" data-info="tecnología" data-toggle="tab" href="#Tecnologia" role="tab" aria-controls="Tecnologia" aria-selected="false">Tecnología</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" id="Operaciones-tab" data-info="operaciones" data-toggle="tab" href="#Operaciones" role="tab" aria-controls="Operaciones" aria-selected="false">Operaciones</a>
+                                <a class="nav-link text-light operaciones" id="Operaciones-tab" data-info="operaciones" data-toggle="tab" href="#Operaciones" role="tab" aria-controls="Operaciones" aria-selected="false">Operaciones</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" id="Estrategia-tab" data-info="cultura" data-toggle="tab" href="#Cultura" role="tab" aria-controls="Cultura" aria-selected="false">Organización & Cultura</a>
+                                <a class="nav-link text-light cultura" id="Estrategia-tab" data-info="cultura" data-toggle="tab" href="#Cultura" role="tab" aria-controls="Cultura" aria-selected="false">Organización & Cultura</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-light" id="Mapa_calor-tab" data-info="mapa_calor" data-toggle="tab" href="#Mapa_calor" role="tab" aria-controls="Mapa_calor" aria-selected="false">Mapa de calor</a>
@@ -203,19 +205,19 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 ">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="dimension_grafica" class="pb-5"></canvas>
-
+                                                    <canvas id="dimension_grafica" class="grafica pb-5"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS POR DIMENSION (%)</h6>
                                             <div class="table-responsive">
+                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS POR DIMENSION (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-red text-light">
                                                         <th>Dimensión</th>
                                                         <th>Resultado</th>
                                                         <th>Estandar</th>
+                                                        <th>% Desviación</th>
                                                     </thead>
                                                     <tbody id="dimension"></tbody>
                                                 </table>
@@ -230,14 +232,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="clientes_grafica" class="pb-5"></canvas>
-
+                                                    <canvas id="clientes_grafica" class="grafica pb-5"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION CLIENTES (%)</h6>
                                             <div class="table-responsive">
+                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION CLIENTES (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-aqua text-dark">
                                                         <th>Sub-Dimensión</th>
@@ -266,14 +267,14 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="estrategia_grafica" class="pb-5"></canvas>
+                                                    <canvas id="estrategia_grafica" class="grafica pb-5"></canvas>
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION ESTRATEGIA (%)</h6>
                                             <div class="table-responsive">
+                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION ESTRATEGIA (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-amarillo text-dark">
                                                         <th>Sub-Dimensión</th>
@@ -302,13 +303,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="tecnología_grafica" class="pb-5"></canvas>
+                                                    <canvas id="tecnología_grafica" class="grafica pb-5"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION TECNOLOGÍA (%)</h6>
                                             <div class="table-responsive">
+                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION TECNOLOGÍA (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-cyan text-dark">
                                                         <th>Sub-Dimensión</th>
@@ -337,13 +338,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="operaciones_grafica" class="pb-5"></canvas>
+                                                    <canvas id="operaciones_grafica" class="grafica pb-5"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION OPERACIONES (%)</h6>
                                             <div class="table-responsive">
+                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION OPERACIONES (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-verde text-dark">
                                                         <th>Sub-Dimensión</th>
@@ -372,13 +373,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="cultura_grafica" class="pb-5"></canvas>
+                                                    <canvas id="cultura_grafica" class="grafica pb-5"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <h6 class="text-dark mt-2 font-weight-bold">RESULTADOS SUBDIMENSION CULTURA (%)</h6>
                                             <div class="table-responsive">
+                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION CULTURA (%)</h6>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-lila text-light">
                                                         <th>Sub-Dimensión</th>
@@ -421,7 +422,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel2">Realmente quieres salir?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel2">¿Realmente quiere salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
