@@ -170,22 +170,22 @@ button.bg-lila:focus {
 
 /* yellow COLOR*/
 .bg-yellow {
-    background-color: yellow;
+    background-color: #FDD300;
 }
 
 /* red COLOR*/
 .bg-red {
-    background-color: red;
+    background-color: #C00000;
 }
 
 /* dark yellow COLOR*/
 .bg-dark-yellow {
-    background-color: #FFC000;
+    background-color: #E55407;
 }
 
 /* bg-dark-green COLOR*/
 .bg-dark-green {
-    background-color: #92D050;
+    background-color: #86F200;
 }
 
 /* NEGRO DEXCON COLOR*/
