@@ -374,7 +374,7 @@ var gestionUsuario = {
 
             if (value.total >= 25.1) {
                 color_cabecera = "dark-yellow";
-                text_cabecera = "dark";
+                text_cabecera = "light";
             }
             if (value.total >= 50.1) {
                 color_cabecera = "yellow";
@@ -408,7 +408,7 @@ var gestionUsuario = {
                         data_map.contenido == "Gestión del talento & Diseño organizacional") {
                         if (data_map.result_2 >= 7.51) {
                             color_contenido = "dark-yellow";
-                            text_contenido = "dark";
+                            text_contenido = "light";
                         }
                         if (data_map.result_2 >= 15.1) {
                             color_contenido = "yellow";
@@ -424,7 +424,7 @@ var gestionUsuario = {
                     if (data_map.contenido == "experiencia del cliente") {
                         if (data_map.result_2 >= 8.76) {
                             color_contenido = "dark-yellow";
-                            text_contenido = "dark";
+                            text_contenido = "light";
                         }
                         if (data_map.result_2 >= 17.51) {
                             color_contenido = "yellow";
@@ -443,7 +443,7 @@ var gestionUsuario = {
                         data_map.contenido == "Cultura") {
                         if (data_map.result_2 >= 5.1) {
                             color_contenido = "dark-yellow";
-                            text_contenido = "dark";
+                            text_contenido = "light";
                         }
                         if (data_map.result_2 >= 10.1) {
                             color_contenido = "yellow";
@@ -466,7 +466,7 @@ var gestionUsuario = {
                         data_map.contenido == "Analíticas e información en tiempo real") {
                         if (data_map.result_2 >= 3.76) {
                             color_contenido = "dark-yellow";
-                            text_contenido = "dark";
+                            text_contenido = "light";
                         }
                         if (data_map.result_2 >= 7.51) {
                             color_contenido = "yellow";
@@ -485,7 +485,7 @@ var gestionUsuario = {
                         data_map.contenido == "Habilitación de la fuerza laboral") {
                         if (data_map.result_2 >= 1.26) {
                             color_contenido = "dark-yellow";
-                            text_contenido = "dark";
+                            text_contenido = "light";
                         }
                         if (data_map.result_2 >= 2.51) {
                             color_contenido = "yellow";
@@ -506,7 +506,7 @@ var gestionUsuario = {
                         data_map.contenido == "Gestión de servicios integrados") {
                         if (data_map.result_2 >= 2.51) {
                             color_contenido = "dark-yellow";
-                            text_contenido = "dark";
+                            text_contenido = "light";
                         }
                         if (data_map.result_2 >= 5.1) {
                             color_contenido = "yellow";
@@ -522,7 +522,7 @@ var gestionUsuario = {
                     if (data_map.contenido == "Finanzas e inversiones, cartera" || data_map.contenido == "Clientes & mercados") {
                         if (data_map.result_2 >= 2.51) {
                             color_contenido = "dark-yellow";
-                            text_contenido = "dark";
+                            text_contenido = "light";
                         }
                         if (data_map.result_2 >= 5.1) {
                             color_contenido = "yellow";
@@ -538,7 +538,7 @@ var gestionUsuario = {
                     if (data_map.contenido == "Analiticas & datos") {
                         if (data_map.result_2 >= 6.26) {
                             color_contenido = "dark-yellow";
-                            text_contenido = "dark";
+                            text_contenido = "light";
                         }
                         if (data_map.result_2 >= 12.51) {
                             color_contenido = "yellow";
@@ -565,7 +565,7 @@ var gestionUsuario = {
                         //Colores segun el total en el pie
                         if (const_total >= 25.1) {
                             color_pie = "dark-yellow";
-                            text_pie = "dark";
+                            text_pie = "light";
                         }
                         if (const_total >= 50.1) {
                             color_pie = "yellow";
