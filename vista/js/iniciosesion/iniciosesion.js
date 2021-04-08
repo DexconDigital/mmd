@@ -44,6 +44,16 @@ var inicioSesion = {
         if (respuesta.codigo < 0) {
             app.mensaje(respuesta);
             return;
+        } else if (respuesta.codigo == 2) {
+            swal({
+                title: "Creando usuario...",
+                text: "Espera un momento",
+                showConfirmButton: false,
+                allowOutsideClick: false
+            });
+            setTimeout(() => {
+                location.href = "menu.php";
+            }, 4000);
         } else {
             location.href = "menu.php";
         }
