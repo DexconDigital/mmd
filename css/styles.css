@@ -323,12 +323,12 @@ input[type=number] {
 
 .nav-pills .nav-link.operaciones.active {
     color: black !important;
-    background-color: #71c904;
+    background-color: #86F200;
 }
 
 .nav-pills .nav-link.cultura.active {
     color: white !important;
-    background-color: #AB2765;
+    background-color: #852766;
 }
 
 
