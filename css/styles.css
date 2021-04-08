@@ -62,6 +62,10 @@ button.bg-aqua:focus {
     box-shadow: 0 0 0 0.2rem rgba(62, 250, 197, 0.5);
 }
 
+.border-aqua {
+    border-color: #41e8b9 !important;
+}
+
 /* amarrillo COLOR*/
 .bg-amarillo {
     background-color: #FDD300;
@@ -236,12 +240,12 @@ input[type=number] {
     margin-left: 12rem !important;
 }
 
-.mr-30 {
-    margin-right: 30% !important;
+.ml-21 {
+    margin-left: 21% !important;
 }
 
 .w-12 {
-    width: 12rem !important;
+    width: 12rem;
 }
 
 .graficas {
@@ -254,6 +258,12 @@ input[type=number] {
     text-transform: uppercase !important;
 }
 
+@media (max-width: 1199.98px) {
+    .ml-21 {
+        margin-left: 0% !important;
+    }
+}
+
 @media (max-width: 768px) {
     .w-12 {
         width: 8rem !important;
@@ -262,6 +272,12 @@ input[type=number] {
     .graficas {
         width: 30rem !important;
         height: 15rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .ml-21 {
+        margin-left: 0% !important;
     }
 }
 
