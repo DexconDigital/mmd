@@ -11,10 +11,6 @@ var gestionUsuario = {
         gestionUsuario.consultatrespuestas();
         results.click(gestionUsuario.consultatgraficas);
 
-        results.click(function () {
-            $('#resultModal').modal('show')
-        });
-
         modelo.click(function () {
             var data = {};
             data.tabla = $(this).attr("data-tabla");
@@ -166,6 +162,8 @@ var gestionUsuario = {
     },
     respuestaConsultatpreguntas: function (respuesta) {
         var datos = respuesta.datos;
+        var results = $('#results');
+        (datos.length == "28") ? results.show(): results.hide();
         var razon_social = respuesta.razon.razon_social;
         var razon = $("#razon_menu");
         //Validación de botones
@@ -182,6 +180,7 @@ var gestionUsuario = {
     },
     consultatgraficas: function (e) {
         var data = {};
+        $('#resultModal').modal('show');
         app.ajax('../controlador/GestionUsuarioControlador.php?opcion=consultar_datos', data, gestionUsuario.respuestaConsultatgraficas);
     },
     respuestaConsultatgraficas: function (respuesta) {
@@ -213,13 +212,13 @@ var gestionUsuario = {
                     estandar = "100";
                     break;
             }
-            
+
             var resul_dim = ((value - estandar) / estandar) * 100;
             var campos = '<tr>' +
                 '<th scope="row">' + key + '</th>' +
-                '<td>' + value + '%</td>' +
-                '<td>' + estandar + '%</td>' +
-                '<td>' + Number(resul_dim).toFixed(2) + '%</td>' +
+                '<td class="text-center">' + value + '%</td>' +
+                '<td class="text-center">' + estandar + '%</td>' +
+                '<td class="text-center">' + Number(resul_dim).toFixed(2) + '%</td>' +
                 '</tr>';
             dimension.append(campos);
         });
@@ -230,57 +229,28 @@ var gestionUsuario = {
         var marksData = {
             labels: ["Clientes", "Estrategia", "Tecnología", "Operaciones", "Cultura"],
             datasets: [{
+                label: "Resultado",
                 data: [rs_dm.Clientes, rs_dm.Estrategia, rs_dm.Tecnología, rs_dm.Operaciones, rs_dm.Cultura],
-                borderColor: "rgba(0,0,255,0.3)",
+                borderColor: "#86F200",
                 backgroundColor: "rgba(255,255,255,0)"
-                },{
+                }, {
+                label: "Estandar",
                 data: [20, 30, 15, 25, 10],
-                borderColor: "rgba(255,0,0,0.3)",
+                borderColor: "rgba(0,0,255,0.3)",
                 backgroundColor: "rgba(255,255,255,0)"
                 }]
         };
 
+
         var options = {
             responsive: true,
             maintainAspectRatio: false,
-            legend: {
-                display: false
-            },
-            hover: {
-                animationDuration: 0
-            },
-            animation: {
-                onComplete: function () {
-                    const chartInstance = this.chart,
-                        ctx = chartInstance.ctx;
-
-                    ctx.font = Chart.helpers.fontString(
-                        15,
-                        Chart.defaults.global.defaultFontStyle,
-                        Chart.defaults.global.defaultFontFamily
-                    );
-                    ctx.textAlign = "center";
-                    ctx.textBaseline = "bottom";
-
-                    this.data.datasets.forEach(function (dataset, i) {
-                        const meta = chartInstance.controller.getDatasetMeta(i);
-                        meta.data.forEach(function (bar, index) {
-                            const data = dataset.data[index];
-                            ctx.fillStyle = "black";
-                            ctx.fillText(data, bar._model.x, bar._model.y - 2);
-                        });
-                    });
-                }
-            },
-            tooltips: {
-                enabled: true
-            },
             scale: {
                 gridLines: {
                     color: '#D4D4D4'
                 },
-                ticks: {
-                    display: false
+                pointLabels: {
+                    fontSize: 15
                 }
             },
             events: false,
@@ -319,9 +289,9 @@ var gestionUsuario = {
                     var total = data.total;
                     var campos_tabla = '<tr>' +
                         '<th class="first-uppercase"><span>' + data.contenido + '</span></th>' +
-                        '<td>' + data.result_2 + '%</td>' +
-                        '<td>' + data.estandar + '%</td>' +
-                        '<td>' + data.desviacion + '%</td>' +
+                        '<td class="text-center">' + data.result_2 + '%</td>' +
+                        '<td class="text-center">' + data.estandar + '%</td>' +
+                        '<td class="text-center">' + data.desviacion + '%</td>' +
                         '</tr>';
 
                     var tot_desv = (((total - 100) / 100) * 100);
@@ -336,19 +306,19 @@ var gestionUsuario = {
                 }
             }
 
-            if (tabla_get != "mapa_calor") {
+            if ($(this).attr("data-info") != "mapa_calor" && !$(this).hasClass("active")) {
                 var Canvas = document.getElementById(tabla_get + "_grafica");
                 var Data = {
                     labels: cadena_info,
                     datasets: [{
-                        label: "Sub-dimensión",
+                        label: "Resultado",
                         data: cadena_total,
-                        borderColor: "rgba(0,0,255,0.3)",
+                        borderColor: "#86F200",
                         backgroundColor: "rgba(255,255,255,0)"
                     }, {
                         label: "Estandar",
                         data: cadena_estandar,
-                        borderColor: "rgba(255,0,0,0.3)",
+                        borderColor: "rgba(0,0,255,0.3)",
                         backgroundColor: "rgba(255,255,255,0)"
                     }]
                 };
