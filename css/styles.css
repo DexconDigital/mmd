@@ -178,6 +178,12 @@ button.bg-lila:focus {
     background-color: #C00000;
 }
 
+/* ladrillo COLOR*/
+.bg-ladrillo {
+    background-color: #F07B3B;
+}
+
+
 /* dark yellow COLOR*/
 .bg-dark-yellow {
     background-color: #E55407;
@@ -189,6 +195,12 @@ button.bg-lila:focus {
 }
 
 /* NEGRO DEXCON COLOR*/
+
+/* NEGRO DEXCON COLOR*/
+.text-negro {
+    color: #1C1C1C;
+}
+
 .bg-negro {
     background-color: #1C1C1C;
 }
@@ -240,8 +252,8 @@ input[type=number] {
     margin-left: 12rem !important;
 }
 
-.ml-21 {
-    margin-left: 21% !important;
+.ml-35 {
+    margin-left: 35% !important;
 }
 
 .w-12 {
@@ -262,28 +274,7 @@ input[type=number] {
     text-transform: uppercase !important;
 }
 
-@media (max-width: 1199.98px) {
-    .ml-21 {
-        margin-left: 0% !important;
-    }
-}
 
-@media (max-width: 768px) {
-    .w-12 {
-        width: 8rem !important;
-    }
-
-    .graficas {
-        width: 35rem !important;
-        height: 30rem !important;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .ml-21 {
-        margin-left: 0% !important;
-    }
-}
 
 /* Modal FullScreen */
 .modal.modal-fullscreen .modal-dialog {
@@ -331,4 +322,43 @@ input[type=number] {
     background-color: #852766;
 }
 
+@media (max-width: 1199.98px) {
+    .ml-35 {
+        margin-left: 0% !important;
+    }
+}
 
+@media (max-width: 992px) {
+    .titulo-principal {
+        padding-left: 11%;
+    }
+}
+
+@media (max-width: 768px) {
+    .w-12 {
+        width: 8rem !important;
+    }
+
+    .graficas {
+        width: 45rem !important;
+        height: 35rem !important;
+    }
+
+    .titulo-principal {
+        font-size: 2rem !important;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .ml-35 {
+        margin-left: 0% !important;
+        display: flex;
+    }
+
+    .titulo-principal {
+        padding-top: 1rem;
+        font-size: 1.7rem !important;
+        padding-left: 0;
+    }
+}
