@@ -34,10 +34,10 @@ session_destroy();
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-5  d-lg-block bg-negro text-center">
+                            <div class="col-lg-4 d-lg-block bg-negro text-center">
                                 <img src="../img/logo_blanco.png" class="w-50 m-5" />
                             </div>
-                            <div class="col-lg-7">
+                            <div class="col-lg-8">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Modelo de evaluación de madurez digital</h1>
@@ -58,16 +58,14 @@ session_destroy();
                                         </div>
                                         <div id="mensaje" class="form-group" style="color:red;"></div>
 
-                                        <button class="btn btn-cyan btn-block">Ingresar</button>
+                                        <button class="btn btn-verde text-dark btn-block">Ingresar</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer copyright">
-                        <span>Diseñado y Desarrollado por Dexcon Digital.</span>
-                        <span>©Copyright <?php echo date('Y') ?>.</span>
-                        <span>Todos los derechos reservados.</span>
+                    <div class="card-footer copyright text-center">
+                        <span>Diseñado y Desarrollado por Dexcon Consultores SAS | Dexcon Digital | ©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</span>
                     </div>
                 </div>
 
