@@ -177,14 +177,14 @@ class GestionUsuarioControlador extends GenericoControlador {
                     }
 
                     //colores
+                    $contenido = strtolower( $t->contenido );
                     $t->color_contenido = "red";
                     $t->text_contenido = "light";
-
                     //cliente colores "compromiso con el cliente"
-                    if ( $t->contenido == "compromiso con el cliente" ||
-                    $t->contenido == "Gestión estratégica" ||
-                    $t->contenido == "Procesos inteligentes y adaptables" ||
-                    $t->contenido == "Gestión del talento & Diseño organizacional" ) {
+                    if ( $contenido == strtolower( "compromiso con el cliente" ) or
+                    $contenido == strtolower( "gestión estratégica" ) or
+                    $contenido == strtolower( "procesos inteligentes y adaptables" ) or
+                    $contenido == strtolower( "gestión del talento & Diseño organizacional" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 7.51 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -200,7 +200,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                     }
 
                     //cliente colores "experiencia del cliente"
-                    if ( $t->contenido == "experiencia del cliente" ) {
+                    if ( $contenido == strtolower( "experiencia del cliente" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 8.76 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -216,10 +216,10 @@ class GestionUsuarioControlador extends GenericoControlador {
                     }
 
                     //cliente colores "conocimiento del cliente y comportamiento"
-                    if ( $t->contenido == "conocimiento del cliente y comportamiento" ||
-                    $t->contenido == "Aplicaciones" ||
-                    $t->contenido == "Estándares y automatización de procesos" ||
-                    $t->contenido == "Cultura" ) {
+                    if ( $contenido == strtolower( "conocimiento del cliente y comportamiento" ) or
+                    $contenido == strtolower( "aplicaciones" ) or
+                    $contenido == strtolower( "estándares y automatización de procesos" ) or
+                    $contenido == strtolower( "cultura" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 5.1 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -234,15 +234,15 @@ class GestionUsuarioControlador extends GenericoControlador {
                         }
                     }
 
-                    //cliente colores "Confianza y percepción del cliente"
-                    if ( $t->contenido == "Confianza y percepción del cliente" ||
-                    $t->contenido == "Gestión de la marca" ||
-                    $t->contenido == "Portafolio, ideación e innovación" ||
-                    $t->contenido == "Gestión de partes interesadas" ||
-                    $t->contenido == "Seguridad" ||
-                    $t->contenido == "Arquitectura tecnológica" ||
-                    $t->contenido == "Gestión ágil del cambio" ||
-                    $t->contenido == "Analíticas e información en tiempo real" ) {
+                    //cliente colores "confianza y percepción del cliente"
+                    if ( $contenido == strtolower( "confianza y percepción del cliente" ) or
+                    $contenido == strtolower( "gestión de la marca" ) or
+                    $contenido == strtolower( "portafolio, ideación e innovación" ) or
+                    $contenido == strtolower( "gestión de partes interesadas" ) or
+                    $contenido == strtolower( "seguridad" ) or
+                    $contenido == strtolower( "arquitectura tecnológica" ) or
+                    $contenido == strtolower( "gestión ágil del cambio" ) or
+                    $contenido == strtolower( "analíticas e información en tiempo real" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 3.76 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -258,10 +258,10 @@ class GestionUsuarioControlador extends GenericoControlador {
                     }
 
                     //Estrategia colores "Gestión de ecosistemas"
-                    if ( $t->contenido == "Gestión de ecosistemas" ||
-                    $t->contenido == "Políticas de entregas" ||
-                    $t->contenido == "Liderazgo & Gobierno" ||
-                    $t->contenido == "Habilitación de la fuerza laboral" ) {
+                    if ( $contenido == strtolower( "gestión de ecosistemas" ) or
+                    $contenido == strtolower( "políticas de entregas" ) or
+                    $contenido == strtolower( "liderazgo & Gobierno" ) or
+                    $contenido == strtolower( "habilitación de la fuerza laboral" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 1.26 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -277,12 +277,12 @@ class GestionUsuarioControlador extends GenericoControlador {
                     }
 
                     //Estrategia colores "Gestión de ecosistemas"
-                    if ( $t->contenido == "Finanzas e inversiones, cartera" ||
-                    $t->contenido == "Clientes & mercados" ||
-                    $t->contenido == "Cosas conectadas" ||
-                    $t->contenido == "Red" ||
-                    $t->contenido == "Gestión automatizada de recursos" ||
-                    $t->contenido == "Gestión de servicios integrados" ) {
+                    if ( $contenido == strtolower( "finanzas e inversiones, cartera" ) or
+                    $contenido == strtolower( "clientes & mercados" ) or
+                    $contenido == strtolower( "cosas conectadas" ) or
+                    $contenido == strtolower( "Red" ) or
+                    $contenido == strtolower( "Gestión automatizada de recursos" ) or
+                    $contenido == strtolower( "Gestión de servicios integrados" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 2.51 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -298,7 +298,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                     }
 
                     //Estrategia colores "Gestión de ecosistemas"
-                    if ( $t->contenido == "Finanzas e inversiones, cartera" || $t->contenido == "Clientes & mercados" ) {
+                    if ( $contenido == strtolower( "Finanzas e inversiones, cartera" ) or $contenido == strtolower( "Clientes & mercados" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 2.51 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -314,7 +314,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                     }
 
                     //Estrategia colores "Analiticas & datos"
-                    if ( $t->contenido == "Analiticas & datos" ) {
+                    if ( $contenido == strtolower( "Analiticas & datos" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 6.26 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
