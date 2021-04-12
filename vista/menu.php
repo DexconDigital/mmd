@@ -199,6 +199,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                             <li class="nav-item">
                                 <a class="nav-link text-light" id="Mapa_calor-tab" data-info="mapa_calor" data-toggle="tab" href="#Mapa_calor" role="tab" aria-controls="Mapa_calor" aria-selected="false">Mapa de calor</a>
                             </li>
+                            <!--<li class="nav-item">
+                                <a id="pdf" class="nav-link text-light" href="#" >Descargar PDF</a>
+                            </li>-->
                         </ul>
                         <div class="tab-content mt-2" id="myTabContent">
                             <div class="tab-pane fade show active" id="dimensiones" role="tabpanel" aria-labelledby="dimensiones-tab">
@@ -207,13 +210,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 ">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="dimension_grafica" class="grafica pb-5"></canvas>
+                                                    <canvas id="dimension_grafica" class="grafica pb-5 bg-light"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS POR DIMENSION (%)</h6>
+                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados por dimensión(%)</h5>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-ladrillo text-light">
                                                         <th>Dimensión</th>
@@ -234,13 +237,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="clientes_grafica" class="grafica pb-5"></canvas>
+                                                    <canvas id="clientes_grafica" class="grafica pb-5 bg-light"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold  text-nowrap">RESULTADOS SUBDIMENSION CLIENTES (%)</h6>
+                                                <h5 class="text-dark mt-2 font-weight-bold  text-nowrap">Resultados subdimensión clientes(%)</h5>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-aqua text-dark">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
@@ -269,14 +272,14 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="estrategia_grafica" class="grafica pb-5"></canvas>
+                                                    <canvas id="estrategia_grafica" class="grafica pb-5 bg-light"></canvas>
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION ESTRATEGIA (%)</h6>
+                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados subdimensión Estrategia(%)</h5>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-amarillo text-dark">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
@@ -305,13 +308,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="tecnología_grafica" class="grafica pb-5"></canvas>
+                                                    <canvas id="tecnología_grafica" class="grafica pb-5 bg-light"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION TECNOLOGÍA (%)</h6>
+                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados subdimensión tecnología(%)</h5>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-cyan text-dark">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
@@ -340,13 +343,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="operaciones_grafica" class="grafica pb-5"></canvas>
+                                                    <canvas id="operaciones_grafica" class="grafica pb-5 bg-light"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION OPERACIONES (%)</h6>
+                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados subdimensión operaciones(%)</h5>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-verde text-dark">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
@@ -375,13 +378,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="cultura_grafica" class="grafica pb-5"></canvas>
+                                                    <canvas id="cultura_grafica" class="grafica pb-5 bg-light"></canvas>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h6 class="text-dark mt-2 font-weight-bold text-nowrap">RESULTADOS SUBDIMENSION CULTURA (%)</h6>
+                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados subdimensión cultura(%)</h5>
                                                 <table class="table table-sm table-bordered">
                                                     <thead class="bg-lila text-light">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
