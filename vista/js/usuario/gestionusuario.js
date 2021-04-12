@@ -268,18 +268,8 @@ var gestionUsuario = {
         //Fin  graficas dimensión
 
         //Arreglos de graficas 
-        $.each(resultset, function (key, value) {
-            var info_tabla = $(".tabla");
-            var total_tabla = $(".total_tabla");
-            var total_estandar = $(".total_estandar");
-            var total_desviación = $(".total_desviación");
+        $.each(resultset, function (key, value) { 
             var tabla_get = key;
-
-            info_tabla.empty();
-            total_tabla.empty();
-            total_estandar.empty();
-            total_desviación.empty();
-
             var cadena_info = [];
             var cadena_total = [];
             var cadena_estandar = [];
@@ -287,8 +277,13 @@ var gestionUsuario = {
             for (var i = 0; i < datos.length; i++) {
                 var data = datos[i];
                 var tabla = data.tabla;
-
+                
                 if (tabla_get == data.tabla) {
+                    var tab = $(".tabla_" + tabla_get);
+                    var total_tabla = $(".total_tabla_" + tabla_get);
+                    var total_estandar = $(".total_estandar_" + tabla_get);
+                    var total_desviación = $(".total_desviación_" + tabla_get);
+                    
                     var total = data.total;
                     var campos_tabla = '<tr>' +
                         '<th class="first-uppercase"><span>' + data.contenido + '</span></th>' +
@@ -298,7 +293,7 @@ var gestionUsuario = {
                         '</tr>';
 
                     var tot_desv = (((total - 100) / 100) * 100);
-                    info_tabla.append(campos_tabla);
+                    tab.append(campos_tabla);
                     total_tabla.html(total + "%");
                     total_estandar.html("100%");
                     total_desviación.html(Number(tot_desv).toFixed(2) + "%");
@@ -308,7 +303,7 @@ var gestionUsuario = {
                     cadena_estandar.push(data.estandar);
                 }
             }
-
+            
             var Canvas = document.getElementById(tabla_get + "_grafica");
             var Data = {
                 labels: cadena_info,
@@ -376,15 +371,15 @@ var gestionUsuario = {
                         data_map.contenido == "Gestión estratégica" ||
                         data_map.contenido == "Procesos inteligentes y adaptables" ||
                         data_map.contenido == "Gestión del talento & Diseño organizacional") {
-                        if (data_map.result_2 >= 7.51) {
+                        if (parseFloat(data_map.result_2) >= 7.51) {
                             color_contenido = "dark-yellow";
                             text_contenido = "light";
                         }
-                        if (data_map.result_2 >= 15.1) {
+                        if (parseFloat(data_map.result_2) >= 15.1) {
                             color_contenido = "yellow";
                             text_contenido = "dark";
                         }
-                        if (data_map.result_2 >= 22.51) {
+                        if (parseFloat(data_map.result_2) >= 22.51) {
                             color_contenido = "dark-green";
                             text_contenido = "dark";
                         }
@@ -392,15 +387,15 @@ var gestionUsuario = {
 
                     //cliente colores "experiencia del cliente"
                     if (data_map.contenido == "experiencia del cliente") {
-                        if (data_map.result_2 >= 8.76) {
+                        if (parseFloat(data_map.result_2) >= 8.76) {
                             color_contenido = "dark-yellow";
                             text_contenido = "light";
                         }
-                        if (data_map.result_2 >= 17.51) {
+                        if (parseFloat(data_map.result_2) >= 17.51) {
                             color_contenido = "yellow";
                             text_contenido = "dark";
                         }
-                        if (data_map.result_2 >= 26.26) {
+                        if (parseFloat(data_map.result_2) >= 26.26) {
                             color_contenido = "dark-green";
                             text_contenido = "dark";
                         }
@@ -411,15 +406,15 @@ var gestionUsuario = {
                         data_map.contenido == "Aplicaciones" ||
                         data_map.contenido == "Estándares y automatización de procesos" ||
                         data_map.contenido == "Cultura") {
-                        if (data_map.result_2 >= 5.1) {
+                        if (parseFloat(data_map.result_2) >= 5.1) {
                             color_contenido = "dark-yellow";
                             text_contenido = "light";
                         }
-                        if (data_map.result_2 >= 10.1) {
+                        if (parseFloat(data_map.result_2) >= 10.1) {
                             color_contenido = "yellow";
                             text_contenido = "dark";
                         }
-                        if (data_map.result_2 >= 15.1) {
+                        if (parseFloat(data_map.result_2) >= 15.1) {
                             color_contenido = "dark-green";
                             text_contenido = "dark";
                         }
@@ -434,15 +429,15 @@ var gestionUsuario = {
                         data_map.contenido == "Arquitectura tecnológica" ||
                         data_map.contenido == "Gestión ágil del cambio" ||
                         data_map.contenido == "Analíticas e información en tiempo real") {
-                        if (data_map.result_2 >= 3.76) {
+                        if (parseFloat(data_map.result_2) >= 3.76) {
                             color_contenido = "dark-yellow";
                             text_contenido = "light";
                         }
-                        if (data_map.result_2 >= 7.51) {
+                        if (parseFloat(data_map.result_2) >= 7.51) {
                             color_contenido = "yellow";
                             text_contenido = "dark";
                         }
-                        if (data_map.result_2 >= 11.26) {
+                        if (parseFloat(data_map.result_2) >= 11.26) {
                             color_contenido = "dark-green";
                             text_contenido = "dark";
                         }
@@ -453,15 +448,15 @@ var gestionUsuario = {
                         data_map.contenido == "Políticas de entregas" ||
                         data_map.contenido == "Liderazgo & Gobierno" ||
                         data_map.contenido == "Habilitación de la fuerza laboral") {
-                        if (data_map.result_2 >= 1.26) {
+                        if (parseFloat(data_map.result_2) >= 1.26) {
                             color_contenido = "dark-yellow";
                             text_contenido = "light";
                         }
-                        if (data_map.result_2 >= 2.51) {
+                        if (parseFloat(data_map.result_2) >= 2.51) {
                             color_contenido = "yellow";
                             text_contenido = "dark";
                         }
-                        if (data_map.result_2 >= 3.76) {
+                        if (parseFloat(data_map.result_2) >= 3.76) {
                             color_contenido = "dark-green";
                             text_contenido = "dark";
                         }
@@ -474,15 +469,15 @@ var gestionUsuario = {
                         data_map.contenido == "Red" ||
                         data_map.contenido == "Gestión automatizada de recursos" ||
                         data_map.contenido == "Gestión de servicios integrados") {
-                        if (data_map.result_2 >= 2.51) {
+                        if (parseFloat(data_map.result_2) >= 2.51) {
                             color_contenido = "dark-yellow";
                             text_contenido = "light";
                         }
-                        if (data_map.result_2 >= 5.1) {
+                        if (parseFloat(data_map.result_2) >= 5.1) {
                             color_contenido = "yellow";
                             text_contenido = "dark";
                         }
-                        if (data_map.result_2 >= 7.51) {
+                        if (parseFloat(data_map.result_2) >= 7.51) {
                             color_contenido = "dark-green";
                             text_contenido = "dark";
                         }
@@ -490,15 +485,15 @@ var gestionUsuario = {
 
                     //Estrategia colores "Gestión de ecosistemas"
                     if (data_map.contenido == "Finanzas e inversiones, cartera" || data_map.contenido == "Clientes & mercados") {
-                        if (data_map.result_2 >= 2.51) {
+                        if (parseFloat(data_map.result_2) >= 2.51) {
                             color_contenido = "dark-yellow";
                             text_contenido = "light";
                         }
-                        if (data_map.result_2 >= 5.1) {
+                        if (parseFloat(data_map.result_2) >= 5.1) {
                             color_contenido = "yellow";
                             text_contenido = "dark";
                         }
-                        if (data_map.result_2 >= 7.51) {
+                        if (parseFloat(data_map.result_2) >= 7.51) {
                             color_contenido = "dark-green";
                             text_contenido = "dark";
                         }
@@ -506,15 +501,15 @@ var gestionUsuario = {
 
                     //Estrategia colores "Analiticas & datos"
                     if (data_map.contenido == "Analiticas & datos") {
-                        if (data_map.result_2 >= 6.26) {
+                        if (parseFloat(data_map.result_2) >= 6.26) {
                             color_contenido = "dark-yellow";
                             text_contenido = "light";
                         }
-                        if (data_map.result_2 >= 12.51) {
+                        if (parseFloat(data_map.result_2) >= 12.51) {
                             color_contenido = "yellow";
                             text_contenido = "dark";
                         }
-                        if (data_map.result_2 >= 18.76) {
+                        if (parseFloat(data_map.result_2) >= 18.76) {
                             color_contenido = "dark-green";
                             text_contenido = "dark";
                         }
