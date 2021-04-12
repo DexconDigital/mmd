@@ -333,7 +333,7 @@ var gestionUsuario = {
 
         $.each(resultset, function (key, value) {
             var title_color = (value.color == "lila") ? "light" : "dark";
-
+            
             var color_cabecera = "red";
             var text_cabecera = "light";
 
@@ -363,162 +363,9 @@ var gestionUsuario = {
                 if (key == data_map.tabla) {
                     var text_color = (data_map.color == "lila") ? "light" : "dark";
 
-                    var color_contenido = "red";
-                    var text_contenido = "light";
-
-                    //cliente colores "compromiso con el cliente"
-                    if (data_map.contenido == "compromiso con el cliente" ||
-                        data_map.contenido == "Gestión estratégica" ||
-                        data_map.contenido == "Procesos inteligentes y adaptables" ||
-                        data_map.contenido == "Gestión del talento & Diseño organizacional") {
-                        if (parseFloat(data_map.result_2) >= 7.51) {
-                            color_contenido = "dark-yellow";
-                            text_contenido = "light";
-                        }
-                        if (parseFloat(data_map.result_2) >= 15.1) {
-                            color_contenido = "yellow";
-                            text_contenido = "dark";
-                        }
-                        if (parseFloat(data_map.result_2) >= 22.51) {
-                            color_contenido = "dark-green";
-                            text_contenido = "dark";
-                        }
-                    }
-
-                    //cliente colores "experiencia del cliente"
-                    if (data_map.contenido == "experiencia del cliente") {
-                        if (parseFloat(data_map.result_2) >= 8.76) {
-                            color_contenido = "dark-yellow";
-                            text_contenido = "light";
-                        }
-                        if (parseFloat(data_map.result_2) >= 17.51) {
-                            color_contenido = "yellow";
-                            text_contenido = "dark";
-                        }
-                        if (parseFloat(data_map.result_2) >= 26.26) {
-                            color_contenido = "dark-green";
-                            text_contenido = "dark";
-                        }
-                    }
-
-                    //cliente colores "conocimiento del cliente y comportamiento"
-                    if (data_map.contenido == "conocimiento del cliente y comportamiento" ||
-                        data_map.contenido == "Aplicaciones" ||
-                        data_map.contenido == "Estándares y automatización de procesos" ||
-                        data_map.contenido == "Cultura") {
-                        if (parseFloat(data_map.result_2) >= 5.1) {
-                            color_contenido = "dark-yellow";
-                            text_contenido = "light";
-                        }
-                        if (parseFloat(data_map.result_2) >= 10.1) {
-                            color_contenido = "yellow";
-                            text_contenido = "dark";
-                        }
-                        if (parseFloat(data_map.result_2) >= 15.1) {
-                            color_contenido = "dark-green";
-                            text_contenido = "dark";
-                        }
-                    }
-
-                    //cliente colores "Confianza y percepción del cliente"
-                    if (data_map.contenido == "Confianza y percepción del cliente" ||
-                        data_map.contenido == "Gestión de la marca" ||
-                        data_map.contenido == "Portafolio, ideación e innovación" ||
-                        data_map.contenido == "Gestión de partes interesadas" ||
-                        data_map.contenido == "Seguridad" ||
-                        data_map.contenido == "Arquitectura tecnológica" ||
-                        data_map.contenido == "Gestión ágil del cambio" ||
-                        data_map.contenido == "Analíticas e información en tiempo real") {
-                        if (parseFloat(data_map.result_2) >= 3.76) {
-                            color_contenido = "dark-yellow";
-                            text_contenido = "light";
-                        }
-                        if (parseFloat(data_map.result_2) >= 7.51) {
-                            color_contenido = "yellow";
-                            text_contenido = "dark";
-                        }
-                        if (parseFloat(data_map.result_2) >= 11.26) {
-                            color_contenido = "dark-green";
-                            text_contenido = "dark";
-                        }
-                    }
-
-                    //Estrategia colores "Gestión de ecosistemas"
-                    if (data_map.contenido == "Gestión de ecosistemas" ||
-                        data_map.contenido == "Políticas de entregas" ||
-                        data_map.contenido == "Liderazgo & Gobierno" ||
-                        data_map.contenido == "Habilitación de la fuerza laboral") {
-                        if (parseFloat(data_map.result_2) >= 1.26) {
-                            color_contenido = "dark-yellow";
-                            text_contenido = "light";
-                        }
-                        if (parseFloat(data_map.result_2) >= 2.51) {
-                            color_contenido = "yellow";
-                            text_contenido = "dark";
-                        }
-                        if (parseFloat(data_map.result_2) >= 3.76) {
-                            color_contenido = "dark-green";
-                            text_contenido = "dark";
-                        }
-                    }
-
-                    //Estrategia colores "Gestión de ecosistemas"
-                    if (data_map.contenido == "Finanzas e inversiones, cartera" ||
-                        data_map.contenido == "Clientes & mercados" ||
-                        data_map.contenido == "Cosas conectadas" ||
-                        data_map.contenido == "Red" ||
-                        data_map.contenido == "Gestión automatizada de recursos" ||
-                        data_map.contenido == "Gestión de servicios integrados") {
-                        if (parseFloat(data_map.result_2) >= 2.51) {
-                            color_contenido = "dark-yellow";
-                            text_contenido = "light";
-                        }
-                        if (parseFloat(data_map.result_2) >= 5.1) {
-                            color_contenido = "yellow";
-                            text_contenido = "dark";
-                        }
-                        if (parseFloat(data_map.result_2) >= 7.51) {
-                            color_contenido = "dark-green";
-                            text_contenido = "dark";
-                        }
-                    }
-
-                    //Estrategia colores "Gestión de ecosistemas"
-                    if (data_map.contenido == "Finanzas e inversiones, cartera" || data_map.contenido == "Clientes & mercados") {
-                        if (parseFloat(data_map.result_2) >= 2.51) {
-                            color_contenido = "dark-yellow";
-                            text_contenido = "light";
-                        }
-                        if (parseFloat(data_map.result_2) >= 5.1) {
-                            color_contenido = "yellow";
-                            text_contenido = "dark";
-                        }
-                        if (parseFloat(data_map.result_2) >= 7.51) {
-                            color_contenido = "dark-green";
-                            text_contenido = "dark";
-                        }
-                    }
-
-                    //Estrategia colores "Analiticas & datos"
-                    if (data_map.contenido == "Analiticas & datos") {
-                        if (parseFloat(data_map.result_2) >= 6.26) {
-                            color_contenido = "dark-yellow";
-                            text_contenido = "light";
-                        }
-                        if (parseFloat(data_map.result_2) >= 12.51) {
-                            color_contenido = "yellow";
-                            text_contenido = "dark";
-                        }
-                        if (parseFloat(data_map.result_2) >= 18.76) {
-                            color_contenido = "dark-green";
-                            text_contenido = "dark";
-                        }
-                    }
-
-
                     mapa += '<div class="col">' +
                         '<div class="bg-' + data_map.color + ' text-' + text_color + ' border border-secondary p-1 align-middle d-flex align-items-center justify-content-center first-uppercase" style="height: 5em;"><span>' + data_map.contenido + '</span></div>' +
-                        '<div class="bg-' + color_contenido + ' text-' + text_contenido + ' border border-secondary">' + data_map.result_2 + '%</div>';
+                        '<div class="bg-' + data_map.color_contenido + ' text-' + data_map.text_contenido + ' border border-secondary">' + data_map.result_2 + '%</div>';
 
                     var pregunt = data_map.preguntas.split("|");
                     for (var pre = 0; pre < pregunt.length; pre++) {
