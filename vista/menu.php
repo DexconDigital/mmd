@@ -30,7 +30,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <label class="h4 text-negro">Dexcon digital</label>
+                    <label class="h4 text-negro">Dexcon Digital</label>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
