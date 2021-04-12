@@ -21,7 +21,7 @@ var gestionUsuario = {
     repuestaConsultarPreg: function (respuesta) {
         var cuerpo = $('#contenido_preguntas');
         var titulo = $("#exampleModalLabel1");
-        
+
         cuerpo.empty();
         titulo.empty();
         var modal = $('#prgModal');
@@ -185,13 +185,16 @@ var gestionUsuario = {
         app.ajax('../controlador/GestionUsuarioControlador.php?opcion=consultar_datos', data, gestionUsuario.respuestaConsultatgraficas);
     },
     respuestaConsultatgraficas: function (respuesta) {
+        
+        console.log(respuesta);
+        
         var datos = respuesta.datos;
         //Arreglos de graficas dimensión
         var dimension = $("#dimension");
         var rs_dm = respuesta.resultados_dimension;
         var resultset = respuesta.resultados;
         var pdf = $("#pdf");
-        
+
         dimension.empty();
         $.each(rs_dm, function (key, value) {
             var estandar = "0";
@@ -268,8 +271,18 @@ var gestionUsuario = {
         //Fin  graficas dimensión
 
         //Arreglos de graficas 
-        $.each(resultset, function (key, value) { 
+        $.each(resultset, function (key, value) {
             var tabla_get = key;
+            var tab = $(".tabla_" + tabla_get);
+            var total_tabla = $(".total_tabla_" + tabla_get);
+            var total_estandar = $(".total_estandar_" + tabla_get);
+            var total_desviación = $(".total_desviación_" + tabla_get);
+
+            tab.empty();
+            total_tabla.empty();
+            total_estandar.empty();
+            total_desviación.empty();
+            
             var cadena_info = [];
             var cadena_total = [];
             var cadena_estandar = [];
@@ -277,13 +290,10 @@ var gestionUsuario = {
             for (var i = 0; i < datos.length; i++) {
                 var data = datos[i];
                 var tabla = data.tabla;
-                
+
                 if (tabla_get == data.tabla) {
-                    var tab = $(".tabla_" + tabla_get);
-                    var total_tabla = $(".total_tabla_" + tabla_get);
-                    var total_estandar = $(".total_estandar_" + tabla_get);
-                    var total_desviación = $(".total_desviación_" + tabla_get);
-                    
+
+
                     var total = data.total;
                     var campos_tabla = '<tr>' +
                         '<th class="first-uppercase"><span>' + data.contenido + '</span></th>' +
@@ -303,7 +313,7 @@ var gestionUsuario = {
                     cadena_estandar.push(data.estandar);
                 }
             }
-            
+
             var Canvas = document.getElementById(tabla_get + "_grafica");
             var Data = {
                 labels: cadena_info,
@@ -333,7 +343,7 @@ var gestionUsuario = {
 
         $.each(resultset, function (key, value) {
             var title_color = (value.color == "lila") ? "light" : "dark";
-            
+
             var color_cabecera = "red";
             var text_cabecera = "light";
 
@@ -397,7 +407,7 @@ var gestionUsuario = {
             mapa += '</div>' +
                 '</div>';
             mapa_calor.append(mapa);
-            
+
         });
         pdf.click(gestionUsuario.generarPDF);
     },
@@ -405,7 +415,7 @@ var gestionUsuario = {
         var data = {};
         gestionUsuario.consultatgraficas;
         var Canvas = document.getElementById("clientes_grafica");
-        console.log(Canvas.toDataURL()); 
+        console.log(Canvas.toDataURL());
     },
 };
 gestionUsuario.constructor();
