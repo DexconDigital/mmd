@@ -251,13 +251,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla" data-info="clientes"></tbody>
+                                                    <tbody class="tabla_clientes"></tbody>
                                                     <tfoot>
                                                         <tr>
                                                             <th scope="row">Total</th>
-                                                            <th class="total_tabla text-center" scope="row"></th>
-                                                            <th class="total_estandar text-center" scope="row"></th>
-                                                            <th class="total_desviación text-center" scope="row"></th>
+                                                            <th class="total_tabla_clientes text-center" scope="row"></th>
+                                                            <th class="total_estandar_clientes text-center" scope="row"></th>
+                                                            <th class="total_desviación_clientes text-center" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -287,13 +287,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla"></tbody>
+                                                    <tbody class="tabla_estrategia"></tbody>
                                                     <tfoot>
                                                         <tr>
                                                             <th scope="row">Total</th>
-                                                            <th class="total_tabla text-center" scope="row"></th>
-                                                            <th class="total_estandar text-center" scope="row"></th>
-                                                            <th class="total_desviación text-center" scope="row"></th>
+                                                            <th class="total_tabla_estrategia text-center" scope="row"></th>
+                                                            <th class="total_estandar_estrategia text-center" scope="row"></th>
+                                                            <th class="total_desviación_estrategia text-center" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -322,13 +322,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla"></tbody>
+                                                    <tbody class="tabla_tecnología"></tbody>
                                                     <tfoot>
                                                         <tr>
                                                             <th scope="row">Total</th>
-                                                            <th class="total_tabla text-center" scope="row"></th>
-                                                            <th class="total_estandar text-center" scope="row"></th>
-                                                            <th class="total_desviación text-center" scope="row"></th>
+                                                            <th class="total_tabla_tecnología text-center" scope="row"></th>
+                                                            <th class="total_estandar_tecnología text-center" scope="row"></th>
+                                                            <th class="total_desviación_tecnología text-center" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -357,13 +357,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla"></tbody>
+                                                    <tbody class="tabla_operaciones"></tbody>
                                                     <tfoot>
                                                         <tr>
                                                             <th scope="row">Total</th>
-                                                            <th class="total_tabla text-center" scope="row"></th>
-                                                            <th class="total_estandar text-center" scope="row"></th>
-                                                            <th class="total_desviación text-center" scope="row"></th>
+                                                            <th class="total_tabla_operaciones text-center" scope="row"></th>
+                                                            <th class="total_estandar_operaciones text-center" scope="row"></th>
+                                                            <th class="total_desviación_operaciones text-center" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -392,13 +392,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla"></tbody>
+                                                    <tbody class="tabla_cultura"></tbody>
                                                     <tfoot>
                                                         <tr>
                                                             <th scope="row">Total</th>
-                                                            <th class="total_tabla text-center" scope="row"></th>
-                                                            <th class="total_estandar text-center" scope="row"></th>
-                                                            <th class="total_desviación text-center" scope="row"></th>
+                                                            <th class="total_tabla_cultura text-center" scope="row"></th>
+                                                            <th class="total_estandar_cultura text-center" scope="row"></th>
+                                                            <th class="total_desviación_cultura text-center" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
