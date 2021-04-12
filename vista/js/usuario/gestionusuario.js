@@ -185,9 +185,6 @@ var gestionUsuario = {
         app.ajax('../controlador/GestionUsuarioControlador.php?opcion=consultar_datos', data, gestionUsuario.respuestaConsultatgraficas);
     },
     respuestaConsultatgraficas: function (respuesta) {
-        
-        console.log(respuesta);
-        
         var datos = respuesta.datos;
         //Arreglos de graficas dimensión
         var dimension = $("#dimension");
