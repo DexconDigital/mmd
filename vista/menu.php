@@ -210,7 +210,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 ">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="dimension_grafica" class="grafica pb-5 bg-light"></canvas>
+                                                    <canvas id="dimension_grafica" class="grafica pb-5"></canvas>
                                                 </div>
                                             </div>
                                         </div>
