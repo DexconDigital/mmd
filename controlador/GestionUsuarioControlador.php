@@ -1,7 +1,7 @@
 <?php
 require_once '../modelo/basedatos/Conexion.php';
 require_once '../modelo/vo/Usuario.php';
-require_once '../modelo/dao/UsuarioDao.php';
+require_once '../modelo/dao/UsuarioDAO.php';
 require_once './GenericoControlador.php';
 require_once './excepcion/ValidacionExcepcion.php';
 require_once './util/Validacion.php';
@@ -154,7 +154,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                     $result_1 = 0;
                     $calculo_1 = $t->calculos_1;
                     $calculo_2 = 0;
-                    $estandar = intval($t->estandar);
+                    $estandar = intval( $t->estandar );
 
                     //separar las respuestas
                     $rsp = explode( "|", $t->respuestas );
@@ -170,8 +170,162 @@ class GestionUsuarioControlador extends GenericoControlador {
                             $t->rspta_suma = $suma;
                             $t->result_1 = $result_1;
                             $t->result_2 = round( ( $calculo_2 ), 2 );
-                            $t->desviacion = round(((($calculo_2 - $estandar) / $estandar) * 100), 2);
+                            $t->desviacion = round( ( ( ( $calculo_2 - $estandar ) / $estandar ) * 100 ), 2 );
                             $t->constante = $constante;
+
+                        }
+                    }
+
+                    //colores
+                    $t->color_contenido = "red";
+                    $t->text_contenido = "light";
+
+                    //cliente colores "compromiso con el cliente"
+                    if ( $t->contenido == "compromiso con el cliente" ||
+                    $t->contenido == "Gestión estratégica" ||
+                    $t->contenido == "Procesos inteligentes y adaptables" ||
+                    $t->contenido == "Gestión del talento & Diseño organizacional" ) {
+                        if ( floatval( $t->result_2 ) >= floatval( 7.51 ) ) {
+                            $t->color_contenido = "dark-yellow";
+                            $t->text_contenido = "light";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 15.1 ) ) {
+                            $t->color_contenido = "yellow";
+                            $t->text_contenido = "dark";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 22.51 ) ) {
+                            $t->color_contenido = "dark-green";
+                            $t->text_contenido = "dark";
+                        }
+                    }
+
+                    //cliente colores "experiencia del cliente"
+                    if ( $t->contenido == "experiencia del cliente" ) {
+                        if ( floatval( $t->result_2 ) >= floatval( 8.76 ) ) {
+                            $t->color_contenido = "dark-yellow";
+                            $t->text_contenido = "light";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 17.51 ) ) {
+                            $t->color_contenido = "yellow";
+                            $t->text_contenido = "dark";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 26.26 ) ) {
+                            $t->color_contenido = "dark-green";
+                            $t->text_contenido = "dark";
+                        }
+                    }
+
+                    //cliente colores "conocimiento del cliente y comportamiento"
+                    if ( $t->contenido == "conocimiento del cliente y comportamiento" ||
+                    $t->contenido == "Aplicaciones" ||
+                    $t->contenido == "Estándares y automatización de procesos" ||
+                    $t->contenido == "Cultura" ) {
+                        if ( floatval( $t->result_2 ) >= floatval( 5.1 ) ) {
+                            $t->color_contenido = "dark-yellow";
+                            $t->text_contenido = "light";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 10.1 ) ) {
+                            $t->color_contenido = "yellow";
+                            $t->text_contenido = "dark";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 15.1 ) ) {
+                            $t->color_contenido = "dark-green";
+                            $t->text_contenido = "dark";
+                        }
+                    }
+
+                    //cliente colores "Confianza y percepción del cliente"
+                    if ( $t->contenido == "Confianza y percepción del cliente" ||
+                    $t->contenido == "Gestión de la marca" ||
+                    $t->contenido == "Portafolio, ideación e innovación" ||
+                    $t->contenido == "Gestión de partes interesadas" ||
+                    $t->contenido == "Seguridad" ||
+                    $t->contenido == "Arquitectura tecnológica" ||
+                    $t->contenido == "Gestión ágil del cambio" ||
+                    $t->contenido == "Analíticas e información en tiempo real" ) {
+                        if ( floatval( $t->result_2 ) >= floatval( 3.76 ) ) {
+                            $t->color_contenido = "dark-yellow";
+                            $t->text_contenido = "light";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 7.51 ) ) {
+                            $t->color_contenido = "yellow";
+                            $t->text_contenido = "dark";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 11.26 ) ) {
+                            $t->color_contenido = "dark-green";
+                            $t->text_contenido = "dark";
+                        }
+                    }
+
+                    //Estrategia colores "Gestión de ecosistemas"
+                    if ( $t->contenido == "Gestión de ecosistemas" ||
+                    $t->contenido == "Políticas de entregas" ||
+                    $t->contenido == "Liderazgo & Gobierno" ||
+                    $t->contenido == "Habilitación de la fuerza laboral" ) {
+                        if ( floatval( $t->result_2 ) >= floatval( 1.26 ) ) {
+                            $t->color_contenido = "dark-yellow";
+                            $t->text_contenido = "light";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 2.51 ) ) {
+                            $t->color_contenido = "yellow";
+                            $t->text_contenido = "dark";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 3.76 ) ) {
+                            $t->color_contenido = "dark-green";
+                            $t->text_contenido = "dark";
+                        }
+                    }
+
+                    //Estrategia colores "Gestión de ecosistemas"
+                    if ( $t->contenido == "Finanzas e inversiones, cartera" ||
+                    $t->contenido == "Clientes & mercados" ||
+                    $t->contenido == "Cosas conectadas" ||
+                    $t->contenido == "Red" ||
+                    $t->contenido == "Gestión automatizada de recursos" ||
+                    $t->contenido == "Gestión de servicios integrados" ) {
+                        if ( floatval( $t->result_2 ) >= floatval( 2.51 ) ) {
+                            $t->color_contenido = "dark-yellow";
+                            $t->text_contenido = "light";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 5.1 ) ) {
+                            $t->color_contenido = "yellow";
+                            $t->text_contenido = "dark";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 7.51 ) ) {
+                            $t->color_contenido = "dark-green";
+                            $t->text_contenido = "dark";
+                        }
+                    }
+
+                    //Estrategia colores "Gestión de ecosistemas"
+                    if ( $t->contenido == "Finanzas e inversiones, cartera" || $t->contenido == "Clientes & mercados" ) {
+                        if ( floatval( $t->result_2 ) >= floatval( 2.51 ) ) {
+                            $t->color_contenido = "dark-yellow";
+                            $t->text_contenido = "light";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 5.1 ) ) {
+                            $t->color_contenido = "yellow";
+                            $t->text_contenido = "dark";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 7.51 ) ) {
+                            $t->color_contenido = "dark-green";
+                            $t->text_contenido = "dark";
+                        }
+                    }
+
+                    //Estrategia colores "Analiticas & datos"
+                    if ( $t->contenido == "Analiticas & datos" ) {
+                        if ( floatval( $t->result_2 ) >= floatval( 6.26 ) ) {
+                            $t->color_contenido = "dark-yellow";
+                            $t->text_contenido = "light";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 12.51 ) ) {
+                            $t->color_contenido = "yellow";
+                            $t->text_contenido = "dark";
+                        }
+                        if ( floatval( $t->result_2 ) >= floatval( 18.76 ) ) {
+                            $t->color_contenido = "dark-green";
+                            $t->text_contenido = "dark";
                         }
                     }
 
