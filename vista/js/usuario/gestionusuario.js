@@ -21,6 +21,7 @@ var gestionUsuario = {
     repuestaConsultarPreg: function (respuesta) {
         var cuerpo = $('#contenido_preguntas');
         var titulo = $("#exampleModalLabel1");
+        
         cuerpo.empty();
         titulo.empty();
         var modal = $('#prgModal');
@@ -188,7 +189,9 @@ var gestionUsuario = {
         //Arreglos de graficas dimensión
         var dimension = $("#dimension");
         var rs_dm = respuesta.resultados_dimension;
-
+        var resultset = respuesta.resultados;
+        var pdf = $("#pdf");
+        
         dimension.empty();
         $.each(rs_dm, function (key, value) {
             var estandar = "0";
@@ -224,7 +227,7 @@ var gestionUsuario = {
         });
 
         //Graficas dimensión
-        var marksCanvas = document.getElementById("dimension_grafica");
+        var Canvas = document.getElementById("dimension_grafica");
 
         var marksData = {
             labels: ["Clientes", "Estrategia", "Tecnología", "Operaciones", "Cultura"],
@@ -236,7 +239,7 @@ var gestionUsuario = {
                 }, {
                 label: "Estandar",
                 data: [20, 30, 15, 25, 10],
-                borderColor: "rgba(0,0,255,0.3)",
+                borderColor: "#34F0FF",
                 backgroundColor: "rgba(255,255,255,0)"
                 }]
         };
@@ -257,7 +260,7 @@ var gestionUsuario = {
         };
 
 
-        var radarChart = new Chart(marksCanvas, {
+        var radarChart = new Chart(Canvas, {
             type: 'radar',
             data: marksData,
             options: options
@@ -265,12 +268,12 @@ var gestionUsuario = {
         //Fin  graficas dimensión
 
         //Arreglos de graficas 
-        $(".nav-link").click(function () {
+        $.each(resultset, function (key, value) {
             var info_tabla = $(".tabla");
             var total_tabla = $(".total_tabla");
             var total_estandar = $(".total_estandar");
             var total_desviación = $(".total_desviación");
-            var tabla_get = $(this).attr("data-info");
+            var tabla_get = key;
 
             info_tabla.empty();
             total_tabla.empty();
@@ -306,33 +309,30 @@ var gestionUsuario = {
                 }
             }
 
-            if ($(this).attr("data-info") != "mapa_calor" && !$(this).hasClass("active")) {
-                var Canvas = document.getElementById(tabla_get + "_grafica");
-                var Data = {
-                    labels: cadena_info,
-                    datasets: [{
-                        label: "Resultado",
-                        data: cadena_total,
-                        borderColor: "#86F200",
-                        backgroundColor: "rgba(255,255,255,0)"
+            var Canvas = document.getElementById(tabla_get + "_grafica");
+            var Data = {
+                labels: cadena_info,
+                datasets: [{
+                    label: "Resultado",
+                    data: cadena_total,
+                    borderColor: "#86F200",
+                    backgroundColor: "rgba(255,255,255,0)"
                     }, {
-                        label: "Estandar",
-                        data: cadena_estandar,
-                        borderColor: "rgba(0,0,255,0.3)",
-                        backgroundColor: "rgba(255,255,255,0)"
+                    label: "Estandar",
+                    data: cadena_estandar,
+                    borderColor: "#34F0FF",
+                    backgroundColor: "rgba(255,255,255,0)"
                     }]
-                };
-                var radarChart = new Chart(Canvas, {
-                    type: 'radar',
-                    data: Data,
-                    options: options
-                });
-            }
+            };
+            var radarChart = new Chart(Canvas, {
+                type: 'radar',
+                data: Data,
+                options: options
+            });
         });
 
 
         //mapa de calor
-        var resultset = respuesta.resultados;
         var mapa_calor = $("#tabla_mapa");
         mapa_calor.empty();
 
@@ -555,7 +555,15 @@ var gestionUsuario = {
             mapa += '</div>' +
                 '</div>';
             mapa_calor.append(mapa);
+            
         });
-    }
+        pdf.click(gestionUsuario.generarPDF);
+    },
+    generarPDF: function (e) {
+        var data = {};
+        gestionUsuario.consultatgraficas;
+        var Canvas = document.getElementById("clientes_grafica");
+        console.log(Canvas.toDataURL()); 
+    },
 };
 gestionUsuario.constructor();
