@@ -260,8 +260,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                     //Estrategia colores "Gestión de ecosistemas"
                     if ( $contenido == strtolower( "gestión de ecosistemas" ) or
                     $contenido == strtolower( "políticas de entregas" ) or
-                    $contenido == strtolower( "liderazgo & Gobierno" ) or
-                    $contenido == strtolower( "habilitación de la fuerza laboral" ) ) {
+                    $contenido == strtolower( "liderazgo & Gobierno" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 1.26 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -314,7 +313,8 @@ class GestionUsuarioControlador extends GenericoControlador {
                     }
 
                     //Estrategia colores "Analiticas & datos"
-                    if ( $contenido == strtolower( "Analiticas & datos" ) ) {
+                    if ( $contenido == strtolower( "Analiticas & datos" ) or
+                    $contenido == strtolower( "habilitación de la fuerza laboral" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 6.26 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
