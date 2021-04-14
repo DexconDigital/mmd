@@ -357,8 +357,9 @@ input[type=number] {
 }
 
 .titulo-principal {
-    font-size: 4rem;
+    font-size: 3.9rem;
     margin-top: 0 !important;
+    margin-left: 2%;
 }
 
 .logo-titulo {
@@ -372,51 +373,45 @@ input[type=number] {
 
 @media (max-width: 1910px) {
     .titulo-principal {
-        font-size: 3.8rem !important;
+        font-size: 3.65rem !important;
         margin-top: 0 !important;
     }
 }
 
 @media (max-width: 1825px) {
     .titulo-principal {
-        font-size: 3.6rem !important;
+        font-size: 3.5rem !important;
         margin-top: 0 !important;
     }
 }
 
 @media (max-width: 1735px) {
     .titulo-principal {
-        font-size: 3.5rem !important;
+        font-size: 3.4rem !important;
     }
 }
 
 @media (max-width: 1685px) {
     .titulo-principal {
-        font-size: 3.3rem !important;
+        font-size: 3.2rem !important;
     }
 }
 
 @media (max-width: 1590px) {
     .titulo-principal {
-        font-size: 3rem !important;
+        font-size: 2.95rem !important;
     }
 }
 
 @media (max-width: 1465px) {
     .titulo-principal {
-        font-size: 2.8rem !important;
-    }
-}
-
-@media (max-width: 1366px) {
-    .titulo-principal {
-        font-size: 2.7rem !important;
+        font-size: 2.6rem !important;
     }
 }
 
 @media (max-width: 1306px) {
     .titulo-principal {
-        font-size: 2.5rem !important;
+        font-size: 2.4rem !important;
     }
 }
 
@@ -472,6 +467,7 @@ input[type=number] {
         padding-top: 3rem;
         font-size: 2rem !important;
         padding-left: 0;
+        margin-left: 0;
     }
 }
 
