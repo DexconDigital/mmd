@@ -401,7 +401,7 @@ class GestionUsuarioControlador extends GenericoControlador {
             $respuesta = $_POST ['respuesta'];
             $resultados = $respuesta ['resultados'];
             $datos = $respuesta ['datos'];
-
+            $razon_social = $respuesta ['razon']['razon_social'];
             $header = '<head> 
                       <style>
                             @font-face {font-family: "Chronicle";src: url("../vendor/fonts/Chronicle Display Black.otf");}
@@ -544,7 +544,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                   </html>";
 
             //var_dump( $ehtml );exit();
-
+            
             require_once '../vendor/mpdf/autoload.php';
             $mpdf = new \Mpdf\Mpdf( ['mode' => 'utf-8', 'format' => 'A2-L'] );
             $mpdf->WriteHTML( $ehtml );
@@ -552,7 +552,7 @@ class GestionUsuarioControlador extends GenericoControlador {
             $pdfBase64 = base64_encode( $pdfString );
             $PDF = 'data:application/pdf;base64,' . $pdfBase64;
 
-            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'PDF' => $PDF] );
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'PDF' => $PDF, 'nombre' => $razon_social] );
         } catch ( ValidacionExcepcion $error ) {
             $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
         }
