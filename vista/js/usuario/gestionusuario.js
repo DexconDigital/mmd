@@ -36,7 +36,7 @@ var gestionUsuario = {
             titulo.text(registro.tabla + " - " + registro.contenido);
 
             //color de los botones segun la tabla
-            var texto_color = (registro.color == "lila") ? "light" : "dark";
+            var texto_color = (registro.color == "lila") ? "light" : "negro";
             if (registro.id_usuario == registro.usuario) {
                 var btn = '<button class="btn btn-' + registro.color + ' text-' + texto_color + ' modificar" href="#!">Guardar Puntaje</button>';
             } else {
@@ -174,7 +174,7 @@ var gestionUsuario = {
             var data = datos[i];
             modelo.each(function () {
                 if (data.tabla == $(this).attr("data-tabla") && data.contenido == $(this).text() || data.contenido == $(this).text().toLowerCase()) {
-                    $(this).removeClass("text-light").addClass("bg-white text-dark");
+                    $(this).removeClass("text-light").addClass("bg-white text-negro");
                 }
             })
         }
@@ -218,7 +218,7 @@ var gestionUsuario = {
 
             var resul_dim = ((value - estandar) / estandar) * 100;
             var campos = '<tr>' +
-                '<th scope="row">' + key + '</th>' +
+                '<th class="text-left" scope="row">' + key + '</th>' +
                 '<td class="text-center">' + value + '%</td>' +
                 '<td class="text-center">' + estandar + '%</td>' +
                 '<td class="text-center">' + Number(resul_dim).toFixed(2) + '%</td>' +
@@ -253,7 +253,7 @@ var gestionUsuario = {
                     color: '#D4D4D4'
                 },
                 pointLabels: {
-                    fontSize: 15
+                    fontSize: 16
                 }
             },
             events: false,
@@ -279,21 +279,40 @@ var gestionUsuario = {
             total_tabla.empty();
             total_estandar.empty();
             total_desviación.empty();
-            
+
             var cadena_info = [];
             var cadena_total = [];
             var cadena_estandar = [];
 
+            var numb = 1;
             for (var i = 0; i < datos.length; i++) {
                 var data = datos[i];
                 var tabla = data.tabla;
 
                 if (tabla_get == data.tabla) {
+                    var abreviado = "";
 
+                    switch (data.tabla) {
+                        case "clientes":
+                            abreviado = "CL";
+                            break;
+                        case "estrategia":
+                            abreviado = "ET";
+                            break;
+                        case "tecnología":
+                            abreviado = "TC";
+                            break;
+                        case "operaciones":
+                            abreviado = "OP";
+                            break;
+                        case "cultura":
+                            abreviado = "OC";
+                            break;
+                    }
 
                     var total = data.total;
                     var campos_tabla = '<tr>' +
-                        '<th class="first-uppercase"><span>' + data.contenido + '</span></th>' +
+                        '<th class="text-left"> ' + abreviado + numb + " - " + ' <label class="first-uppercase"><span>' + data.contenido + '</span></label></th>' +
                         '<td class="text-center">' + data.result_2 + '%</td>' +
                         '<td class="text-center">' + data.estandar + '%</td>' +
                         '<td class="text-center">' + data.desviacion + '%</td>' +
@@ -305,9 +324,10 @@ var gestionUsuario = {
                     total_estandar.html("100%");
                     total_desviación.html(Number(tot_desv).toFixed(2) + "%");
                     //Graficas dimensión
-                    cadena_info.push(data.contenido);
+                    cadena_info.push(abreviado + numb);
                     cadena_total.push(data.result_2);
                     cadena_estandar.push(data.estandar);
+                    numb++;
                 }
             }
 
@@ -339,7 +359,7 @@ var gestionUsuario = {
         mapa_calor.empty();
 
         $.each(resultset, function (key, value) {
-            var title_color = (value.color == "lila") ? "light" : "dark";
+            var title_color = (value.color == "lila") ? "light" : "negro";
 
             var color_cabecera = "red";
             var text_cabecera = "light";
@@ -350,14 +370,14 @@ var gestionUsuario = {
             }
             if (value.total >= 50.1) {
                 color_cabecera = "yellow";
-                text_cabecera = "dark";
+                text_cabecera = "negro";
             }
             if (value.total >= 75.1) {
                 color_cabecera = "dark-green";
-                text_cabecera = "dark";
+                text_cabecera = "negro";
             }
 
-            var mapa = '<div class="col-12 col-xl-6 w-auto text-center text-dark" style="max-width:none;">' +
+            var mapa = '<div class="col-12 col-xl-6 w-auto text-center text-negro" style="max-width:none;">' +
                 '<div class="bg-' + value.color + ' text-' + title_color + '  border border-secondary font-weight-bold"><h5 class="mb-0 text-capitalize">' + key + '</h5></div>' +
                 '<div class="bg-' + color_cabecera + ' text-' + text_cabecera + ' border border-secondary font-weight-bold">' + value.total + '%</div>' +
                 '<div class="row no-gutters flex-nowrap">';
@@ -368,7 +388,7 @@ var gestionUsuario = {
                 var constante = data_map.constante;
 
                 if (key == data_map.tabla) {
-                    var text_color = (data_map.color == "lila") ? "light" : "dark";
+                    var text_color = (data_map.color == "lila") ? "light" : "negro";
 
                     mapa += '<div class="col">' +
                         '<div class="bg-' + data_map.color + ' text-' + text_color + ' border border-secondary p-1 align-middle d-flex align-items-center justify-content-center first-uppercase" style="height: 5em;"><span>' + data_map.contenido + '</span></div>' +
@@ -388,11 +408,11 @@ var gestionUsuario = {
                         }
                         if (const_total >= 50.1) {
                             color_pie = "yellow";
-                            text_pie = "dark";
+                            text_pie = "negro";
                         }
                         if (const_total >= 75.1) {
                             color_pie = "dark-green";
-                            text_pie = "dark";
+                            text_pie = "negro";
                         }
 
                         mapa += '<div class="bg-light border border-secondary p-2 d-flex align-items-center" style="height: 20em;min-width:16.2em;">' + prg + '</div>' +
@@ -406,13 +426,38 @@ var gestionUsuario = {
             mapa_calor.append(mapa);
 
         });
-        pdf.click(gestionUsuario.generarPDF);
+        pdf.click(function (e) {
+            e.preventDefault();
+            var data = {
+                'respuesta': respuesta,
+                'opcion': 'generarPDF'
+            };
+            app.ajax('../controlador/GestionUsuarioControlador.php?opcion=generarPDF', data, gestionUsuario.respuestaGenerarPDF);
+            swal({
+                title: "Generando reporte...",
+                text: "Espera un momento",
+                showConfirmButton: false,
+                allowOutsideClick: false
+            });
+        });
     },
-    generarPDF: function (e) {
-        var data = {};
-        gestionUsuario.consultatgraficas;
-        var Canvas = document.getElementById("clientes_grafica");
-        console.log(Canvas.toDataURL());
-    },
+    respuestaGenerarPDF: function (respuesta) {
+        swal.close();
+        
+        console.log(respuesta);
+        var pdfResult = respuesta.PDF;
+        const win = window.open("", "_blank");
+        let html = '';
+
+        html += '<html>';
+        html += '<body style="margin:0!important">';
+        html += '<embed width="100%" height="100%" src="' + pdfResult + '" type="application/pdf" />';
+        html += '</body>';
+        html += '</html>';
+
+        setTimeout(() => {
+            win.document.write(html);
+        }, 0);
+    }
 };
 gestionUsuario.constructor();
