@@ -44,11 +44,11 @@ session_destroy();
                                     </div>
                                     <form id="frm">
                                         <div class="form-group">
-                                            <label for="usuario">Fecha diligenciamiento</label>
+                                            <label for="usuario">Fecha Diligenciamiento</label>
                                             <input type="date" id="fecha_diligencia" class="form-control" />
                                         </div>
                                         <div class="form-group">
-                                            <label for="clave">Razón social</label>
+                                            <label for="clave">Razón Social</label>
                                             <input type="text" id="razon_social" class="form-control" />
                                         </div>
                                         

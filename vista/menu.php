@@ -18,7 +18,6 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <script src="../css/dist/sweetalert.js"></script>
     <link rel="stylesheet" href="../css/dist/sweetalert.css">
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.css" rel="stylesheet">
@@ -133,8 +132,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright text-muted">
-                        <div>Diseñado y Desarrollado por Dexcon Consultores SAS | <a href="https://www.dexcondigital.com/" target="_blank">Dexcon Digital</a></div>
-                        <div>©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</div>
+                        <div>Diseñado y Desarrollado por Dexcon Consultores SAS | <a href="https://www.dexcondigital.com/" target="_blank">Dexcon Digital</a> ©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</div>
                     </div>
                 </div>
             </footer>
@@ -249,7 +247,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-negro mt-2 font-weight-bold  text-nowrap">Resultados subdimensión clientes(%)</h5>
+                                                <h5 class="text-negro mt-2 font-weight-bold  text-nowrap">Resultados subdimensión Clientes(%)</h5>
                                                 <table class="table table-sm table-bordered fs-14">
                                                     <thead class="bg-aqua text-negro text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
@@ -320,7 +318,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión tecnología(%)</h5>
+                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión Tecnología(%)</h5>
                                                 <table class="table table-sm table-bordered fs-14">
                                                     <thead class="bg-cyan text-negro text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
@@ -355,7 +353,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión operaciones(%)</h5>
+                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión Operaciones(%)</h5>
                                                 <table class="table table-sm table-bordered fs-14">
                                                     <thead class="bg-verde text-negro text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
@@ -390,7 +388,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión cultura(%)</h5>
+                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión Cultura(%)</h5>
                                                 <table class="table table-sm table-bordered fs-14">
                                                     <thead class="bg-lila text-light text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
@@ -453,6 +451,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
 <script src="js/menu.js" type="text/javascript"></script>
 <script src="../js/sb-admin-2.min.js"></script>
 <script src="../vendor/chart.js/Chart.js"></script>
+<script src="../css/dist/sweetalert.js"></script>
 <script src="js/usuario/gestionusuario.js?v=<?php echo uniqid(); ?>" type="text/javascript"></script>
 
 </html>
