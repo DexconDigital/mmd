@@ -87,12 +87,12 @@ var gestionUsuario = {
         campos.each(function () {
             if ($(this).val() == '') {
                 respuesta = "false";
-                swal({
+                Swal.fire({
+                    icon: 'error',
                     title: "Error",
                     confirmButtonText: 'Confirmar',
                     confirmButtonClass: "btn-danger",
-                    text: "Debe llenar todos los campos",
-                    type: "error"
+                    text: "Debe llenar todos los campos"
                 });
             }
         });
@@ -118,12 +118,12 @@ var gestionUsuario = {
         campos.each(function () {
             if ($(this).val() == '') {
                 respuesta = "false";
-                swal({
+                Swal.fire({
+                    icon: 'error',
                     title: "Error",
                     confirmButtonText: 'Confirmar',
-                    confirmButtonClass: "btn-danger",
+                    confirmButtonColor: "#dc3545",
                     text: "Debe llenar todos los campos",
-                    type: "error"
                 });
             }
         });
@@ -140,20 +140,20 @@ var gestionUsuario = {
     respuestaPregunta: function (respuesta) {
         if (respuesta.codigo = 1) {
             $('#prgModal').modal('hide');
-            swal({
+            Swal.fire({
+                icon: 'success',
                 title: "Perfecto",
                 confirmButtonText: 'Confirmar',
-                confirmButtonClass: "btn-verde text-dark shadow-none",
+                confirmButtonColor: '#71c904',
                 text: respuesta.mensaje,
-                type: "success"
             });
             gestionUsuario.consultatrespuestas();
         } else {
-            swal({
+            Swal.fire({
+                icon: 'error',
                 title: "Error",
                 confirmButtonText: 'Confirmar',
-                confirmButtonClass: "btn-danger",
-                type: "error"
+                confirmButtonColor: "#dc3545",
             });
         }
     },
@@ -186,6 +186,7 @@ var gestionUsuario = {
     },
     respuestaConsultatgraficas: function (respuesta) {
         var datos = respuesta.datos;
+        
         //Arreglos de graficas dimensión
         var dimension = $("#dimension");
         var rs_dm = respuesta.resultados_dimension;
@@ -392,7 +393,7 @@ var gestionUsuario = {
 
                     mapa += '<div class="col">' +
                         '<div class="bg-' + data_map.color + ' text-' + text_color + ' border border-secondary p-1 align-middle d-flex align-items-center justify-content-center first-uppercase" style="height: 5em;"><span>' + data_map.contenido + '</span></div>' +
-                        '<div class="bg-' + data_map.color_contenido + ' text-' + data_map.text_contenido + ' border border-secondary">' + data_map.result_2 + '%</div>';
+                        '<div class="bg-' + data_map.color_contenido + ' text-' + data_map.text_contenido + ' border border-secondary font-weight-bold">' + data_map.result_2 + '%</div>';
 
                     var pregunt = data_map.preguntas.split("|");
                     for (var pre = 0; pre < pregunt.length; pre++) {
@@ -427,37 +428,36 @@ var gestionUsuario = {
 
         });
         pdf.click(function (e) {
-            e.preventDefault();
+            e.stopPropagation();
+            pdf.addClass("disabled");
             var data = {
                 'respuesta': respuesta,
                 'opcion': 'generarPDF'
             };
             app.ajax('../controlador/GestionUsuarioControlador.php?opcion=generarPDF', data, gestionUsuario.respuestaGenerarPDF);
-            swal({
+            Swal.fire({
                 title: "Generando reporte...",
                 text: "Espera un momento",
                 showConfirmButton: false,
-                allowOutsideClick: false
+                allowOutsideClick: false,
             });
         });
     },
     respuestaGenerarPDF: function (respuesta) {
-        swal.close();
-        
-        console.log(respuesta);
+
+        var pdf = $("#pdf");
+        pdf.removeClass("disabled");
         var pdfResult = respuesta.PDF;
-        const win = window.open("", "_blank");
-        let html = '';
-
-        html += '<html>';
-        html += '<body style="margin:0!important">';
-        html += '<embed width="100%" height="100%" src="' + pdfResult + '" type="application/pdf" />';
-        html += '</body>';
-        html += '</html>';
-
-        setTimeout(() => {
-            win.document.write(html);
-        }, 0);
+        var nombre = respuesta.nombre
+        
+        Swal.fire({
+            icon: 'success',
+            title: "Perfecto",
+            confirmButtonText: 'Confirmar',
+            confirmButtonColor: '#71c904',
+            html: 'Para descargar el <b>PDF</b>, ' +
+                '<a href="' + pdfResult + '" download="MapaCalor_' + nombre + '">Click aqui </a>'
+        })
     }
 };
 gestionUsuario.constructor();
