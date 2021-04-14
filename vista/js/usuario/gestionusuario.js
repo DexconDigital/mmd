@@ -417,7 +417,7 @@ var gestionUsuario = {
                         }
 
                         mapa += '<div class="bg-light border border-secondary p-2 d-flex align-items-center" style="height: 20em;min-width:16.2em;">' + prg + '</div>' +
-                            '<div class="bg-' + color_pie + ' text-' + text_pie + ' border border-secondary"> ' + const_total + '%</div>';
+                            '<div class="bg-' + color_pie + ' text-' + text_pie + ' border border-secondary font-weight-bold"> ' + const_total + '%</div>';
                     }
                     mapa += '</div>';
                 }
