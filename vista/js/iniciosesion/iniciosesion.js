@@ -45,12 +45,13 @@ var inicioSesion = {
             app.mensaje(respuesta);
             return;
         } else if (respuesta.codigo == 2) {
-            swal({
+            Swal.fire({
                 title: "Creando usuario...",
                 text: "Espera un momento",
                 showConfirmButton: false,
-                allowOutsideClick: false
+                allowOutsideClick: false,
             });
+            
             setTimeout(() => {
                 location.href = "menu.php";
             }, 4000);
