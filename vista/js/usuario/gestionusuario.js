@@ -456,7 +456,7 @@ var gestionUsuario = {
             confirmButtonText: 'Confirmar',
             confirmButtonColor: '#71c904',
             html: 'Para descargar el <b>PDF</b>, ' +
-                '<a href="' + pdfResult + '" download="MapaCalor_' + nombre + '">Click aqui </a>'
+                '<a href="' + pdfResult + '" download="MapaCalor_' + nombre + '">Click aquí</a>'
         })
     }
 };
