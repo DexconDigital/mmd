@@ -51,7 +51,7 @@ session_destroy();
                                             <label for="clave">Razón Social</label>
                                             <input type="text" id="razon_social" class="form-control" />
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <label for="clave">NIT</label>
                                             <input type="text" id="nit" class="form-control" />
@@ -79,7 +79,6 @@ session_destroy();
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="../vista/js/menu.js" type="text/javascript"></script>
-    <script src="../vista/js/iniciosesion/iniciosesion.js?v=><?php echo uniqid(); ?>" type="text/javascript"></script>
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="../css/dist/sweetalert.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -87,7 +86,7 @@ session_destroy();
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin-2.min.js"></script>
-
+    <script src="../vista/js/iniciosesion/iniciosesion.js?v=><?php echo uniqid(); ?>" type="text/javascript"></script>
 </body>
 
 </html>
