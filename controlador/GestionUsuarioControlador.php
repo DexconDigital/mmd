@@ -191,11 +191,11 @@ class GestionUsuarioControlador extends GenericoControlador {
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 15.1 ) ) {
                             $t->color_contenido = "yellow";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 22.51 ) ) {
                             $t->color_contenido = "dark-green";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                     }
 
@@ -207,11 +207,11 @@ class GestionUsuarioControlador extends GenericoControlador {
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 17.51 ) ) {
                             $t->color_contenido = "yellow";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 26.26 ) ) {
                             $t->color_contenido = "dark-green";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                     }
 
@@ -226,11 +226,11 @@ class GestionUsuarioControlador extends GenericoControlador {
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 10.1 ) ) {
                             $t->color_contenido = "yellow";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 15.1 ) ) {
                             $t->color_contenido = "dark-green";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                     }
 
@@ -249,11 +249,11 @@ class GestionUsuarioControlador extends GenericoControlador {
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 7.51 ) ) {
                             $t->color_contenido = "yellow";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 11.26 ) ) {
                             $t->color_contenido = "dark-green";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                     }
 
@@ -267,11 +267,11 @@ class GestionUsuarioControlador extends GenericoControlador {
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 2.51 ) ) {
                             $t->color_contenido = "yellow";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 3.76 ) ) {
                             $t->color_contenido = "dark-green";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                     }
 
@@ -279,41 +279,41 @@ class GestionUsuarioControlador extends GenericoControlador {
                     if ( $contenido == strtolower( "finanzas e inversiones, cartera" ) or
                     $contenido == strtolower( "clientes & mercados" ) or
                     $contenido == strtolower( "cosas conectadas" ) or
-                    $contenido == strtolower( "Red" ) or
-                    $contenido == strtolower( "Gestión automatizada de recursos" ) or
-                    $contenido == strtolower( "Gestión de servicios integrados" ) ) {
+                    $contenido == strtolower( "red" ) or
+                    $contenido == strtolower( "gestión automatizada de recursos" ) or
+                    $contenido == strtolower( "gestión de servicios integrados" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 2.51 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 5.1 ) ) {
                             $t->color_contenido = "yellow";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 7.51 ) ) {
                             $t->color_contenido = "dark-green";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                     }
 
                     //Estrategia colores "Gestión de ecosistemas"
-                    if ( $contenido == strtolower( "Finanzas e inversiones, cartera" ) or $contenido == strtolower( "Clientes & mercados" ) ) {
+                    if ( $contenido == strtolower( "finanzas e inversiones, cartera" ) or $contenido == strtolower( "clientes & mercados" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 2.51 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 5.1 ) ) {
                             $t->color_contenido = "yellow";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 7.51 ) ) {
                             $t->color_contenido = "dark-green";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                     }
 
                     //Estrategia colores "Analiticas & datos"
-                    if ( $contenido == strtolower( "Analiticas & datos" ) or
+                    if ( $contenido == strtolower( "analiticas & datos" ) or
                     $contenido == strtolower( "habilitación de la fuerza laboral" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 6.26 ) ) {
                             $t->color_contenido = "dark-yellow";
@@ -321,11 +321,11 @@ class GestionUsuarioControlador extends GenericoControlador {
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 12.51 ) ) {
                             $t->color_contenido = "yellow";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                         if ( floatval( $t->result_2 ) >= floatval( 18.76 ) ) {
                             $t->color_contenido = "dark-green";
-                            $t->text_contenido = "dark";
+                            $t->text_contenido = "negro";
                         }
                     }
 
@@ -390,6 +390,169 @@ class GestionUsuarioControlador extends GenericoControlador {
             }
 
             $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'razon' => $usuario, 'resultados' => $resultados, 'resultados_dimension' => $resultados_dimension, 'razon' => $usuario, 'datos' => $datos] );
+        } catch ( ValidacionExcepcion $error ) {
+            $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
+        }
+    }
+
+    public function generarPDF() {
+        try {
+            Validacion::validar( ['respuesta' => 'obligatorio'], $_POST );
+            $respuesta = $_POST ['respuesta'];
+            $resultados = $respuesta ['resultados'];
+            $datos = $respuesta ['datos'];
+
+            $header = '<head> 
+                      <style>
+                            @font-face {font-family: "Chronicle";src: url("../vendor/fonts/Chronicle Display Black.otf");}
+                            @font-face {@font-face { font-family: "OpenSans-Regular";src: url("../vendor/fonts/OpenSans-Regular.ttf");}
+                            h4 { font-family: Chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0; }
+                            h6 { font-family: Chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;}
+                            table, td{border-collapse: collapse; color: black !important; text-align: center;font-family: OpenSans-Regular;font-size:12px; }
+                            .fs-12 {font-size:12px;}
+                            .mb-3 {margin-bottom: 1rem !important;}
+                            .bg-red {background-color: #C00000;color: #f8f9fc !important;}
+                            .bg-dark-yellow {background-color: #E55407;color: #f8f9fc !important;}
+                            .bg-yellow {background-color: #FDD300;}
+                            .bg-dark-green {background-color: #86F200;}
+                            .bg-aqua {background-color: #3EFAC5;}
+                            .bg-lila {background-color: #852766;color: white !important;}
+                            .bg-amarillo {background-color: #FDD300;}
+                            .bg-verde {background-color: #86F200;}
+                            .bg-cyan {background-color: #34F0FF;}
+                      </style> 
+                   </head>';
+
+            // Cabecera del documento
+            $cabecera = "<div style='margin-bottom:7px;'> 
+                            <div style='float: left; width: 10%; text-align:left;' > 
+                                <img src='../img/logo.png'>
+                                
+                            </div> 
+                            <div style='float:left; vertical-align: top; padding-left: 18px;'>
+                                <h1 style='font-size: 35pt;margin-left:70px;'>Modelo de Madurez Digital - Mapa de Calor</h1> 
+                            </div>
+                        </div>";
+            $mapa = "";
+
+            foreach ( $resultados as $key => $data ) {
+                $color_head = $data["color"];
+                $color_cab = "red";
+                $total = $data["total"];
+
+                if ( $total >= 25.1 ) {
+                    $color_cab = "dark-yellow";
+                }
+                if ( $total >= 50.1 ) {
+                    $color_cab = "yellow";
+                }
+                if ( $total >= 75.1 ) {
+                    $color_cab = "dark-green";
+                }
+
+                $key_alt = ucfirst( $key );
+                $mapa .= "<td style='vertical-align:top'>
+                            <table style='width:100%;'>
+                                <tr style='border: 0.5px solid #858796;'>
+                                    <td class='bg-{$color_head}'><h4>{$key_alt}</h4></td>
+                                </tr>
+                                <tr style='border: 0.5px solid #858796;'>
+                                    <td class='bg-{$color_cab} fs-12'>{$total}%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table style='width:100%;'>
+                                            <tr>";
+
+                for ( $i = 0; $i <= count( $datos )-1;
+                $i++ ) {
+                    $data_map = $datos[$i];
+                    $constante = $data_map['constante'];
+                    if ( $key == $data_map['tabla'] ) {
+                        $text_color = ( $data_map['color'] == "lila" ) ? "light" : "dark";
+                        $contenid = ucfirst( $data_map['contenido'] );
+                        $rslt_2 = $data_map['result_2'];
+                        $color_contenido = $data_map['color_contenido'];
+                        $color = $data_map['color'];
+
+                        $mapa .= "<td style='vertical-align:top'>
+                                    <table style='width:100%;' class='fs-12'>
+                                        <tr style='border: 0.5px solid #858796;'>
+                                            <td style='height:100px;' class='bg-{$color}'>{$contenid}</td>
+                                        </tr>
+                                        <tr style='border: 0.5px solid #858796;'>
+                                            <td class='bg-{$color_contenido}'>{$rslt_2}%</td>
+                                        </tr>";
+
+                        $pregunt = explode( "|", $data_map['preguntas'] );
+                        for ( $pre = 0; $pre < count( $pregunt );
+                        $pre++ ) {
+                            $prg = ucfirst( $pregunt[$pre] );
+                            $const_total = ( $data_map['rsp'][$pre] * $constante );
+                            $color_pie = "red";
+
+                            //Colores segun el total en el pie
+                            if ( $const_total >= 25.1 ) {
+                                $color_pie = "dark-yellow";
+                            }
+                            if ( $const_total >= 50.1 ) {
+                                $color_pie = "yellow";
+                            }
+                            if ( $const_total >= 75.1 ) {
+                                $color_pie = "dark-green";
+                            }
+
+                            $mapa .= "<tr>
+                                        <td style='vertical-align:top'>
+                                            <table style='width:100%;'>
+                                                <tr style='border: 0.5px solid #858796;padding: 0.5rem !important;'>
+                                                    <td style='height:190px;width:180px;'>{$prg}</td>
+                                                </tr>
+                                                <tr style='border: 0.5px solid #858796;'>
+                                                    <td class='bg-{$color_pie}' >{$const_total}%</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>";
+                        }
+
+                        $mapa .= "</table>
+                                </td>";
+                    }
+                }
+
+                $mapa .= "</tr>
+                        </table>
+                        </td>
+                        </tr>";
+
+                $mapa .= "</table> 
+                        </td>";
+            }
+
+            $ehtml =  "<html> 
+                        {$header} 
+                        <body> 
+                            {$cabecera}
+                            <table style='width:100%;'>
+                                <tr>
+                                    {$mapa}
+                                </tr>
+                            </table>
+                            <div style='clear: both; margin: 0pt; padding: 0pt; '></div>
+                        </body>                    
+                  </html>";
+
+            //var_dump( $ehtml );exit();
+
+            require_once '../vendor/mpdf/autoload.php';
+            $mpdf = new \Mpdf\Mpdf( ['mode' => 'utf-8', 'format' => 'A2-L'] );
+            $mpdf->WriteHTML( $ehtml );
+            $pdfString = $mpdf->Output( '', 'S' );
+            $pdfBase64 = base64_encode( $pdfString );
+            $PDF = 'data:application/pdf;base64,' . $pdfBase64;
+
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'PDF' => $PDF] );
         } catch ( ValidacionExcepcion $error ) {
             $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
         }
