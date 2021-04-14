@@ -11,13 +11,13 @@ button.bg-cyan:focus {
 }
 
 .btn-cyan {
-    color: #fff;
+    color: #1C1C1C;
     background-color: #34D4FF;
     border-color: #34D4FF;
 }
 
 .btn-cyan:hover {
-    color: #fff;
+    color: #1C1C1C;
     background-color: #00b2ce;
     border-color: #00b2ce;
 }
@@ -45,13 +45,13 @@ button.bg-aqua:focus {
 }
 
 .btn-aqua {
-    color: #fff;
+    color: #1C1C1C;
     background-color: #3EFAC5;
     border-color: #3EFAC5;
 }
 
 .btn-aqua:hover {
-    color: #fff;
+    color: #1C1C1C;
     background-color: #41e8b9;
     border-color: #41e8b9;
 }
@@ -79,13 +79,13 @@ button.bg-amarillo:focus {
 }
 
 .btn-amarillo {
-    color: #fff;
+    color: #1C1C1C;
     background-color: #FDD300;
     border-color: #FDD300;
 }
 
 .btn-amarillo:hover {
-    color: #fff;
+    color: #1C1C1C;
     background-color: #FDD300;
     border-color: #FDD300;
 }
@@ -113,13 +113,13 @@ button.bg-verde:focus {
 }
 
 .btn-verde {
-    color: #fff;
+    color: #1C1C1C;
     background-color: #86F200;
     border-color: #86F200;
 }
 
 .btn-verde:hover {
-    color: #fff;
+    color: #1C1C1C;
     background-color: #71c904;
     border-color: #71c904;
 }
@@ -173,10 +173,40 @@ button.bg-lila:focus {
     background-color: #FDD300;
 }
 
+.bg-white:hover {
+    color: #1C1C1C !important;
+}
+
 /* red COLOR*/
 .bg-red {
     background-color: #C00000;
 }
+
+a.bg-red:hover,
+a.bg-red:focus,
+button.bg-red:hover,
+button.bg-red:focus {
+    background-color: #C63430 !important;
+}
+
+.btn-red {
+    color: #fff;
+    background-color: #C63430;
+    border-color: #C63430;
+}
+
+.btn-red:hover {
+    color: #fff;
+    background-color: #C63430;
+    border-color: #C63430;
+}
+
+.btn-red:focus,
+.btn-red.focus {
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(198, 52, 48, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(198, 52, 48, 0.5);
+}
+
 
 /* ladrillo COLOR*/
 .bg-ladrillo {
@@ -322,15 +352,109 @@ input[type=number] {
     background-color: #852766;
 }
 
+.vh-80 {
+    height: 80vh !important;
+}
+
+.titulo-principal {
+    font-size: 4rem;
+    margin-top: 0 !important;
+}
+
+.logo-titulo {
+    width: 7rem !important;
+    margin-left: 0.5%;
+}
+
+.fs-14 {
+    font-size: 14px !important;
+}
+
+@media (max-width: 1910px) {
+    .titulo-principal {
+        font-size: 3.8rem !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 1825px) {
+    .titulo-principal {
+        font-size: 3.6rem !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 1735px) {
+    .titulo-principal {
+        font-size: 3.5rem !important;
+    }
+}
+
+@media (max-width: 1685px) {
+    .titulo-principal {
+        font-size: 3.3rem !important;
+    }
+}
+
+@media (max-width: 1590px) {
+    .titulo-principal {
+        font-size: 3rem !important;
+    }
+}
+
+@media (max-width: 1465px) {
+    .titulo-principal {
+        font-size: 2.8rem !important;
+    }
+}
+
+@media (max-width: 1366px) {
+    .titulo-principal {
+        font-size: 2.7rem !important;
+    }
+}
+
+@media (max-width: 1306px) {
+    .titulo-principal {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 1236px) {
+    .titulo-principal {
+        font-size: 2.3rem !important;
+        margin-top: 0 !important;
+    }
+}
+
 @media (max-width: 1199.98px) {
+    .titulo-principal {
+        font-size: 3.7rem;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .titulo-principal {
+        font-size: 3rem !important;
+    }
+
     .ml-35 {
         margin-left: 0% !important;
+    }
+
+    .copyright {
+        font-size: 1rem !important;
     }
 }
 
 @media (max-width: 992px) {
     .titulo-principal {
         padding-left: 11%;
+        font-size: 3rem !important;
+    }
+
+    .copyright {
+        font-size: 13px !important;
     }
 }
 
@@ -345,6 +469,7 @@ input[type=number] {
     }
 
     .titulo-principal {
+        padding-top: 3rem;
         font-size: 2rem !important;
         padding-left: 0;
     }
@@ -357,8 +482,22 @@ input[type=number] {
     }
 
     .titulo-principal {
-        padding-top: 1rem;
+        padding-top: 3rem;
         font-size: 1.7rem !important;
         padding-left: 0;
+    }
+
+    .copyright {
+        font-size: 9px !important;
+    }
+    
+    .modal-title {
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .copyright {
+        font-size: 8px !important;
     }
 }
