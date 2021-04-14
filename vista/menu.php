@@ -55,7 +55,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                             <img src="../img/logo.png" class="w-12 my-auto ml-35">
                         </div>
                         <div class="col-md-9 ">
-                            <h1 class="titulo-principal text-negro font-weight-bold mt-2">Modelo de evaluación de madurez digital</h1>
+                            <h1 class="titulo-principal text-negro font-weight-bold mt-2">Modelo de Evaluación de Madurez Digital</h1>
                         </div>
                     </div>
                     <div class="row pt-5 d-flex justify-content-center">
@@ -63,10 +63,10 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                             <div class="card card-hover border-aqua mb-3 w-100">
                                 <div class="card-header bg-transparent font-weight-bold text-negro">CLIENTES</div>
                                 <div class="card-body text-primary">
-                                    <button class="btn btn-aqua btn-block text-dark modelo" data-tabla="clientes">Compromiso con el cliente</button>
-                                    <button class="btn btn-aqua btn-block text-dark modelo" data-tabla="clientes">Experiencia del cliente</button>
-                                    <button class="btn btn-aqua btn-block text-dark modelo" data-tabla="clientes">Conocimiento del cliente y comportamiento</button>
-                                    <button class="btn btn-aqua btn-block text-dark modelo" data-tabla="clientes">Confianza y percepción del cliente</button>
+                                    <button class="btn btn-aqua btn-block modelo" data-tabla="clientes">Compromiso con el cliente</button>
+                                    <button class="btn btn-aqua btn-block modelo" data-tabla="clientes">Experiencia del cliente</button>
+                                    <button class="btn btn-aqua btn-block modelo" data-tabla="clientes">Conocimiento del cliente y comportamiento</button>
+                                    <button class="btn btn-aqua btn-block modelo" data-tabla="clientes">Confianza y percepción del cliente</button>
                                 </div>
                             </div>
                         </div>
@@ -74,13 +74,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                             <div class="card card-hover border-amarillo mb-3 w-100">
                                 <div class="card-header bg-transparent font-weight-bold text-negro">ESTRATEGIA</div>
                                 <div class="card-body text-primary">
-                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Gestión de la marca</button>
-                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Gestión de ecosistemas</button>
-                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Finanzas e inversiones, cartera</button>
-                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Clientes & mercados</button>
-                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Portafolio, ideación e innovación</button>
-                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Gestión de partes interesadas</button>
-                                    <button class="btn btn-amarillo btn-block text-dark modelo" data-tabla="estrategia">Gestión estratégica</button>
+                                    <button class="btn btn-amarillo btn-block modelo" data-tabla="estrategia">Gestión de la marca</button>
+                                    <button class="btn btn-amarillo btn-block modelo" data-tabla="estrategia">Gestión de ecosistemas</button>
+                                    <button class="btn btn-amarillo btn-block modelo" data-tabla="estrategia">Finanzas e inversiones, cartera</button>
+                                    <button class="btn btn-amarillo btn-block modelo" data-tabla="estrategia">Clientes & mercados</button>
+                                    <button class="btn btn-amarillo btn-block modelo" data-tabla="estrategia">Portafolio, ideación e innovación</button>
+                                    <button class="btn btn-amarillo btn-block modelo" data-tabla="estrategia">Gestión de partes interesadas</button>
+                                    <button class="btn btn-amarillo btn-block modelo" data-tabla="estrategia">Gestión estratégica</button>
                                 </div>
                             </div>
                         </div>
@@ -88,13 +88,13 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                             <div class="card card-hover border-cyan mb-3 w-100">
                                 <div class="card-header bg-transparent font-weight-bold text-negro">TECNOLOGÍA</div>
                                 <div class="card-body text-primary">
-                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Aplicaciones</button>
-                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Cosas conectadas</button>
-                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Analiticas & datos</button>
-                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Políticas de entregas</button>
-                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Red</button>
-                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Seguridad</button>
-                                    <button class="btn btn-cyan btn-block text-dark modelo" data-tabla="tecnología">Arquitectura tecnológica</button>
+                                    <button class="btn btn-cyan btn-block modelo" data-tabla="tecnología">Aplicaciones</button>
+                                    <button class="btn btn-cyan btn-block modelo" data-tabla="tecnología">Cosas conectadas</button>
+                                    <button class="btn btn-cyan btn-block modelo" data-tabla="tecnología">Analiticas & datos</button>
+                                    <button class="btn btn-cyan btn-block modelo" data-tabla="tecnología">Políticas de entregas</button>
+                                    <button class="btn btn-cyan btn-block modelo" data-tabla="tecnología">Red</button>
+                                    <button class="btn btn-cyan btn-block modelo" data-tabla="tecnología">Seguridad</button>
+                                    <button class="btn btn-cyan btn-block modelo" data-tabla="tecnología">Arquitectura tecnológica</button>
                                 </div>
                             </div>
                         </div>
@@ -102,12 +102,12 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                             <div class="card card-hover border-verde mb-3 w-100">
                                 <div class="card-header bg-transparent font-weight-bold text-negro">OPERACIONES</div>
                                 <div class="card-body text-primary">
-                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Gestión ágil del cambio</button>
-                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Gestión automatizada de recursos</button>
-                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Gestión de servicios integrados</button>
-                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Analíticas e información en tiempo real</button>
-                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Procesos inteligentes y adaptables</button>
-                                    <button class="btn btn-verde btn-block text-dark modelo" data-tabla="operaciones">Estándares y automatización de procesos</button>
+                                    <button class="btn btn-verde btn-block modelo" data-tabla="operaciones">Gestión ágil del cambio</button>
+                                    <button class="btn btn-verde btn-block modelo" data-tabla="operaciones">Gestión automatizada de recursos</button>
+                                    <button class="btn btn-verde btn-block modelo" data-tabla="operaciones">Gestión de servicios integrados</button>
+                                    <button class="btn btn-verde btn-block modelo" data-tabla="operaciones">Analíticas e información en tiempo real</button>
+                                    <button class="btn btn-verde btn-block modelo" data-tabla="operaciones">Procesos inteligentes y adaptables</button>
+                                    <button class="btn btn-verde btn-block modelo" data-tabla="operaciones">Estándares y automatización de procesos</button>
                                 </div>
                             </div>
                         </div>
@@ -132,8 +132,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
             </div>
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
-                    <div class="text-center my-auto">
-                        <span>Diseñado y Desarrollado por Dexcon Consultores SAS | Dexcon Digital | ©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</span>
+                    <div class="text-center my-auto copyright text-muted">
+                        <div>Diseñado y Desarrollado por Dexcon Consultores SAS | <a href="https://www.dexcondigital.com/" target="_blank">Dexcon Digital</a></div>
+                        <div>©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</div>
                     </div>
                 </div>
             </footer>
@@ -170,7 +171,12 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
         <div class="modal-dialog" role="document">
             <div class="modal-content bg-negro">
                 <div class="modal-header border-0">
-                    <h4 class="modal-title text-light pl-2" id="resultModallabel">Resultados modelo de evaluación de madurez digital</h4>
+                    <div class="ml-2">
+                        <img src="../img/logo_blanco.png" class="logo-titulo mt-1">
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="modal-title text-light" id="resultModallabel">Resultados Modelo de Evaluación De Madurez Digital</h4>
+                    </div>
                     <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                         <span>×</span>
                     </button>
@@ -197,11 +203,11 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                 <a class="nav-link text-light cultura" id="Estrategia-tab" data-info="cultura" data-toggle="tab" href="#Cultura" role="tab" aria-controls="Cultura" aria-selected="false">Organización & Cultura</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" id="Mapa_calor-tab" data-info="mapa_calor" data-toggle="tab" href="#Mapa_calor" role="tab" aria-controls="Mapa_calor" aria-selected="false">Mapa de calor</a>
+                                <a class="nav-link text-light" id="Mapa_calor-tab" data-info="mapa_calor" data-toggle="tab" href="#Mapa_calor" role="tab" aria-controls="Mapa_calor" aria-selected="false">Mapa de Calor</a>
                             </li>
-                            <!--<li class="nav-item">
-                                <a id="pdf" class="nav-link text-light" href="#" >Descargar PDF</a>
-                            </li>-->
+                            <li class="nav-item">
+                                <a id="pdf" class="nav-link text-light" href="#">Generar PDF</a>
+                            </li>
                         </ul>
                         <div class="tab-content mt-2" id="myTabContent">
                             <div class="tab-pane fade show active" id="dimensiones" role="tabpanel" aria-labelledby="dimensiones-tab">
@@ -216,15 +222,15 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados por dimensión(%)</h5>
-                                                <table class="table table-sm table-bordered">
-                                                    <thead class="bg-ladrillo text-light">
+                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados por Dimensión(%)</h5>
+                                                <table class="table table-sm table-bordered fs-14">
+                                                    <thead class="bg-ladrillo text-light text-nowrap">
                                                         <th>Dimensión</th>
                                                         <th class="text-center">Resultado</th>
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody id="dimension"></tbody>
+                                                    <tbody id="dimension" class="text-negro"></tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -243,21 +249,21 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-dark mt-2 font-weight-bold  text-nowrap">Resultados subdimensión clientes(%)</h5>
-                                                <table class="table table-sm table-bordered">
-                                                    <thead class="bg-aqua text-dark">
+                                                <h5 class="text-negro mt-2 font-weight-bold  text-nowrap">Resultados subdimensión clientes(%)</h5>
+                                                <table class="table table-sm table-bordered fs-14">
+                                                    <thead class="bg-aqua text-negro text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
                                                         <th class="text-center">Resultado</th>
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla_clientes"></tbody>
+                                                    <tbody class="tabla_clientes text-negro"></tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th scope="row">Total</th>
-                                                            <th class="total_tabla_clientes text-center" scope="row"></th>
-                                                            <th class="total_estandar_clientes text-center" scope="row"></th>
-                                                            <th class="total_desviación_clientes text-center" scope="row"></th>
+                                                            <th class="text-left text-negro" scope="row">Total</th>
+                                                            <th class="total_tabla_clientes text-center text-negro" scope="row"></th>
+                                                            <th class="total_estandar_clientes text-center text-negro" scope="row"></th>
+                                                            <th class="total_desviación_clientes text-center text-negro" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -279,21 +285,21 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados subdimensión Estrategia(%)</h5>
-                                                <table class="table table-sm table-bordered">
-                                                    <thead class="bg-amarillo text-dark">
+                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión Estrategia(%)</h5>
+                                                <table class="table table-sm table-bordered fs-14">
+                                                    <thead class="bg-amarillo text-negro text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
                                                         <th class="text-center">Resultado</th>
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla_estrategia"></tbody>
+                                                    <tbody class="tabla_estrategia text-negro"></tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th scope="row">Total</th>
-                                                            <th class="total_tabla_estrategia text-center" scope="row"></th>
-                                                            <th class="total_estandar_estrategia text-center" scope="row"></th>
-                                                            <th class="total_desviación_estrategia text-center" scope="row"></th>
+                                                            <th class="text-left text-negro" scope="row">Total</th>
+                                                            <th class="total_tabla_estrategia text-center text-negro" scope="row"></th>
+                                                            <th class="total_estandar_estrategia text-center text-negro" scope="row"></th>
+                                                            <th class="total_desviación_estrategia text-center text-negro" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -314,21 +320,21 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados subdimensión tecnología(%)</h5>
-                                                <table class="table table-sm table-bordered">
-                                                    <thead class="bg-cyan text-dark">
+                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión tecnología(%)</h5>
+                                                <table class="table table-sm table-bordered fs-14">
+                                                    <thead class="bg-cyan text-negro text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
                                                         <th class="text-center">Resultado</th>
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla_tecnología"></tbody>
+                                                    <tbody class="tabla_tecnología text-negro"></tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th scope="row">Total</th>
-                                                            <th class="total_tabla_tecnología text-center" scope="row"></th>
-                                                            <th class="total_estandar_tecnología text-center" scope="row"></th>
-                                                            <th class="total_desviación_tecnología text-center" scope="row"></th>
+                                                            <th class="text-left text-negro" scope="row">Total</th>
+                                                            <th class="total_tabla_tecnología text-center text-negro" scope="row"></th>
+                                                            <th class="total_estandar_tecnología text-center text-negro" scope="row"></th>
+                                                            <th class="total_desviación_tecnología text-center text-negro" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -349,21 +355,21 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados subdimensión operaciones(%)</h5>
-                                                <table class="table table-sm table-bordered">
-                                                    <thead class="bg-verde text-dark">
+                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión operaciones(%)</h5>
+                                                <table class="table table-sm table-bordered fs-14">
+                                                    <thead class="bg-verde text-negro text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
                                                         <th class="text-center">Resultado</th>
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla_operaciones"></tbody>
+                                                    <tbody class="tabla_operaciones text-negro"></tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th scope="row">Total</th>
-                                                            <th class="total_tabla_operaciones text-center" scope="row"></th>
-                                                            <th class="total_estandar_operaciones text-center" scope="row"></th>
-                                                            <th class="total_desviación_operaciones text-center" scope="row"></th>
+                                                            <th class="text-left text-negro" scope="row">Total</th>
+                                                            <th class="total_tabla_operaciones text-center text-negro" scope="row"></th>
+                                                            <th class="total_estandar_operaciones text-center text-negro" scope="row"></th>
+                                                            <th class="total_desviación_operaciones text-center text-negro" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -384,21 +390,21 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         </div>
                                         <div class="col-lg-5">
                                             <div class="table-responsive">
-                                                <h5 class="text-dark mt-2 font-weight-bold text-nowrap">Resultados subdimensión cultura(%)</h5>
-                                                <table class="table table-sm table-bordered">
-                                                    <thead class="bg-lila text-light">
+                                                <h5 class="text-negro mt-2 font-weight-bold text-nowrap">Resultados subdimensión cultura(%)</h5>
+                                                <table class="table table-sm table-bordered fs-14">
+                                                    <thead class="bg-lila text-light text-nowrap">
                                                         <th class="text-nowrap">Sub-Dimensión</th>
                                                         <th class="text-center">Resultado</th>
                                                         <th class="text-center">Estandar</th>
                                                         <th class="text-center">% Desviación</th>
                                                     </thead>
-                                                    <tbody class="tabla_cultura"></tbody>
+                                                    <tbody class="tabla_cultura text-negro"></tbody>
                                                     <tfoot>
                                                         <tr>
-                                                            <th scope="row">Total</th>
-                                                            <th class="total_tabla_cultura text-center" scope="row"></th>
-                                                            <th class="total_estandar_cultura text-center" scope="row"></th>
-                                                            <th class="total_desviación_cultura text-center" scope="row"></th>
+                                                            <th class="text-left text-negro" scope="row">Total</th>
+                                                            <th class="total_tabla_cultura text-center text-negro" scope="row"></th>
+                                                            <th class="total_estandar_cultura text-center text-negro" scope="row"></th>
+                                                            <th class="total_desviación_cultura text-center text-negro" scope="row"></th>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -435,12 +441,11 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                 <div class="modal-body">Seleccione "Salir" si está listo para finalizar su sesión actual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-negro" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-cyan text-dark" href="iniciosesion.php">Salir</a>
+                    <a class="btn btn-red" href="iniciosesion.php">Salir</a>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 <script src="../vendor/jquery/jquery-3.3.1.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

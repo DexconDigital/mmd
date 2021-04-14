@@ -40,7 +40,7 @@ session_destroy();
                             <div class="col-lg-8">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Modelo de evaluación de madurez digital</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Modelo de Evaluación de Madurez Digital</h1>
                                     </div>
                                     <form id="frm">
                                         <div class="form-group">
@@ -48,7 +48,7 @@ session_destroy();
                                             <input type="date" id="fecha_diligencia" class="form-control" />
                                         </div>
                                         <div class="form-group">
-                                            <label for="clave">Razon social</label>
+                                            <label for="clave">Razón social</label>
                                             <input type="text" id="razon_social" class="form-control" />
                                         </div>
                                         
@@ -58,14 +58,15 @@ session_destroy();
                                         </div>
                                         <div id="mensaje" class="form-group" style="color:red;"></div>
 
-                                        <button class="btn btn-verde text-dark btn-block">Ingresar</button>
+                                        <button class="btn btn-verde text-negro btn-block font-weight-bold">Ingresar</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer copyright text-center">
-                        <span>Diseñado y Desarrollado por Dexcon Consultores SAS | Dexcon Digital | ©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</span>
+                        <div>Diseñado y Desarrollado por Dexcon Consultores SAS | <a href="https://www.dexcondigital.com/" target="_blank">Dexcon Digital</a></div>
+                        <div>©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</div>
                     </div>
                 </div>
 
