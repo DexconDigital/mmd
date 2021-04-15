@@ -218,11 +218,13 @@ var gestionUsuario = {
             }
 
             var resul_dim = ((value - estandar) / estandar) * 100;
+            var text_bold = (key == 'Total') ? 'font-weight-bold' : '';
+
             var campos = '<tr>' +
                 '<th class="text-left" scope="row">' + key + '</th>' +
-                '<td class="text-center">' + value + '%</td>' +
-                '<td class="text-center">' + estandar + '%</td>' +
-                '<td class="text-center">' + Number(resul_dim).toFixed(2) + '%</td>' +
+                '<td class="text-center ' + text_bold + '">' + value + '%</td>' +
+                '<td class="text-center ' + text_bold + '">' + estandar + '%</td>' +
+                '<td class="text-center ' + text_bold + '">' + Number(resul_dim).toFixed(2) + '%</td>' +
                 '</tr>';
             dimension.append(campos);
         });
