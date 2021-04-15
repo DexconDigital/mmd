@@ -132,7 +132,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright text-muted">
-                        <div>Diseñado y Desarrollado por Dexcon Consultores SAS | <a href="https://www.dexcondigital.com/" target="_blank">Dexcon Digital</a> ©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</div>
+                        <div>Diseñado y Desarrollado por Dexcon Consultores SAS | <a href="https://www.dexcondigital.com/" target="_blank">Dexcon Digital</a><span class="dexcon_copy"> ©Copyright <?php echo date('Y') ?>. Todos los derechos reservados.</span></div>
                     </div>
                 </div>
             </footer>
