@@ -304,8 +304,6 @@ input[type=number] {
     text-transform: uppercase !important;
 }
 
-
-
 /* Modal FullScreen */
 .modal.modal-fullscreen .modal-dialog {
     width: 100vw;
@@ -357,80 +355,148 @@ input[type=number] {
 }
 
 .titulo-principal {
-    font-size: 3.9rem;
+    font-size: 6rem;
     margin-top: 0 !important;
-    margin-left: 2%;
 }
 
 .logo-titulo {
     width: 7rem !important;
     margin-left: 0.5%;
+    float: left;
 }
 
 .fs-14 {
     font-size: 14px !important;
 }
 
-@media (max-width: 1910px) {
+#dimension_grafica_h {
+    z-index: -10;
+    width: 0% !important;
+    height: 0% !important;
+    position: absolute;
+}
+
+#clientes_grafica_h {
+    z-index: -10;
+    width: 0% !important;
+    height: 0% !important;
+    position: absolute;
+}
+
+#clientes_grafica_h {
+    z-index: -10;
+    width: 0% !important;
+    height: 0% !important;
+    position: absolute;
+}
+
+#estrategia_grafica_h {
+    z-index: -10;
+    width: 0% !important;
+    height: 0% !important;
+    position: absolute;
+}
+
+#tecnología_grafica_h {
+    z-index: -10;
+    width: 0% !important;
+    height: 0% !important;
+    position: absolute;
+}
+
+#operaciones_grafica_h {
+    z-index: -10;
+    width: 0% !important;
+    height: 0% !important;
+    position: absolute;
+}
+
+#cultura_grafica_h {
+    z-index: -10;
+    width: 0% !important;
+    height: 0% !important;
+    position: absolute;
+}
+
+.modal-titulo {
+    margin-left: 10.8rem;
+}
+
+.Editor-container {
+    color: #1C1C1C !important;
+}
+@media (max-width: 1867px) {
     .titulo-principal {
-        font-size: 3.65rem !important;
-        margin-top: 0 !important;
+        font-size: 5.7rem;
     }
 }
 
-@media (max-width: 1825px) {
+@media (max-width: 1806px) {
     .titulo-principal {
-        font-size: 3.5rem !important;
-        margin-top: 0 !important;
+        font-size: 5.5rem;
     }
 }
 
-@media (max-width: 1735px) {
+@media (max-width: 1746px) {
     .titulo-principal {
-        font-size: 3.4rem !important;
+        font-size: 5.3rem;
     }
 }
 
-@media (max-width: 1685px) {
+
+@media (max-width: 1746px) {
     .titulo-principal {
-        font-size: 3.2rem !important;
+        font-size: 5.3rem;
     }
 }
 
-@media (max-width: 1590px) {
+@media (max-width: 1656px) {
     .titulo-principal {
-        font-size: 2.95rem !important;
+        font-size: 5rem;
     }
 }
 
-@media (max-width: 1465px) {
+@media (max-width: 1566px) {
     .titulo-principal {
-        font-size: 2.6rem !important;
+        font-size: 4.8rem;
     }
 }
 
-@media (max-width: 1306px) {
+
+@media (max-width: 1505px) {
     .titulo-principal {
-        font-size: 2.4rem !important;
+        font-size: 4.6rem;
     }
 }
 
-@media (max-width: 1236px) {
+@media (max-width: 1445px) {
     .titulo-principal {
-        font-size: 2.3rem !important;
-        margin-top: 0 !important;
+        font-size: 4.4rem;
     }
 }
 
-@media (max-width: 1199.98px) {
+@media (max-width: 1385px) {
+    .titulo-principal {
+        font-size: 4.2rem;
+    }
+}
+
+@media (max-width: 1324px) {
+    .titulo-principal {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 1264px) {
     .titulo-principal {
         font-size: 3.7rem;
     }
 }
 
+
 @media (max-width: 1199.98px) {
     .titulo-principal {
-        font-size: 3rem !important;
+        font-size: 3.4rem !important;
     }
 
     .ml-35 {
@@ -444,7 +510,7 @@ input[type=number] {
 
 @media (max-width: 992px) {
     .titulo-principal {
-        padding-left: 11%;
+        padding-left: 13%;
         font-size: 3rem !important;
     }
 
@@ -461,6 +527,10 @@ input[type=number] {
     .graficas {
         width: 45rem !important;
         height: 35rem !important;
+    }
+    
+    .titulo-principal-container {
+        justify-content: flex-start !important;
     }
 
     .titulo-principal {
@@ -488,11 +558,18 @@ input[type=number] {
     }
     
     .modal-title {
+        display: inline-block;
         font-size: 20px !important;
+        margin-left: 0% !important;
+        margin-top: 8% !important;
     }
     
     .dexcon_copy {
         display: block;
+    }
+    
+    .nav-pills .nav-item {
+        width: 100% !important;
     }
 }
 
