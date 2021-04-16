@@ -51,10 +51,10 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                 <div class="container-fluid shadow bg-white" id="formulario">
                     <div class="pt-5 row">
                         <div class="col-md-3 logo-principal">
-                            <img src="../img/logo.png" class="w-12 my-auto ml-35">
+                            <img src="../img/logo.png" class="w-12 mt-3 ml-35">
                         </div>
-                        <div class="col-md-9 ">
-                            <h1 class="titulo-principal text-negro font-weight-bold mt-2">Modelo de Evaluación de Madurez Digital</h1>
+                        <div class="col-md-8 titulo-principal-container d-flex justify-content-center">
+                            <h1 class="titulo-principal text-negro font-weight-bold mt-2">Modelo de Madurez Digital</h1>
                         </div>
                     </div>
                     <div class="row pt-5 d-flex justify-content-center">
@@ -171,9 +171,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                 <div class="modal-header border-0">
                     <div class="ml-2">
                         <img src="../img/logo_blanco.png" class="logo-titulo mt-1">
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="modal-title text-light" id="resultModallabel">Resultados Modelo de Evaluación De Madurez Digital</h4>
+                        <h4 class="modal-title text-light modal-titulo" id="resultModallabel">Resultados Modelo de Madurez Digital</h4>
                     </div>
                     <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                         <span>×</span>
@@ -204,7 +202,10 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                 <a class="nav-link text-light" id="Mapa_calor-tab" data-info="mapa_calor" data-toggle="tab" href="#Mapa_calor" role="tab" aria-controls="Mapa_calor" aria-selected="false">Mapa de Calor</a>
                             </li>
                             <li class="nav-item">
-                                <a id="pdf" class="nav-link text-light" href="#">Generar PDF</a>
+                                <a id="pdf" class="nav-link text-light" href="#">Generar Mapa</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="pdfgraficas" class="nav-link text-light" href="#">Descargar Reporte</a>
                             </li>
                         </ul>
                         <div class="tab-content mt-2" id="myTabContent">
@@ -215,6 +216,12 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             <div class="table-responsive">
                                                 <div class="graficas">
                                                     <canvas id="dimension_grafica" class="grafica pb-5"></canvas>
+                                                    <canvas id="dimension_grafica_h"></canvas>
+                                                    <canvas id="clientes_grafica_h"></canvas>
+                                                    <canvas id="estrategia_grafica_h"></canvas>
+                                                    <canvas id="tecnología_grafica_h"></canvas>
+                                                    <canvas id="operaciones_grafica_h"></canvas>
+                                                    <canvas id="cultura_grafica_h"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,6 +237,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                     </thead>
                                                     <tbody id="dimension" class="text-negro"></tbody>
                                                 </table>
+                                                <div id="dim" class="w-100 shadow-none fs-14 editor text-dark"></div>
+                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -265,6 +274,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
+                                                <div id="cli" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -301,6 +312,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
+                                                <div id="estra" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -336,6 +349,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
+                                                <div id="tecno" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -371,6 +386,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
+                                                <div id="opera" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -406,6 +423,8 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
+                                                <div id="cul" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
                                         </div>
                                     </div>
@@ -449,9 +468,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="js/menu.js" type="text/javascript"></script>
-<script src="../js/sb-admin-2.min.js"></script>
 <script src="../vendor/chart.js/Chart.js"></script>
 <script src="../css/dist/sweetalert.js"></script>
+<script src="../js/sb-admin-2.js"></script>
 <script src="js/usuario/gestionusuario.js?v=<?php echo uniqid(); ?>" type="text/javascript"></script>
 
 </html>

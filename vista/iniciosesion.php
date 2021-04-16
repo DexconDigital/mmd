@@ -56,9 +56,9 @@ session_destroy();
                                             <label for="clave">NIT</label>
                                             <input type="text" id="nit" class="form-control" />
                                         </div>
-                                        <div id="mensaje" class="form-group" style="color:red;"></div>
-
                                         <button class="btn btn-verde text-negro btn-block font-weight-bold">Ingresar</button>
+                                        <div id="mensaje" class="form-group text-danger mt-2"></div>
+
                                     </form>
                                 </div>
                             </div>
