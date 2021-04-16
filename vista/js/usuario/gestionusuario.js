@@ -7,9 +7,28 @@ var gestionUsuario = {
     constructor: function () {
         var results = $('#results');
         var modelo = $('.modelo');
+        var titulo = $("#resultModallabel");
+        var dim = $("#dim");
+        var cli = $("#cli");
+        var estra = $("#estra");
+        var tecno = $("#tecno");
+        var opera = $("#opera");
+        var cul = $("#cul")
 
         gestionUsuario.consultatrespuestas();
         results.click(gestionUsuario.consultatgraficas);
+
+        $(window).resize(function () {
+            if ($(window).width() <= 575.98) {
+                titulo.text("Resultados MMD");
+            } else {
+                titulo.text("Resultados Modelo de Madurez Digital");
+            }
+        });
+
+        if ($(window).width() <= 575.98) {
+            titulo.text("Resultados MMD");
+        }
 
         modelo.click(function () {
             var data = {};
@@ -17,6 +36,15 @@ var gestionUsuario = {
             data.contenido = $(this).text();
             app.ajax('../controlador/GestionUsuarioControlador.php?opcion=consultar_preguntas', data, gestionUsuario.repuestaConsultarPreg);
         });
+
+        ;
+
+        dim.Editor();
+        cli.Editor();
+        estra.Editor();
+        tecno.Editor();
+        opera.Editor();
+        cul.Editor();
     },
     repuestaConsultarPreg: function (respuesta) {
         var cuerpo = $('#contenido_preguntas');
@@ -91,7 +119,7 @@ var gestionUsuario = {
                     icon: 'error',
                     title: "Error",
                     confirmButtonText: 'Confirmar',
-                    confirmButtonClass: "btn-danger",
+                    confirmButtonColor: "#dc3545",
                     text: "Debe llenar todos los campos"
                 });
             }
@@ -186,14 +214,37 @@ var gestionUsuario = {
     },
     respuestaConsultatgraficas: function (respuesta) {
         var datos = respuesta.datos;
-        
+
         //Arreglos de graficas dimensión
         var dimension = $("#dimension");
         var rs_dm = respuesta.resultados_dimension;
         var resultset = respuesta.resultados;
         var pdf = $("#pdf");
+        var pdfgraficas = $("#pdfgraficas");
+        var observacion_post = $(".observacion_post");
+        var editor = $('.Editor-editor');
+
+        var dim = $("#dim");
+        var cli = $("#cli");
+        var estra = $("#estra");
+        var tecno = $("#tecno");
+        var opera = $("#opera");
+        var cul = $("#cul");
+
+        if (respuesta.observacion != null) {
+            var observacion = respuesta.observacion.split("|");
+            for (var ob = 0; ob < observacion.length; ob++) {
+                dim.Editor("setText", observacion[0]);
+                cli.Editor("setText", observacion[1]);
+                estra.Editor("setText", observacion[2]);
+                tecno.Editor("setText", observacion[3]);
+                opera.Editor("setText", observacion[4]);
+                cul.Editor("setText", observacion[5]);
+            }
+        }
 
         dimension.empty();
+
         $.each(rs_dm, function (key, value) {
             var estandar = "0";
             switch (key) {
@@ -221,7 +272,7 @@ var gestionUsuario = {
             var text_bold = (key == 'Total') ? 'font-weight-bold' : '';
 
             var campos = '<tr>' +
-                '<th class="text-left" scope="row">' + key + '</th>' +
+                '<td class="text-left ' + text_bold + '">' + key + '</td>' +
                 '<td class="text-center ' + text_bold + '">' + value + '%</td>' +
                 '<td class="text-center ' + text_bold + '">' + estandar + '%</td>' +
                 '<td class="text-center ' + text_bold + '">' + Number(resul_dim).toFixed(2) + '%</td>' +
@@ -230,7 +281,18 @@ var gestionUsuario = {
         });
 
         //Graficas dimensión
+        // draw background
+        var backgroundColor = 'white';
+        Chart.plugins.register({
+            beforeDraw: function (c) {
+                var ctx = c.chart.ctx;
+                ctx.fillStyle = backgroundColor;
+                ctx.fillRect(0, 0, c.chart.width, c.chart.height);
+            }
+        });
+
         var Canvas = document.getElementById("dimension_grafica");
+        var Canvas_hidden = document.getElementById("dimension_grafica_h");
 
         var marksData = {
             labels: ["Clientes", "Estrategia", "Tecnología", "Operaciones", "Cultura"],
@@ -262,11 +324,31 @@ var gestionUsuario = {
             events: false,
         };
 
+        var option2 = {
+            responsive: false,
+            scale: {
+                gridLines: {
+                    color: '#D4D4D4'
+                },
+                pointLabels: {
+                    fontSize: 8
+                }
+            },
+            "legend": {
+                "display": false,
+            }
+        };
 
         var radarChart = new Chart(Canvas, {
             type: 'radar',
             data: marksData,
             options: options
+        });
+
+        var radarChart = new Chart(Canvas_hidden, {
+            type: 'radar',
+            data: marksData,
+            options: option2
         });
         //Fin  graficas dimensión
 
@@ -315,7 +397,7 @@ var gestionUsuario = {
 
                     var total = data.total;
                     var campos_tabla = '<tr>' +
-                        '<th class="text-left"> ' + abreviado + numb + " - " + ' <label class="first-uppercase"><span>' + data.contenido + '</span></label></th>' +
+                        '<td class="text-left"> ' + abreviado + numb + " - " + ' <label class="first-uppercase"><span>' + data.contenido + '</span></label></td>' +
                         '<td class="text-center">' + data.result_2 + '%</td>' +
                         '<td class="text-center">' + data.estandar + '%</td>' +
                         '<td class="text-center">' + data.desviacion + '%</td>' +
@@ -335,6 +417,8 @@ var gestionUsuario = {
             }
 
             var Canvas = document.getElementById(tabla_get + "_grafica");
+            var Canvas_hidden = document.getElementById(tabla_get + "_grafica_h");
+
             var Data = {
                 labels: cadena_info,
                 datasets: [{
@@ -353,6 +437,12 @@ var gestionUsuario = {
                 type: 'radar',
                 data: Data,
                 options: options
+            });
+
+            var radarChart2 = new Chart(Canvas_hidden, {
+                type: 'radar',
+                data: Data,
+                options: option2
             });
         });
 
@@ -429,14 +519,48 @@ var gestionUsuario = {
             mapa_calor.append(mapa);
 
         });
+
+        //Hacer pdf mapa
         pdf.click(function (e) {
-            e.stopPropagation();
-            pdf.addClass("disabled");
+            e.stopImmediatePropagation();
             var data = {
                 'respuesta': respuesta,
                 'opcion': 'generarPDF'
             };
+
             app.ajax('../controlador/GestionUsuarioControlador.php?opcion=generarPDF', data, gestionUsuario.respuestaGenerarPDF);
+            Swal.fire({
+                title: "Generando Mapa...",
+                text: "Espera un momento",
+                showConfirmButton: false,
+                allowOutsideClick: false,
+            });
+        });
+
+
+        //Hacer pdf mapa
+        pdfgraficas.click(function (e) {
+            e.stopImmediatePropagation();
+
+            var dimension_img = document.getElementById("dimension_grafica_h").toDataURL('image/jpeg', 1);
+            var clientes_img = document.getElementById("clientes_grafica_h").toDataURL('image/jpeg', 1);
+            var estrategia_img = document.getElementById("estrategia_grafica_h").toDataURL('image/jpeg', 1);
+            var tecnología_img = document.getElementById("tecnología_grafica_h").toDataURL('image/jpeg', 1);
+            var operaciones_img = document.getElementById("operaciones_grafica_h").toDataURL('image/jpeg', 1);
+            var cultura_img = document.getElementById("cultura_grafica_h").toDataURL('image/jpeg', 1);
+
+            var data = {
+                'dimension_img': dimension_img,
+                'clientes_img': clientes_img,
+                'estrategia_img': estrategia_img,
+                'tecnología_img': tecnología_img,
+                'operaciones_img': operaciones_img,
+                'cultura_img': cultura_img,
+                'respuesta': respuesta,
+                'opcion': 'generargraficaPDF'
+            };
+
+            app.ajax('../controlador/GestionUsuarioControlador.php?opcion=generargraficaPDF', data, gestionUsuario.respuestaGenerarPDF);
             Swal.fire({
                 title: "Generando reporte...",
                 text: "Espera un momento",
@@ -444,21 +568,43 @@ var gestionUsuario = {
                 allowOutsideClick: false,
             });
         });
+
+        editor.on('keyup', function (e) {
+            var $this = $(this)
+            var contenido = $this.html();
+            var mirador = (contenido.match(/\|/g) || []).length;
+            var position = e
+
+            if (mirador === 1) {
+                var text = contenido.replace(/\|/g, "");
+                $this.html(text);
+            };
+        });
+
+        //Grabar observaciones
+        observacion_post.click(function (e) {
+            e.stopImmediatePropagation();
+            var cadena_observacion = dim.Editor("getText") + '|' + cli.Editor("getText") + '|' + estra.Editor("getText") + '|' + tecno.Editor("getText") + '|' + opera.Editor("getText") + '|' + cul.Editor("getText");
+            var data = {
+                'cadena_observacion': cadena_observacion,
+                'opcion': 'observaciones'
+            };
+            app.ajax('../controlador/GestionUsuarioControlador.php?opcion=observaciones', data, gestionUsuario.respuestaPregunta);
+        });
     },
     respuestaGenerarPDF: function (respuesta) {
-
         var pdf = $("#pdf");
-        pdf.removeClass("disabled");
         var pdfResult = respuesta.PDF;
-        var nombre = respuesta.nombre
-        
+        var nombre = respuesta.nombre;
+        var tipo = respuesta.tipo
+
         Swal.fire({
             icon: 'success',
             title: "Perfecto",
             confirmButtonText: 'Confirmar',
             confirmButtonColor: '#71c904',
             html: 'Para descargar el <b>PDF</b>, ' +
-                '<a href="' + pdfResult + '" download="MapaCalor_' + nombre + '">Click aquí</a>'
+                '<a href="' + pdfResult + '" download="' + tipo + '_' + nombre + '">Click aquí</a>'
         })
     }
 };
