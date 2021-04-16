@@ -11,6 +11,13 @@ class UsuarioDAO {
     public function __construct( &$cnn ) {
         $this->cnn = $cnn;
     }
+    
+    public function validar( $clave ) {
+        $sql = "SELECT usuario FROM  administradores WHERE clave=:clave";
+        $sentencia = $this->cnn->prepare( $sql );
+        $sentencia->execute( ['clave'=>$clave] );
+        return $sentencia->fetch( PDO::FETCH_OBJ );
+    }
 
     public function consultar( $razon_social, $nit ) {
         $sql = "SELECT * FROM  usuario WHERE razon_social=:razon_social AND nit=:nit";
@@ -76,7 +83,7 @@ class UsuarioDAO {
     }
 
     public function consultar_datos( $id_usuario ) {
-        $sql = "SELECT res.id_pregunta, prg.tabla, prg.preguntas, prg.calculos_1, prg.contenido, prg.estandar, res.respuestas FROM preguntas prg INNER JOIN respuestas res on res.id_pregunta = prg.id_pregunta WHERE res.id_usuario =:id_usuario ORDER BY (prg.tabla)";
+        $sql = "SELECT res.id_pregunta, prg.tabla, prg.preguntas, prg.calculos_1, prg.contenido, prg.estandar, res.respuestas, usu.observaciones FROM preguntas prg INNER JOIN respuestas res on res.id_pregunta = prg.id_pregunta INNER JOIN usuario usu on usu.id_usuario = res.id_usuario WHERE res.id_usuario =:id_usuario ORDER BY (prg.tabla)";
         $sentencia = $this->cnn->prepare( $sql );
         $sentencia->execute( [
             'id_usuario' => $id_usuario
@@ -86,6 +93,25 @@ class UsuarioDAO {
 
     public function consultar_usuario( $id_usuario ) {
         $sql = "SELECT razon_social, nit FROM usuario WHERE id_usuario =:id_usuario";
+        $sentencia = $this->cnn->prepare( $sql );
+        $sentencia->execute( [
+            'id_usuario' => $id_usuario
+        ] );
+        return $sentencia->fetch( PDO::FETCH_OBJ );
+    }
+    
+    public function observaciones( $cadena_observacion, $id_usuario ) {
+        $sql = "UPDATE usuario SET observaciones=:cadena_observacion WHERE id_usuario=:id_usuario";
+        $sentencia = $this->cnn->prepare( $sql );
+        $sentencia->execute( [
+            'cadena_observacion' => $cadena_observacion,
+            'id_usuario' => $id_usuario
+        ] );
+        return $this->cnn->lastInsertId();
+    }
+    
+    public function consultar_observacion( $id_usuario ) {
+        $sql = "SELECT observaciones FROM usuario WHERE id_usuario =:id_usuario";
         $sentencia = $this->cnn->prepare( $sql );
         $sentencia->execute( [
             'id_usuario' => $id_usuario
