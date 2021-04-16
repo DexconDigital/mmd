@@ -19,22 +19,28 @@ class GestionUsuarioControlador extends GenericoControlador {
 
     public function iniciarSesion() {
         try {
-            Validacion::validar( ['razon_social' => 'obligatorio', 'nit' => 'obligatorio'], $_POST );
+            Validacion::validar( ['razon_social' => 'obligatorio', 'nit' => 'obligatorio', 'clave' => 'obligatorio'], $_POST );
             $usuarioVO = new Usuario;
             $usuarioVO->setFecha_diligencia ( $_POST ['fecha_diligencia'] );
             $usuarioVO->setRazon_social ( $_POST['razon_social'] );
             $usuarioVO->setNit ( $_POST['nit'] ) ;
-            $consulta = $this->usuarioDAO->consultar( $_POST['razon_social'], $_POST['nit'] );
 
-            if ( empty( $consulta ) ) {
-                $infoUsuario =  $this->usuarioDAO->insertar( $usuarioVO );
-                session_start();
-                $_SESSION['usuario'] = $infoUsuario;
-                $this->respuestaJSON( ['codigo' => 2, 'mensaje' => 'Se insertó correctamente'] );
+            $validacion = $this->usuarioDAO->validar( $_POST['clave'] );
+            if ( empty( $validacion ) ) {
+                $this->respuestaJSON( ['codigo' => 3] );
             } else {
-                session_start();
-                $_SESSION['usuario'] = $consulta->id_usuario;
-                $this->respuestaJSON( ['codigo' => 1] );
+                $consulta = $this->usuarioDAO->consultar( $_POST['razon_social'], $_POST['nit'] );
+
+                if ( empty( $consulta ) ) {
+                    $infoUsuario =  $this->usuarioDAO->insertar( $usuarioVO );
+                    session_start();
+                    $_SESSION['usuario'] = $infoUsuario;
+                    $this->respuestaJSON( ['codigo' => 2, 'mensaje' => 'Se insertó correctamente'] );
+                } else {
+                    session_start();
+                    $_SESSION['usuario'] = $consulta->id_usuario;
+                    $this->respuestaJSON( ['codigo' => 1] );
+                }
             }
 
         } catch ( ValidacionExcepcion $error ) {
@@ -131,6 +137,9 @@ class GestionUsuarioControlador extends GenericoControlador {
                 $operaciones = 0;
                 $cultura = 0;
 
+                //observaciones
+                $observacion = "";
+
                 //dimensión
                 $dim_clientes = 0.2;
                 $dim_estrategia = 0.35;
@@ -155,6 +164,8 @@ class GestionUsuarioControlador extends GenericoControlador {
                     $calculo_1 = $t->calculos_1;
                     $calculo_2 = 0;
                     $estandar = intval( $t->estandar );
+                    $observacion = $t->observaciones;
+                    unset( $t->observaciones );
 
                     //separar las respuestas
                     $rsp = explode( "|", $t->respuestas );
@@ -366,6 +377,7 @@ class GestionUsuarioControlador extends GenericoControlador {
 
                     $resultados =
                     array( 'clientes' => array( 'total' => round( $clientes, 2 ), 'color' => 'aqua' ), 'estrategia' => array( 'total' => round( $estrategia, 2 ), 'color' => 'amarillo' ), 'tecnología' => array( 'total' => round( $tecnologia, 2 ), 'color' => 'cyan' ), 'operaciones' => array( 'total' => round( $operaciones, 2 ), 'color' => 'verde' ), 'cultura' => array( 'total' => round( $cultura, 2 ), 'color' => 'lila' ) );
+
                 }
 
                 foreach ( $datos as $key => $t ) {
@@ -389,7 +401,20 @@ class GestionUsuarioControlador extends GenericoControlador {
                 }
             }
 
-            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'razon' => $usuario, 'resultados' => $resultados, 'resultados_dimension' => $resultados_dimension, 'razon' => $usuario, 'datos' => $datos] );
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'razon' => $usuario, 'resultados' => $resultados, 'resultados_dimension' => $resultados_dimension, 'datos' => $datos, 'observacion' => $observacion] );
+        } catch ( ValidacionExcepcion $error ) {
+            $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
+        }
+    }
+
+    public function observaciones() {
+        try {
+            Validacion::validar( ['cadena_observacion' => 'obligatorio'], $_POST );
+            session_start();
+            $cadena_observacion = $_POST ['cadena_observacion'];
+            $id_usuario = $_SESSION ['usuario'];
+            $this->usuarioDAO->observaciones( $cadena_observacion, $id_usuario );
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se grabó correctamente'] );
         } catch ( ValidacionExcepcion $error ) {
             $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
         }
@@ -543,8 +568,9 @@ class GestionUsuarioControlador extends GenericoControlador {
                         </body>                    
                   </html>";
 
-            //var_dump( $ehtml );exit();
-            
+            //var_dump( $ehtml );
+            //exit();
+
             require_once '../vendor/mpdf/autoload.php';
             $mpdf = new \Mpdf\Mpdf( ['mode' => 'utf-8', 'format' => 'A2-L'] );
             $mpdf->WriteHTML( $ehtml );
@@ -552,7 +578,328 @@ class GestionUsuarioControlador extends GenericoControlador {
             $pdfBase64 = base64_encode( $pdfString );
             $PDF = 'data:application/pdf;base64,' . $pdfBase64;
 
-            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'PDF' => $PDF, 'nombre' => $razon_social] );
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'PDF' => $PDF, 'nombre' => $razon_social, 'tipo' => 'MapaCalor'] );
+        } catch ( ValidacionExcepcion $error ) {
+            $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
+        }
+    }
+
+    public function generargraficaPDF() {
+        try {
+            Validacion::validar( ['respuesta' => 'obligatorio'], $_POST );
+            session_start();
+            $id_usuario = $_SESSION ['usuario'];
+            $observaciones = $this->usuarioDAO->consultar_observacion( $id_usuario );
+
+            $respuesta = $_POST ['respuesta'];
+            $resultados = $respuesta ['resultados'];
+            $resultados_dimension = $respuesta ['resultados_dimension'];
+            $datos = $respuesta ['datos'];
+            $razon_social = $respuesta ['razon']['razon_social'];
+
+            //imagenes de graficas
+            $dimension_img = $_POST['dimension_img'];
+            $clientes_img = $_POST['clientes_img'];
+            $estrategia_img = $_POST['estrategia_img'];
+            $tecnología_img = $_POST['tecnología_img'];
+            $operaciones_img = $_POST['operaciones_img'];
+            $cultura_img = $_POST['cultura_img'];
+
+            $header = '<head> 
+                      <style>
+                            @font-face {font-family: "Chronicle";src: url("../vendor/fonts/Chronicle Display Black.otf");}
+                            @font-face {@font-face { font-family: "OpenSans-Regular";src: url("../vendor/fonts/OpenSans-Regular.ttf");}
+                            h4 { font-family: Chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0; }
+                            h6 { font-family: Chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;}
+                            table, td {border-collapse: collapse; color: black !important;font-family: OpenSans-Regular;font-size:12px; }
+                            .fs-12 {font-size:12px;}
+                            .mb-3 {margin-bottom: 1rem !important;}
+                            .bg-red {background-color: #C00000;color: #f8f9fc !important;}
+                            .bg-dark-yellow {background-color: #E55407;color: #f8f9fc !important;}
+                            .bg-yellow {background-color: #FDD300;}
+                            .bg-dark-green {background-color: #86F200;}
+                            .bg-aqua {background-color: #3EFAC5;}
+                            .bg-lila {background-color: #852766;color: white !important;}
+                            .bg-amarillo {background-color: #FDD300;}
+                            .bg-verde {background-color: #86F200;}
+                            .bg-cyan {background-color: #34F0FF;}
+                            .bg-ladrillo {background-color: #F07B3B;color: white !important;}
+                      </style> 
+                   </head>';
+
+            //cabecera graficas
+            $cabecera = "<div style='margin-bottom:7px;'> 
+                            <div style='float: left; width: 12%; text-align:left;' > 
+                                <img src='../img/logo.png'>
+                            </div> 
+                            <div style='float:left; vertical-align: top; padding-left: 18px;'>
+                                <h1 style='font-size: 22pt;margin-left:70px;'>Modelo de Madurez Digital</h1> 
+                            </div>
+                        </div>";
+
+            $result_dimension = "<div style='float: left;width: 40%;' > 
+                                    <table style='width:100%;'>
+                                        <thead>
+                                            <tr>
+                                                <th class='bg-ladrillo' style='border: 0.5px solid #858796;'>Dimensión</th>
+                                                <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Resultado</th>
+                                                <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Estandar</th>
+                                                <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>% Desviación</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>";
+
+            foreach ( $resultados_dimension as $key => $value ) {
+                $estandar = "0";
+                switch ( $key ) {
+                    case "Clientes":
+                    $estandar = "20";
+                    break;
+                    case "Estrategia":
+                    $estandar = "30";
+                    break;
+                    case "Tecnología":
+                    $estandar = "15";
+                    break;
+                    case "Operaciones":
+                    $estandar = "25";
+                    break;
+                    case "Cultura":
+                    $estandar = "10";
+                    break;
+                    case "Total":
+                    $estandar = "100";
+                    break;
+                }
+
+                $resul_dim = round( ( ( ( $value - $estandar ) / $estandar ) * 100 ), 2 );
+                $text_bold = ( $key == 'Total' ) ? 'font-weight: bold;' : '';
+
+                $result_dimension .= "<tr>
+                                        <td style='border: 0.5px solid #858796;{$text_bold}'>{$key}</td>
+                                        <td style='text-align: center;border: 0.5px solid #858796;{$text_bold}'>{$value}%</td>
+                                        <td style='text-align: center;border: 0.5px solid #858796;{$text_bold}'>{$estandar}%</td>
+                                        <td style='text-align: center;border: 0.5px solid #858796;{$text_bold}'>{$resul_dim}%</td>
+                                    <tr>";
+            }
+
+            $result_dimension .= "</tbody>
+                                    </table>
+                                
+                                <div style='width:100%;margin-top:10%;background-color:#F2F2F2;padding:3%'>";
+
+            if ( $observaciones != "" ) {
+                $observacion = explode( "|", $observaciones->observaciones );
+                $result_dimension .= $observacion[0];
+            }
+
+            $result_dimension .= "</div>
+                            </div>";
+
+            $result_dimension .= "<div style='float: right;' > 
+                                    <table style='width:100%;'>
+                                        <tr>
+                                            <td style='text-align: center;'>
+                                                <img src='' style='width:1500px;'>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table class='tabla' style='width:40%;margin-top:5%;margin-left:10%'>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Escala</th>
+                                                            <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Rango %</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style='border: 0.5px solid #858796;'>En Desarrollo</td>
+                                                            <td class='bg-red' style='text-align: center;border: 0.5px solid #858796;'>0 a 25</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style='border: 0.5px solid #858796;'>Básico</td>
+                                                            <td class='bg-dark-yellow' style='text-align: center;'>26 a 50</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style='border: 0.5px solid #858796;'>Avanzado</td>
+                                                            <td class='bg-yellow' style='text-align: center;border: 0.5px solid #858796;'>51 a 75</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style='border: 0.5px solid #858796;'>Líder</td>
+                                                            <td class='bg-dark-green' style='text-align: center;border: 0.5px solid #858796;'>76 a 100</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>";
+
+            //<pagebreak/>
+
+            $result_dimensiones = "";
+            foreach ( $resultados as $key => $value ) {
+                $color = $value['color'];
+                $total = $value['total'];
+                $color_pie = "red";
+                $estandar = "";
+                $breakline = "";
+                $mi_grafica = "";
+                //Colores segun el total en el pie
+                if ( $total >= 25.1 ) {
+                    $color_pie = "dark-yellow";
+                }
+                if ( $total >= 50.1 ) {
+                    $color_pie = "yellow";
+                }
+                if ( $total >= 75.1 ) {
+                    $color_pie = "dark-green";
+                }
+
+                //asignación de observaciones
+                if ( $observaciones != "" ) {
+
+                    $obser = "";
+                    $observacion = explode( "|", $observaciones->observaciones );
+
+                    switch ( $key ) {
+                        case "clientes":
+                        $obser = $observacion[1];
+                        break;
+                        case "estrategia":
+                        $obser = $observacion[2];
+                        break;
+                        case "tecnología":
+                        $obser = $observacion[3];
+                        break;
+                        case "operaciones":
+                        $obser = $observacion[4];
+                        break;
+                        case "cultura":
+                        $obser = $observacion[5];
+                        break;
+                    }
+                }
+
+                //asignación de datos
+                $abreviado = "";
+                switch ( $key ) {
+                    case "clientes":
+                    $breakline = "<pagebreak/>";
+                    $mi_grafica = $clientes_img;
+                    $abreviado = "CL";
+                    break;
+                    case "estrategia":
+                    $breakline = "<pagebreak/>";
+                    $mi_grafica = $estrategia_img;
+                    $abreviado = "ET";
+                    break;
+                    case "tecnología":
+                    $breakline = "<pagebreak/>";
+                    $mi_grafica = $tecnología_img;
+                    $abreviado = "TC";
+                    break;
+                    case "operaciones":
+                    $breakline = "<pagebreak/>";
+                    $mi_grafica = $operaciones_img;
+                    $abreviado = "OP";
+                    break;
+                    case "cultura":
+                    $breakline = "";
+                    $mi_grafica = $cultura_img;
+                    $abreviado = "OC";
+                    break;
+                }
+
+                $titulo_mayus = ucfirst( $key );
+
+                $result_dimensiones .= $cabecera;
+                $result_dimensiones .= "<div style='float: left;width: 40%;'>
+                                        <div style='width:80%;background-color:#F2F2F2;padding:3%'>
+                                            {$obser}
+                                        </div>
+                                    </div>
+                                    <div style='float: right;'>
+                                        <table style='width:100%;'>
+                                            <tr>
+                                                <td>
+                                                    <table style='width:100%;'>
+                                                        <thead>
+                                                            <tr>
+                                                                <th class='bg-{$color}' colspan='4' style='border: 0.5px solid #858796;text-align: center;'>Dimensión: {$titulo_mayus}</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class='bg-{$color}' style='border: 0.5px solid #858796;'>Sub-Dimensión</th>
+                                                                <th class='bg-{$color}' style='text-align: center;border: 0.5px solid #858796;'>Resultado</th>
+                                                                <th class='bg-{$color}' style='text-align: center;border: 0.5px solid #858796;'>Estandar</th>
+                                                                <th class='bg-{$color}' style='text-align: center;border: 0.5px solid #858796;'>% Desviación</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>";
+                $total = 0;
+                $tot_desv = 0;
+                for ( $i = 0; $i <= count( $datos )-1; $i++ ) {
+                    $data = $datos[$i];
+                    if ($key == $data['tabla']) {
+                        $result_2 = $data['result_2'];
+                        $estandar = $data['estandar'];
+                        $desviacion = $data['desviacion'];
+                        $contenido_mayus =  ucfirst( $data['contenido'] );
+                        
+                        $total = $data['total'];
+                        $tot_desv = ((($total - 100) / 100) * 100);
+                        $result_dimensiones .= "<tr>
+                                                    <td style='border: 0.5px solid #858796;'>{$contenido_mayus}</td>
+                                                    <td style='text-align: center;border: 0.5px solid #858796;'>{$result_2}%</td>
+                                                    <td style='text-align: center;border: 0.5px solid #858796;'>{$estandar}%</td>
+                                                    <td style='text-align: center;border: 0.5px solid #858796;'>{$desviacion}%</td>
+                                                <tr>";
+                    }
+                }
+
+                $result_dimensiones .= "<tr>
+                                                <td style='border: 0.5px solid #858796;font-weight: bold;'>Total</td>
+                                                <td style='text-align: center;border: 0.5px solid #858796;font-weight: bold;'>{$total}%</td>
+                                                <td style='text-align: center;border: 0.5px solid #858796;font-weight: bold;'>100%</td>
+                                                <td style='text-align: center;border: 0.5px solid #858796;font-weight: bold;'>{$tot_desv}%</td>
+                                            <tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='text-align: center;'>
+                                    <img src='' style='width:100%;margin-top:5%;'>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                {$breakline}";
+            }
+
+            $ehtml =  "<html> 
+                            {$header}
+                            <body> 
+                                {$cabecera}
+                                {$result_dimension}
+                                <pagebreak/>
+                                {$result_dimensiones}
+                                <div style='clear: both; margin: 0pt; padding: 0pt; '></div>
+                            </body>                    
+                      </html>";
+
+            //var_dump( $result_dimension );
+            //exit();
+            require_once '../vendor/mpdf/autoload.php';
+            $mpdf = new \Mpdf\Mpdf( ['mode' => 'utf-8', 'format' => 'A4-L'] );
+            $mpdf->WriteHTML( $ehtml );
+            $pdfString = $mpdf->Output( '', 'S' );
+            $pdfBase64 = base64_encode( $pdfString );
+            $PDF = 'data:application/pdf;base64,' . $pdfBase64;
+
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'PDF' => $PDF, 'nombre' => $razon_social, 'tipo' => 'reporte'] );
         } catch ( ValidacionExcepcion $error ) {
             $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
         }
