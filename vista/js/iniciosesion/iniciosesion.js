@@ -12,14 +12,14 @@ var inicioSesion = {
         if (fecha_diligencia == '') {
             app.mensaje({
                 codigo: -1,
-                mensaje: 'debe ingresar la fecha diligencia'
+                mensaje: 'Debe ingresar la fecha diligencia'
             });
             return;
         }
         if (razon_social == '') {
             app.mensaje({
                 codigo: -1,
-                mensaje: 'debe ingresar la razon social'
+                mensaje: 'Debe ingresar la razon social'
             });
             return;
         }
@@ -27,20 +27,36 @@ var inicioSesion = {
         if (nit == '') {
             app.mensaje({
                 codigo: -1,
-                mensaje: 'debe ingresar el NIT'
+                mensaje: 'Debe ingresar el NIT'
             });
             return;
         }
 
-        var data = {
-            'fecha_diligencia': fecha_diligencia,
-            'razon_social': razon_social,
-            'nit': nit,
-            'opcion': 'iniciarSesion'
-        };
-        app.ajax('../controlador/GestionUsuarioControlador.php?opcion=iniciarSesion', data, inicioSesion.repuestaInicio);
+        Swal.fire({
+            icon: 'warning',
+            title: "Ingrese la clave de seguridad",
+            html: '<input type="password" id="clave" class="form-control">',
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            cancelButtonColor: "#dc3545",
+            confirmButtonColor: "#71c904",
+            confirmButtonText: "Confirmar"
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                var clave = $('#clave').val();
+                var data = {
+                    'fecha_diligencia': fecha_diligencia,
+                    'razon_social': razon_social,
+                    'nit': nit,
+                    'clave': clave,
+                    'opcion': 'iniciarSesion'
+                };
+                app.ajax('../controlador/GestionUsuarioControlador.php?opcion=iniciarSesion', data, inicioSesion.repuestaInicio);
+            }
+        })
     },
     repuestaInicio: function (respuesta) {
+        console.log(respuesta);
         if (respuesta.codigo < 0) {
             app.mensaje(respuesta);
             return;
@@ -51,10 +67,18 @@ var inicioSesion = {
                 showConfirmButton: false,
                 allowOutsideClick: false,
             });
-            
+
             setTimeout(() => {
                 location.href = "menu.php";
             }, 4000);
+        } else if (respuesta.codigo == 3) {
+            Swal.fire({
+                icon: 'error',
+                title: "Error",
+                confirmButtonText: 'Confirmar',
+                confirmButtonColor: "#dc3545",
+                text: "Clave incorrecta",
+            });
         } else {
             location.href = "menu.php";
         }
