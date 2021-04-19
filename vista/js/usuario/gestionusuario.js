@@ -15,6 +15,7 @@ var gestionUsuario = {
         var opera = $("#opera");
         var cul = $("#cul")
 
+        window.devicePixelRatio = 2;
         gestionUsuario.consultatrespuestas();
         results.click(gestionUsuario.consultatgraficas);
 
@@ -223,6 +224,7 @@ var gestionUsuario = {
         var pdfgraficas = $("#pdfgraficas");
         var observacion_post = $(".observacion_post");
         var editor = $('.Editor-editor');
+        $(".hidden").removeAttr("style");
 
         var dim = $("#dim");
         var cli = $("#cli");
@@ -293,19 +295,21 @@ var gestionUsuario = {
 
         var Canvas = document.getElementById("dimension_grafica");
         var Canvas_hidden = document.getElementById("dimension_grafica_h");
-
+        
         var marksData = {
             labels: ["Clientes", "Estrategia", "Tecnología", "Operaciones", "Cultura"],
             datasets: [{
                 label: "Resultado",
                 data: [rs_dm.Clientes, rs_dm.Estrategia, rs_dm.Tecnología, rs_dm.Operaciones, rs_dm.Cultura],
                 borderColor: "#86F200",
-                backgroundColor: "rgba(255,255,255,0)"
+                backgroundColor: "rgba(255,255,255,0)",
+                pointRadius: 0
                 }, {
                 label: "Estandar",
                 data: [20, 30, 15, 25, 10],
                 borderColor: "#34F0FF",
-                backgroundColor: "rgba(255,255,255,0)"
+                backgroundColor: "rgba(255,255,255,0)",
+                pointRadius: 0
                 }]
         };
 
@@ -326,17 +330,19 @@ var gestionUsuario = {
 
         var option2 = {
             responsive: false,
+            maintainAspectRatio: false,
             scale: {
                 gridLines: {
                     color: '#D4D4D4'
                 },
                 pointLabels: {
-                    fontSize: 8
+                    fontSize: 16
                 }
             },
             "legend": {
                 "display": false,
-            }
+            },
+            events: false
         };
 
         var radarChart = new Chart(Canvas, {
@@ -344,12 +350,16 @@ var gestionUsuario = {
             data: marksData,
             options: options
         });
-
+        
+        
+        Canvas_hidden.height = 300;
+        Canvas_hidden.width = 600;
         var radarChart = new Chart(Canvas_hidden, {
             type: 'radar',
             data: marksData,
             options: option2
         });
+
         //Fin  graficas dimensión
 
         //Arreglos de graficas 
@@ -425,12 +435,14 @@ var gestionUsuario = {
                     label: "Resultado",
                     data: cadena_total,
                     borderColor: "#86F200",
-                    backgroundColor: "rgba(255,255,255,0)"
+                    backgroundColor: "rgba(255,255,255,0)",
+                    pointRadius: 0
                     }, {
                     label: "Estandar",
                     data: cadena_estandar,
                     borderColor: "#34F0FF",
-                    backgroundColor: "rgba(255,255,255,0)"
+                    backgroundColor: "rgba(255,255,255,0)",
+                    pointRadius: 0
                     }]
             };
             var radarChart = new Chart(Canvas, {
@@ -438,14 +450,16 @@ var gestionUsuario = {
                 data: Data,
                 options: options
             });
-
+            
+            Canvas_hidden.height = 300;
+            Canvas_hidden.width = 600;
             var radarChart2 = new Chart(Canvas_hidden, {
                 type: 'radar',
                 data: Data,
                 options: option2
             });
-        });
 
+        });
 
         //mapa de calor
         var mapa_calor = $("#tabla_mapa");
@@ -537,8 +551,7 @@ var gestionUsuario = {
             });
         });
 
-
-        //Hacer pdf mapa
+        //Hacer pdf reporte
         pdfgraficas.click(function (e) {
             e.stopImmediatePropagation();
 
@@ -548,7 +561,6 @@ var gestionUsuario = {
             var tecnología_img = document.getElementById("tecnología_grafica_h").toDataURL('image/jpeg', 1);
             var operaciones_img = document.getElementById("operaciones_grafica_h").toDataURL('image/jpeg', 1);
             var cultura_img = document.getElementById("cultura_grafica_h").toDataURL('image/jpeg', 1);
-
             var data = {
                 'dimension_img': dimension_img,
                 'clientes_img': clientes_img,
@@ -568,8 +580,21 @@ var gestionUsuario = {
                 allowOutsideClick: false,
             });
         });
-
+        
+        //restringir caracter
         editor.on('keyup', function (e) {
+            var $this = $(this)
+            var contenido = $this.html();
+            var mirador = (contenido.match(/\|/g) || []).length;
+            var position = e
+
+            if (mirador === 1) {
+                var text = contenido.replace(/\|/g, "");
+                $this.html(text);
+            };
+        });
+        
+        editor.on('keydown', function (e) {
             var $this = $(this)
             var contenido = $this.html();
             var mirador = (contenido.match(/\|/g) || []).length;
@@ -597,7 +622,6 @@ var gestionUsuario = {
         var pdfResult = respuesta.PDF;
         var nombre = respuesta.nombre;
         var tipo = respuesta.tipo
-
         Swal.fire({
             icon: 'success',
             title: "Perfecto",
