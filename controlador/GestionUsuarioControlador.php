@@ -270,8 +270,7 @@ class GestionUsuarioControlador extends GenericoControlador {
 
                     //Estrategia colores "Gestión de ecosistemas"
                     if ( $contenido == strtolower( "gestión de ecosistemas" ) or
-                    $contenido == strtolower( "políticas de entregas" ) or
-                    $contenido == strtolower( "liderazgo & Gobierno" ) ) {
+                    $contenido == strtolower( "políticas de entregas" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 1.26 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -325,7 +324,8 @@ class GestionUsuarioControlador extends GenericoControlador {
 
                     //Estrategia colores "Analiticas & datos"
                     if ( $contenido == strtolower( "analiticas & datos" ) or
-                    $contenido == strtolower( "habilitación de la fuerza laboral" ) ) {
+                    $contenido == strtolower( "habilitación de la fuerza laboral" )or
+                    $contenido == strtolower( "liderazgo & Gobierno" ) ) {
                         if ( floatval( $t->result_2 ) >= floatval( 6.26 ) ) {
                             $t->color_contenido = "dark-yellow";
                             $t->text_contenido = "light";
@@ -458,6 +458,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                                 <h1 style='font-size: 35pt;margin-left:70px;'>Modelo de Madurez Digital - Mapa de Calor</h1> 
                             </div>
                         </div>";
+
             $mapa = "";
 
             foreach ( $resultados as $key => $data ) {
@@ -604,6 +605,7 @@ class GestionUsuarioControlador extends GenericoControlador {
             $tecnología_img = $_POST['tecnología_img'];
             $operaciones_img = $_POST['operaciones_img'];
             $cultura_img = $_POST['cultura_img'];
+            $anio = date( 'Y' );
 
             $header = '<head> 
                       <style>
@@ -636,6 +638,11 @@ class GestionUsuarioControlador extends GenericoControlador {
                                 <h1 style='font-size: 22pt;margin-left:70px;'>Modelo de Madurez Digital</h1> 
                             </div>
                         </div>";
+
+            $cabecera .= "<pagefooter name='odds' 
+                            content-center='Diseñado y Desarrollado por Dexcon Consultores SAS | Dexcon Digital ©Copyright {$anio}. Todos los derechos reservados.'
+                            footer-style='font-size: 6pt;' line='1' /> 
+                         <setpagefooter name='odds' page='O' value='on' /> ";
 
             $result_dimension = "<div style='float: left;width: 40%;' > 
                                     <table style='width:100%;'>
@@ -700,7 +707,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                                     <table style='width:100%;'>
                                         <tr>
                                             <td style='text-align: center;'>
-                                                <img src='' style='width:1500px;'>
+                                                <img src='{$dimension_img}' style='width:1500px;'>
                                             </td>
                                         </tr>
                                         <tr>
@@ -765,19 +772,19 @@ class GestionUsuarioControlador extends GenericoControlador {
 
                     switch ( $key ) {
                         case "clientes":
-                        $obser = $observacion[1];
+                        $obser = (isset($observacion[1])) ? $observacion[1] : "";
                         break;
                         case "estrategia":
-                        $obser = $observacion[2];
+                        $obser = (isset($observacion[2])) ? $observacion[2] : "";
                         break;
                         case "tecnología":
-                        $obser = $observacion[3];
+                        $obser = (isset($observacion[3])) ? $observacion[3] : "";
                         break;
                         case "operaciones":
-                        $obser = $observacion[4];
+                        $obser = (isset($observacion[4])) ? $observacion[4] : "";
                         break;
                         case "cultura":
-                        $obser = $observacion[5];
+                        $obser = (isset($observacion[5])) ? $observacion[5] : "";
                         break;
                     }
                 }
@@ -839,22 +846,26 @@ class GestionUsuarioControlador extends GenericoControlador {
                                                         <tbody>";
                 $total = 0;
                 $tot_desv = 0;
-                for ( $i = 0; $i <= count( $datos )-1; $i++ ) {
+                $numb = 1;
+                for ( $i = 0; $i <= count( $datos )-1;
+                $i++ ) {
                     $data = $datos[$i];
-                    if ($key == $data['tabla']) {
+                    if ( $key == $data['tabla'] ) {
                         $result_2 = $data['result_2'];
                         $estandar = $data['estandar'];
                         $desviacion = $data['desviacion'];
                         $contenido_mayus =  ucfirst( $data['contenido'] );
-                        
+
                         $total = $data['total'];
-                        $tot_desv = ((($total - 100) / 100) * 100);
+                        $tot_desv_cal = ( ( ( $total - 100 ) / 100 ) * 100 );
+                        $tot_desv = round( $tot_desv_cal, 2 );
                         $result_dimensiones .= "<tr>
-                                                    <td style='border: 0.5px solid #858796;'>{$contenido_mayus}</td>
+                                                    <td style='border: 0.5px solid #858796;'>{$abreviado}{$numb} - {$contenido_mayus}</td>
                                                     <td style='text-align: center;border: 0.5px solid #858796;'>{$result_2}%</td>
                                                     <td style='text-align: center;border: 0.5px solid #858796;'>{$estandar}%</td>
                                                     <td style='text-align: center;border: 0.5px solid #858796;'>{$desviacion}%</td>
                                                 <tr>";
+                        $numb++;
                     }
                 }
 
@@ -870,7 +881,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                             </tr>
                             <tr>
                                 <td style='text-align: center;'>
-                                    <img src='' style='width:100%;margin-top:5%;'>
+                                    <img src='{$mi_grafica}' style='width:100%;margin-top:5%;'>
                                 </td>
                             </tr>
 
@@ -899,7 +910,7 @@ class GestionUsuarioControlador extends GenericoControlador {
             $pdfBase64 = base64_encode( $pdfString );
             $PDF = 'data:application/pdf;base64,' . $pdfBase64;
 
-            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'PDF' => $PDF, 'nombre' => $razon_social, 'tipo' => 'reporte'] );
+            $this->respuestaJSON( ['codigo' => 1, 'mensaje' => 'Se consultó correctamente', 'PDF' => $PDF, 'nombre' => $razon_social, 'tipo' => 'Reporte'] );
         } catch ( ValidacionExcepcion $error ) {
             $this->respuestaJSON( ['codigo' => $error->getCode(), 'mensaje' => $error->getMessage()] );
         }
