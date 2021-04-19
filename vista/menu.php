@@ -217,11 +217,11 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                 <div class="graficas">
                                                     <canvas id="dimension_grafica" class="grafica pb-5"></canvas>
                                                     <canvas id="dimension_grafica_h"></canvas>
-                                                    <canvas id="clientes_grafica_h"></canvas>
-                                                    <canvas id="estrategia_grafica_h"></canvas>
-                                                    <canvas id="tecnología_grafica_h"></canvas>
-                                                    <canvas id="operaciones_grafica_h"></canvas>
-                                                    <canvas id="cultura_grafica_h"></canvas>
+                                                    <canvas id="clientes_grafica_h" class="hidden"></canvas>
+                                                    <canvas id="estrategia_grafica_h" class="hidden"></canvas>
+                                                    <canvas id="tecnología_grafica_h" class="hidden"></canvas>
+                                                    <canvas id="operaciones_grafica_h" class="hidden"></canvas>
+                                                    <canvas id="cultura_grafica_h" class="hidden"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -237,9 +237,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                     </thead>
                                                     <tbody id="dimension" class="text-negro"></tbody>
                                                 </table>
-                                                <div id="dim" class="w-100 shadow-none fs-14 editor text-dark"></div>
-                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
+                                            <div id="dim" class="w-100 shadow-none fs-14 editor text-dark"></div>
+                                            <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -274,9 +274,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
-                                                <div id="cli" class="w-100 shadow-none mb-4 fs-14 editor"></div>
-                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
+                                            <div id="cli" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                            <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -312,9 +312,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
-                                                <div id="estra" class="w-100 shadow-none mb-4 fs-14 editor"></div>
-                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
+                                            <div id="estra" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                            <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -349,9 +349,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
-                                                <div id="tecno" class="w-100 shadow-none mb-4 fs-14 editor"></div>
-                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
+                                            <div id="tecno" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                            <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -386,9 +386,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
-                                                <div id="opera" class="w-100 shadow-none mb-4 fs-14 editor"></div>
-                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
+                                            <div id="opera" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                            <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -423,9 +423,9 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                                         </tr>
                                                     </tfoot>
                                                 </table>
-                                                <div id="cul" class="w-100 shadow-none mb-4 fs-14 editor"></div>
-                                                <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                             </div>
+                                            <div id="cul" class="w-100 shadow-none mb-4 fs-14 editor"></div>
+                                            <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
                                         </div>
                                     </div>
                                 </div>
