@@ -51,10 +51,10 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                 <div class="container-fluid shadow bg-white" id="formulario">
                     <div class="pt-5 row">
                         <div class="col-md-3 logo-principal">
-                            <img src="../img/logo.png" class="w-12 mt-3 ml-35">
+                            <img src="../img/logo.png" class="w-12 ml-35">
                         </div>
                         <div class="col-md-8 titulo-principal-container d-flex justify-content-center">
-                            <h1 class="titulo-principal text-negro font-weight-bold mt-2">Modelo de Madurez Digital</h1>
+                            <h1 class="titulo-principal text-negro font-weight-bold">Modelo de Madurez Digital</h1>
                         </div>
                     </div>
                     <div class="row pt-5 d-flex justify-content-center">
@@ -215,13 +215,15 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 ">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="dimension_grafica" class="grafica pb-5"></canvas>
-                                                    <canvas id="dimension_grafica_h"></canvas>
-                                                    <canvas id="clientes_grafica_h" class="hidden"></canvas>
-                                                    <canvas id="estrategia_grafica_h" class="hidden"></canvas>
-                                                    <canvas id="tecnología_grafica_h" class="hidden"></canvas>
-                                                    <canvas id="operaciones_grafica_h" class="hidden"></canvas>
-                                                    <canvas id="cultura_grafica_h" class="hidden"></canvas>
+                                                    <canvas id="dimension_grafica" class="grafica"></canvas>
+                                                    <div class="hidden_principal">
+                                                        <canvas id="dimension_grafica_h" class="hidden"></canvas>
+                                                        <canvas id="clientes_grafica_h" class="hidden"></canvas>
+                                                        <canvas id="estrategia_grafica_h" style="width:0%;height:0%" class="hidden"></canvas>
+                                                        <canvas id="tecnología_grafica_h" style="width:0%;height:0%" class="hidden"></canvas>
+                                                        <canvas id="operaciones_grafica_h" style="width:0%;height:0%" class="hidden"></canvas>
+                                                        <canvas id="cultura_grafica_h" style="width:0%;height:0%" class="hidden"></canvas>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -250,7 +252,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="clientes_grafica" class="grafica pb-5 bg-light"></canvas>
+                                                    <canvas id="clientes_grafica" class="grafica"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -277,6 +279,15 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="cli" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
+                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+                                                Info. Códigos
+                                            </button>
+                                            <div class="collapse mb-2" id="collapse">
+                                                <div class="card card-body text-negro bg-info">
+                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
+                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +298,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="estrategia_grafica" class="grafica pb-5 bg-light"></canvas>
+                                                    <canvas id="estrategia_grafica" class="grafica"></canvas>
 
                                                 </div>
                                             </div>
@@ -315,6 +326,15 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="estra" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
+                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+                                                Info. Códigos
+                                            </button>
+                                            <div class="collapse mb-2" id="collapse">
+                                                <div class="card card-body text-negro bg-info">
+                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
+                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -325,7 +345,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="tecnología_grafica" class="grafica pb-5 bg-light"></canvas>
+                                                    <canvas id="tecnología_grafica" class="grafica"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -352,6 +372,15 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="tecno" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
+                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+                                                Info. Códigos
+                                            </button>
+                                            <div class="collapse mb-2" id="collapse">
+                                                <div class="card card-body text-negro bg-info">
+                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
+                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -362,7 +391,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="operaciones_grafica" class="grafica pb-5 bg-light"></canvas>
+                                                    <canvas id="operaciones_grafica" class="grafica"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -389,6 +418,15 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="opera" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
+                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+                                                Info. Códigos
+                                            </button>
+                                            <div class="collapse mb-2" id="collapse">
+                                                <div class="card card-body text-negro bg-info">
+                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
+                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -399,7 +437,7 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                         <div class="col-lg-7 table-responsive">
                                             <div class="table-responsive">
                                                 <div class="graficas">
-                                                    <canvas id="cultura_grafica" class="grafica pb-5 bg-light"></canvas>
+                                                    <canvas id="cultura_grafica" class="grafica"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -426,6 +464,15 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="cul" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
+                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
+                                                Info. Códigos
+                                            </button>
+                                            <div class="collapse mb-2" id="collapse">
+                                                <div class="card card-body text-negro bg-info">
+                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
+                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

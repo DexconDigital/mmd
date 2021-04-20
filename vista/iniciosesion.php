@@ -40,7 +40,7 @@ session_destroy();
                             <div class="col-lg-8">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Modelo de Evaluación de Madurez Digital</h1>
+                                        <h3 class=" text-gray-900 mb-4">Modelo de Madurez Digital</h3>
                                     </div>
                                     <form id="frm">
                                         <div class="form-group">
