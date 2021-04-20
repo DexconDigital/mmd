@@ -3,6 +3,12 @@ var usuarioModelo = {
     listaUsuarios: [],
     pos: -1
 };
+
+var respuestaModelo = {
+    listaRespuesta: [],
+    pos: -1
+};
+
 var gestionUsuario = {
     constructor: function () {
         var results = $('#results');
@@ -214,6 +220,7 @@ var gestionUsuario = {
         app.ajax('../controlador/GestionUsuarioControlador.php?opcion=consultar_datos', data, gestionUsuario.respuestaConsultatgraficas);
     },
     respuestaConsultatgraficas: function (respuesta) {
+        respuestaModelo.listaRespuesta = respuesta;
         var datos = respuesta.datos;
 
         //Arreglos de graficas dimensión
@@ -538,7 +545,7 @@ var gestionUsuario = {
         pdf.click(function (e) {
             e.stopImmediatePropagation();
             var data = {
-                'respuesta': respuesta,
+                'respuesta': respuestaModelo.listaRespuesta,
                 'opcion': 'generarPDF'
             };
 
@@ -554,7 +561,6 @@ var gestionUsuario = {
         //Hacer pdf reporte
         pdfgraficas.click(function (e) {
             e.stopImmediatePropagation();
-
             var dimension_img = document.getElementById("dimension_grafica_h").toDataURL('image/jpeg', 1);
             var clientes_img = document.getElementById("clientes_grafica_h").toDataURL('image/jpeg', 1);
             var estrategia_img = document.getElementById("estrategia_grafica_h").toDataURL('image/jpeg', 1);
@@ -568,7 +574,7 @@ var gestionUsuario = {
                 'tecnología_img': tecnología_img,
                 'operaciones_img': operaciones_img,
                 'cultura_img': cultura_img,
-                'respuesta': respuesta,
+                'respuesta': respuestaModelo.listaRespuesta,
                 'opcion': 'generargraficaPDF'
             };
 
