@@ -5,6 +5,7 @@ require_once '../modelo/dao/UsuarioDao.php';
 require_once './GenericoControlador.php';
 require_once './excepcion/ValidacionExcepcion.php';
 require_once './util/Validacion.php';
+require '../vendor/chart.js/PieChartGD.php';
 
 class GestionUsuarioControlador extends GenericoControlador {
 
@@ -624,6 +625,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                             .bg-lila {background-color: #852766;color: white !important;}
                             .bg-amarillo {background-color: #FDD300;}
                             .bg-verde {background-color: #86F200;}
+                            .bg-verde-palido {background-color: #B6E500;}
                             .bg-cyan {background-color: #34F0FF;}
                             .bg-ladrillo {background-color: #F07B3B;color: white !important;}
                       </style> 
@@ -652,6 +654,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                                                 <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Resultado</th>
                                                 <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Estandar</th>
                                                 <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>% Desviación</th>
+                                                <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Nivel</th>
                                             </tr>
                                         </thead>
                                         <tbody>";
@@ -682,11 +685,130 @@ class GestionUsuarioControlador extends GenericoControlador {
                 $resul_dim = round( ( ( ( $value - $estandar ) / $estandar ) * 100 ), 2 );
                 $text_bold = ( $key == 'Total' ) ? 'font-weight: bold;' : '';
 
+                //NIVELES
+                $escala = "red";
+                $escala_text = "En desarrollo";
+
+                //NIVELES Clientes
+                if ( $key == "Clientes" ) {
+                    if ( $value >= 5.1 ) {
+                        $escala = "dark-yellow";
+                        $escala_text = "Básico";
+                    }
+
+                    if ( $value >= 10.1 ) {
+                        $escala = "yellow";
+                        $escala_text = "Avanzado";
+                    }
+
+                    if ( $value >= 15.1 ) {
+                        $escala = "dark-green";
+                        $escala_text = "Lider";
+                    }
+
+                }
+
+                //NIVELES Estrategia
+                if ( $key == "Estrategia" ) {
+                    if ( $value >= 7.51 ) {
+                        $escala = "dark-yellow";
+                        $escala_text = "Básico";
+                    }
+
+                    if ( $value >= 15.1 ) {
+                        $escala = "yellow";
+                        $escala_text = "Avanzado";
+                    }
+
+                    if ( $value >= 22.51 ) {
+                        $escala = "dark-green";
+                        $escala_text = "Lider";
+                    }
+
+                }
+
+                //NIVELES Tecnología
+                if ( $key == "Tecnología" ) {
+                    if ( $value >= 3.76 ) {
+                        $escala = "dark-yellow";
+                        $escala_text = "Básico";
+                    }
+
+                    if ( $value >= 7.51 ) {
+                        $escala = "yellow";
+                        $escala_text = "Avanzado";
+                    }
+
+                    if ( $value >= 11.26 ) {
+                        $escala = "dark-green";
+                        $escala_text = "Lider";
+                    }
+
+                }
+
+                //NIVELES Operaciones
+                if ( $key == "Operaciones" ) {
+                    if ( $value >= 6.26 ) {
+                        $escala = "dark-yellow";
+                        $escala_text = "Básico";
+                    }
+
+                    if ( $value >= 12.51 ) {
+                        $escala = "yellow";
+                        $escala_text = "Avanzado";
+                    }
+
+                    if ( $value >= 18.76 ) {
+                        $escala = "dark-green";
+                        $escala_text = "Lider";
+                    }
+
+                }
+
+                //NIVELES Cultura
+                if ( $key == "Cultura" ) {
+                    if ( $value >= 2.51 ) {
+                        $escala = "dark-yellow";
+                        $escala_text = "Básico";
+                    }
+
+                    if ( $value >= 5.1 ) {
+                        $escala = "yellow";
+                        $escala_text = "Avanzado";
+                    }
+
+                    if ( $value >= 7.51 ) {
+                        $escala = "dark-green";
+                        $escala_text = "Lider";
+                    }
+
+                }
+
+                //NIVELES Cultura
+                if ( $key == "Total" ) {
+                    if ( $value >= 25.1 ) {
+                        $escala = "dark-yellow";
+                        $escala_text = "Básico";
+                    }
+
+                    if ( $value >= 50.1 ) {
+                        $escala = "yellow";
+                        $escala_text = "Avanzado";
+                    }
+
+                    if ( $value >= 75.1 ) {
+                        $escala = "dark-green";
+                        $escala_text = "Lider";
+                    }
+
+                }
+
                 $result_dimension .= "<tr>
                                         <td style='border: 0.5px solid #858796;{$text_bold}'>{$key}</td>
                                         <td style='text-align: center;border: 0.5px solid #858796;{$text_bold}'>{$value}%</td>
                                         <td style='text-align: center;border: 0.5px solid #858796;{$text_bold}'>{$estandar}%</td>
                                         <td style='text-align: center;border: 0.5px solid #858796;{$text_bold}'>{$resul_dim}%</td>
+                                        <td class='bg-{$escala}' style='text-align: center;border: 0.5px solid #858796;{$text_bold}'>{$escala_text}</td>
                                     <tr>";
             }
 
@@ -703,38 +825,63 @@ class GestionUsuarioControlador extends GenericoControlador {
             $result_dimension .= "</div>
                             </div>";
 
-            $result_dimension .= "<div style='float: right;' > 
+            $result_dimension .= "<div style='float: right;width:60%;' > 
                                     <table style='width:100%;'>
                                         <tr>
                                             <td style='text-align: center;'>
-                                                <img src='{$dimension_img}' style='width:1500px;'>
+                                                <img src='{$dimension_img}' style='width:100%;'>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <table class='tabla' style='width:40%;margin-top:5%;margin-left:10%'>
+                                                <table class='tabla' style='margin-top:10%;margin-left:5%'>
                                                     <thead>
                                                         <tr>
                                                             <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Escala</th>
-                                                            <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Rango %</th>
+                                                            <th class='bg-aqua' style='text-align: center;border: 0.5px solid #858796;'>Clientes</th>
+                                                            <th class='bg-amarillo' style='text-align: center;border: 0.5px solid #858796;'>Estrategia</th>
+                                                            <th class='bg-cyan' style='text-align: center;border: 0.5px solid #858796;'>Tecnología</th>
+                                                            <th class='bg-verde' style='text-align: center;border: 0.5px solid #858796;'>Operaciones</th>
+                                                            <th class='bg-lila' style='text-align: center;border: 0.5px solid #858796;'>Cultura</th>
+                                                            <th class='bg-ladrillo' style='text-align: center;border: 0.5px solid #858796;'>Total</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td style='border: 0.5px solid #858796;'>En Desarrollo</td>
-                                                            <td class='bg-red' style='text-align: center;border: 0.5px solid #858796;'>0 a 25</td>
+                                                            <td class='bg-red' style='text-align: center;border: 0.5px solid #858796;'>0% - 5%</td>
+                                                            <td class='bg-red' style='text-align: center;border: 0.5px solid #858796;'>0% - 7.5%</td>
+                                                            <td class='bg-red' style='text-align: center;border: 0.5px solid #858796;'>0%- 3.75%</td>
+                                                            <td class='bg-red' style='text-align: center;border: 0.5px solid #858796;'>0% - 6.25%</td>
+                                                            <td class='bg-red' style='text-align: center;border: 0.5px solid #858796;'>0% - 2.5%</td>
+                                                            <td class='bg-red' style='text-align: center;border: 0.5px solid #858796;'>0% - 25%</td>
                                                         </tr>
                                                         <tr>
                                                             <td style='border: 0.5px solid #858796;'>Básico</td>
-                                                            <td class='bg-dark-yellow' style='text-align: center;'>26 a 50</td>
+                                                            <td class='bg-dark-yellow' style='text-align: center;border: 0.5px solid #858796;'>5.1% - 10%</td>
+                                                            <td class='bg-dark-yellow' style='text-align: center;border: 0.5px solid #858796;'>7.51% - 15%</td>
+                                                            <td class='bg-dark-yellow' style='text-align: center;border: 0.5px solid #858796;'>3.76% - 7.5%</td>
+                                                            <td class='bg-dark-yellow' style='text-align: center;border: 0.5px solid #858796;'>6.26% -12.5%</td>
+                                                            <td class='bg-dark-yellow' style='text-align: center;border: 0.5px solid #858796;'>2.51% - 5%</td>
+                                                            <td class='bg-dark-yellow' style='text-align: center;border: 0.5px solid #858796;'>25.1% - 50%</td>
                                                         </tr>
                                                         <tr>
                                                             <td style='border: 0.5px solid #858796;'>Avanzado</td>
-                                                            <td class='bg-yellow' style='text-align: center;border: 0.5px solid #858796;'>51 a 75</td>
+                                                            <td class='bg-yellow' style='text-align: center;border: 0.5px solid #858796;'>10.1% - 15%</td>
+                                                            <td class='bg-yellow' style='text-align: center;border: 0.5px solid #858796;'>15.1% - 22.5%</td>
+                                                            <td class='bg-yellow' style='text-align: center;border: 0.5px solid #858796;'>7.51% - 11.25%    </td>
+                                                            <td class='bg-yellow' style='text-align: center;border: 0.5px solid #858796;'>12.51% - 18.75%</td>
+                                                            <td class='bg-yellow' style='text-align: center;border: 0.5px solid #858796;'>5.1% - 7.5%</td>
+                                                            <td class='bg-yellow' style='text-align: center;border: 0.5px solid #858796;'>50.1% - 75%</td>
                                                         </tr>
                                                         <tr>
                                                             <td style='border: 0.5px solid #858796;'>Líder</td>
-                                                            <td class='bg-dark-green' style='text-align: center;border: 0.5px solid #858796;'>76 a 100</td>
+                                                            <td class='bg-dark-green' style='text-align: center;border: 0.5px solid #858796;'>15.1% - 20%</td>
+                                                            <td class='bg-dark-green' style='text-align: center;border: 0.5px solid #858796;'>22.51% - 30%</td>
+                                                            <td class='bg-dark-green' style='text-align: center;border: 0.5px solid #858796;'>11.26% - 15%</td>
+                                                            <td class='bg-dark-green' style='text-align: center;border: 0.5px solid #858796;'>18.76% - 25%</td>
+                                                            <td class='bg-dark-green' style='text-align: center;border: 0.5px solid #858796;'>7.51% - 10%</td>
+                                                            <td class='bg-dark-green' style='text-align: center;border: 0.5px solid #858796;'>75.1% - 100%</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -743,9 +890,15 @@ class GestionUsuarioControlador extends GenericoControlador {
                                     </table>
                                 </div>";
 
-            //<pagebreak/>
-
             $result_dimensiones = "";
+            $tab_prioridad = "";
+
+            //Contador de propiedad por similitud
+            $contar_bajo = 0;
+            $contar_moderado = 0;
+            $contar_alto = 0;
+            $contar_extremo = 0;
+
             foreach ( $resultados as $key => $value ) {
                 $color = $value['color'];
                 $total = $value['total'];
@@ -753,6 +906,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                 $estandar = "";
                 $breakline = "";
                 $mi_grafica = "";
+
                 //Colores segun el total en el pie
                 if ( $total >= 25.1 ) {
                     $color_pie = "dark-yellow";
@@ -768,26 +922,132 @@ class GestionUsuarioControlador extends GenericoControlador {
                 if ( $observaciones != "" ) {
 
                     $obser = "";
+                    $propiedades = "";
                     $observacion = explode( "|", $observaciones->observaciones );
 
                     switch ( $key ) {
                         case "clientes":
-                        $obser = (isset($observacion[1])) ? $observacion[1] : "";
+                        $obser = ( isset( $observacion[1] ) ) ? $observacion[1] : "";
                         break;
                         case "estrategia":
-                        $obser = (isset($observacion[2])) ? $observacion[2] : "";
+                        $obser = ( isset( $observacion[2] ) ) ? $observacion[2] : "";
                         break;
                         case "tecnología":
-                        $obser = (isset($observacion[3])) ? $observacion[3] : "";
+                        $obser = ( isset( $observacion[3] ) ) ? $observacion[3] : "";
                         break;
                         case "operaciones":
-                        $obser = (isset($observacion[4])) ? $observacion[4] : "";
+                        $obser = ( isset( $observacion[4] ) ) ? $observacion[4] : "";
                         break;
                         case "cultura":
-                        $obser = (isset($observacion[5])) ? $observacion[5] : "";
+                        $obser = ( isset( $observacion[5] ) ) ? $observacion[5] : "";
                         break;
                     }
+
+                    //Extraer puntos de las observaciónes por lista
+                    $doc = new DOMDocument();
+                    $doc->loadHTML( '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . $obser );
+                    $liLista = $doc->getElementsByTagName( 'li' );
+                    $liValues = array();
+                    foreach ( $liLista as $li ) {
+                        $liValues[] = $li->nodeValue;
+
+                    }
+                    $titulo_mayus = ucfirst( $key );
+                    $propiedades = "<tr>
+                                        <td class='bg-{$color}' style='border: 0.5px solid #858796;font-weight: bold;'>{$titulo_mayus}</td>
+                                        <td class='bg-{$color}' style='border: 0.5px solid #858796;font-weight: bold;text-align: center;padding:2px;'>Prioridad</td>
+                                        <td class='bg-{$color}' style='border: 0.5px solid #858796;font-weight: bold;text-align: center;padding:2px;'>Impacto</td>
+                                        <td class='bg-{$color}' style='border: 0.5px solid #858796;font-weight: bold;text-align: center;padding:2px;'>Nivel Priorizado</td>
+                                        <td class='bg-{$color}' style='border: 0.5px solid #858796;font-weight: bold;text-align: center;padding:2px;'>Zona Prioridad</td>
+                                    </tr>";
+
+                    for ( $i = 0; $i <= count( $liValues );
+                    $i++ ) {
+                        $propiedad = "";
+
+                        if ( isset( $liValues[$i] ) ) {
+                            $propiedad = $liValues[$i];
+                        }
+
+                        //valor general de prioridad
+                        $val1 = 0;
+                        for ( $tot = 1; $tot <= 5; $tot++ ) {
+                            if ( strpos( $propiedad, '{#prioridad='.$tot.'}' ) !== false ) {
+                                $propiedad  = str_replace( '{#prioridad='.$tot.'}', "", $propiedad );
+                                $obser = str_replace( '{#prioridad='.$tot.'}', "", $obser );
+                                $val1 = $tot;
+                            }
+                        }
+
+                        //valor general de impacto
+                        $val2 = 0;
+                        for ( $tot = 1; $tot <= 5; $tot++ ) {
+                            if ( strpos( $propiedad, '{#impacto='.$tot.'}' ) !== false ) {
+                                $propiedad  = str_replace( '{#impacto='.$tot.'}', "", $propiedad );
+                                $obser = str_replace( '{#impacto='.$tot.'}', "", $obser );
+                                $val2 = $tot;
+                            }
+                        }
+
+                        //Nivel priorizado
+                        $val3 = $val1 * $val2;
+
+                        //asignación de colores valor 1
+                        $val1_color = ( $val1 == 1 ) ? "verde" : "";
+                        $val1_color .= ( $val1 == 2 ) ? "verde-palido" : "";
+                        $val1_color .= ( $val1 == 3 ) ? "yellow" : "";
+                        $val1_color .= ( $val1 == 4 ) ? "dark-yellow" : "";
+                        $val1_color .= ( $val1 == 5 ) ? "red" : "";
+
+                        //asignación de colores valor 2
+                        $val2_color = ( $val2 == 1 ) ? "verde" : "";
+                        $val2_color .= ( $val2 == 2 ) ? "verde-palido" : "";
+                        $val2_color .= ( $val2 == 3 ) ? "yellow" : "";
+                        $val2_color .= ( $val2 == 4 ) ? "dark-yellow" : "";
+                        $val2_color .= ( $val2 == 5 ) ? "red" : "";
+
+                        //asignación de colores valor 3 ( Nivel priorizado )
+                        $val3_texto = "";
+                        $val3_color = "";
+
+                        if ( $val3 >= 1 & $val3 <= 4 ) {
+                            $val3_texto = "BAJO";
+                            $val3_color = "verde";
+                            $contar_bajo += 1;
+                        }
+
+                        if ( $val3 >= 5  && $val3 <= 9 ) {
+                            $val3_texto = "MODERADO";
+                            $val3_color = "yellow";
+                            $contar_moderado += 1;
+                        }
+
+                        if ( $val3 >= 10  && $val3 <= 15 ) {
+                            $val3_texto = "ALTO";
+                            $val3_color = "dark-yellow";
+                            $contar_alto += 1;
+                        }
+
+                        if ( $val3 >= 16 ) {
+                            $val3_texto = "EXTREMO";
+                            $val3_color = "red";
+                            $contar_extremo += 1;
+                        }
+
+                        if ( $propiedad != "" ) {
+                            $propiedades .= "<tr>
+                                            <td style='border: 0.5px solid #858796;'>{$propiedad}</td>
+                                            <td class='bg-{$val1_color}' style='border: 0.5px solid #858796;text-align: center;'>{$val1}</td>
+                                            <td class='bg-{$val2_color}' style='border: 0.5px solid #858796;text-align: center;'>{$val2}</td>
+                                            <td class='bg-{$val3_color}' style='border: 0.5px solid #858796;text-align: center;'>{$val3}</td>
+                                            <td class='bg-{$val3_color}' style='border: 0.5px solid #858796;text-align: center;'>{$val3_texto}</td>
+                                        </tr>";
+                        }
+                    }
+
                 }
+
+                $tab_prioridad .= $propiedades;
 
                 //asignación de datos
                 $abreviado = "";
@@ -888,6 +1148,25 @@ class GestionUsuarioControlador extends GenericoControlador {
                         </table>
                     </div>
                 {$breakline}";
+                //$mi_grafica
+            }
+
+            $img_prioridad = "";
+
+            if ( $contar_extremo == 0 && $contar_alto == 0 && $contar_moderado == 0 && $contar_bajo == 0 ) {
+                $img_prioridad = $img_prioridad;
+            } else {
+                //graficar total de prioridades
+                $chart = new SamChristy\PieChart\PieChartGD( 600, 375 );
+
+                $chart->addSlice( 'Extremo', $contar_extremo, '#C00000' );
+                $chart->addSlice( 'Alto', $contar_alto, '#E55407' );
+                $chart->addSlice( 'Moderado', $contar_moderado, '#FDD300' );
+                $chart->addSlice( 'Bajo', $contar_bajo, '#86F200' );
+                $chart->draw();
+                $imagen_prioridad = $chart->outputPNG();
+
+                $img_prioridad = "<img src='{$imagen_prioridad}' >";
             }
 
             $ehtml =  "<html> 
@@ -897,11 +1176,40 @@ class GestionUsuarioControlador extends GenericoControlador {
                                 {$result_dimension}
                                 <pagebreak/>
                                 {$result_dimensiones}
+                                <pagebreak/>
+                                {$cabecera}
+                                <div style='float: left;width: 55%;'>
+                                    <table style='width:100%'>
+                                        {$tab_prioridad}
+                                    </table>
+                                </div>
+                                <div style='float: right;width: 40%;'>
+                                    <table style='width:50%'>
+                                        <tr>
+                                            <td style='border: 0.5px solid #858796;'>Extremo</td>
+                                            <td style='border: 0.5px solid #858796;text-align: center;'>{$contar_extremo}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 0.5px solid #858796;'>Alto</td>
+                                            <td style='border: 0.5px solid #858796;text-align: center;'>{$contar_alto}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 0.5px solid #858796;'>Moderado</td>
+                                            <td style='border: 0.5px solid #858796;text-align: center;'>{$contar_moderado}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 0.5px solid #858796;'>Bajo</td>
+                                            <td style='border: 0.5px solid #858796;text-align: center;'>{$contar_bajo}</td>
+                                        </tr>
+                                    </table>
+                                    <div style='margin-top:5%;text-align: center;'>
+                                        {$img_prioridad}
+                                    </div>
+                                </div>
                                 <div style='clear: both; margin: 0pt; padding: 0pt; '></div>
                             </body>                    
                       </html>";
 
-            //var_dump( $result_dimension );
             //exit();
             require_once '../vendor/mpdf/autoload.php';
             $mpdf = new \Mpdf\Mpdf( ['mode' => 'utf-8', 'format' => 'A4-L'] );
