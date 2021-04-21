@@ -430,11 +430,11 @@ class GestionUsuarioControlador extends GenericoControlador {
             $razon_social = $respuesta ['razon']['razon_social'];
             $header = '<head> 
                       <style>
-                            @font-face {font-family: "Chronicle";src: url("../vendor/fonts/Chronicle Display Black.otf");}
-                            @font-face {@font-face { font-family: "OpenSans-Regular";src: url("../vendor/fonts/OpenSans-Regular.ttf");}
-                            h4 { font-family: Chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0; }
-                            h6 { font-family: Chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;}
-                            table, td{border-collapse: collapse; color: black !important; text-align: center;font-family: OpenSans-Regular;font-size:12px; }
+                            h1 { font-family: chronicle; } 
+                            h4 { font-family: chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0; }
+                            h6 { font-family: chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;}
+                            table, td{border-collapse: collapse; color: black !important; text-align: center;font-size:12px; }
+                            body {font-family: opensans;}
                             .fs-12 {font-size:12px;}
                             .mb-3 {margin-bottom: 1rem !important;}
                             .bg-red {background-color: #C00000;color: #f8f9fc !important;}
@@ -598,6 +598,7 @@ class GestionUsuarioControlador extends GenericoControlador {
             $resultados_dimension = $respuesta ['resultados_dimension'];
             $datos = $respuesta ['datos'];
             $razon_social = $respuesta ['razon']['razon_social'];
+            $nit = $respuesta ['razon']['nit'];
 
             //imagenes de graficas
             $dimension_img = $_POST['dimension_img'];
@@ -607,14 +608,15 @@ class GestionUsuarioControlador extends GenericoControlador {
             $operaciones_img = $_POST['operaciones_img'];
             $cultura_img = $_POST['cultura_img'];
             $anio = date( 'Y' );
-
+            $fecha = date( 'd-m-Y' );
+            
             $header = '<head> 
                       <style>
-                            @font-face {font-family: "Chronicle";src: url("../vendor/fonts/Chronicle Display Black.otf");}
-                            @font-face {@font-face { font-family: "OpenSans-Regular";src: url("../vendor/fonts/OpenSans-Regular.ttf");}
-                            h4 { font-family: Chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0; }
-                            h6 { font-family: Chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;}
-                            table, td {border-collapse: collapse; color: black !important;font-family: OpenSans-Regular;font-size:12px; }
+                            h1 { font-family: chronicle;margin-top: 0; margin-bottom: 0; }
+                            h4 { font-family: chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0; }
+                            h6 { font-family: chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;}
+                            table, td {border-collapse: collapse; color: black !important;font-size:12px; }
+                            body{font-family: opensans;}
                             .fs-12 {font-size:12px;}
                             .mb-3 {margin-bottom: 1rem !important;}
                             .bg-red {background-color: #C00000;color: #f8f9fc !important;}
@@ -637,7 +639,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                                 <img src='../img/logo.png'>
                             </div> 
                             <div style='float:left; vertical-align: top; padding-left: 18px;'>
-                                <h1 style='font-size: 22pt;margin-left:70px;'>Modelo de Madurez Digital</h1> 
+                                <h1 style='font-size: 22pt;margin-left:180px;'>Modelo de Madurez Digital</h1> 
                             </div>
                         </div>";
 
@@ -815,7 +817,7 @@ class GestionUsuarioControlador extends GenericoControlador {
             $result_dimension .= "</tbody>
                                     </table>
                                 
-                                <div style='width:100%;margin-top:10%;background-color:#F2F2F2;padding:3%'>";
+                                <div style='width:100%;margin-top:10%;background-color:#F2F2F2;padding:3%;'>";
 
             if ( $observaciones != "" ) {
                 $observacion = explode( "|", $observaciones->observaciones );
@@ -1169,9 +1171,57 @@ class GestionUsuarioControlador extends GenericoControlador {
                 $img_prioridad = "<img src='{$imagen_prioridad}' >";
             }
 
+            $portada = "<div style='margin-bottom:20px;'> 
+                            <div style='float: left; width: 20%; text-align:left;' > 
+                                <img src='../img/logo.png'>
+                            </div> 
+                        </div>
+                        <div style='text-align:center;'>
+                            <div style='width: 60%; margin: 0 auto;border: 1px solid #0070C0;'>
+                                <div style='background-color: #DEEBFF;'>
+                                    <h1 style='font-size: 22pt;text-align: left;padding-left: 2%;'>Modelo de Madurez Digital</h1> 
+                                </div>
+                                <div style='text-align: left;'>
+                                    <div style='font-size: 14pt;padding-left: 2%;padding-top:1%;'>Empresa: {$razon_social}</div> 
+                                </div>
+                                <div style='text-align: left;'>
+                                    <div style='font-size: 14pt;padding-left: 2%;padding-top:1%;'>NIT: {$nit}</div> 
+                                </div>
+                                <div style='text-align: center;'>
+                                    <div style='font-size: 14pt;padding-left: 2%;padding-top:6%;padding-bottom:1%;'>Fecha de reporte: {$fecha}</div> 
+                                </div>
+                            </div>
+                            <div style='width: 30%; margin: 0 auto; padding-top:3%;'>
+                                <div style='text-align: left;'> 
+                                    <div style='font-size: 14pt;padding-left: 10%;'>
+                                        <div>DEXCON CONSULTORES SAS</div>
+                                        <div>Nit: 900.630.067-0</div>
+                                        <div>Bogotá D..C, Colombia</div><br>
+                                        <div>(571) 322 3029577</div>
+                                        <a href='https://www.dexcondigital.com/' target='_blank' style='color:#0070C0;'>www.dexcondigital.com</a>
+                                        <a href='mailto:comercial@dexcondigital.com' style='color:#0070C0;' target='_blank'>comercial@dexcondigital.com</a>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div style='width: 100%; margin: 0 auto; padding-top: 3%;'>
+                                <div style='text-align: left;'> 
+                                    <div style='font-size: 19pt;border-top: 1px solid #0070C0;border-bottom: 1px solid #0070C0;'>
+                                        <div>Modelo de Madurez Digital</div>
+                                    </div> 
+                                </div>
+                                <div style='text-align: center;'> 
+                                    <div style='font-size: 19pt;'>
+                                        <a href='https://www.dexcondigital.com/' target='_blank' style='color:#0070C0;text-decoration:none;'>www.dexcondigital.com</a>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <pagebreak/>";
+            
             $ehtml =  "<html> 
                             {$header}
                             <body> 
+                                {$portada}
                                 {$cabecera}
                                 {$result_dimension}
                                 <pagebreak/>
@@ -1209,7 +1259,7 @@ class GestionUsuarioControlador extends GenericoControlador {
                                 <div style='clear: both; margin: 0pt; padding: 0pt; '></div>
                             </body>                    
                       </html>";
-
+            //var_dump ($ehtml);
             //exit();
             require_once '../vendor/mpdf/autoload.php';
             $mpdf = new \Mpdf\Mpdf( ['mode' => 'utf-8', 'format' => 'A4-L'] );
