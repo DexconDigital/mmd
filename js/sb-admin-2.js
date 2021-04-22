@@ -1362,11 +1362,11 @@ You should have received a copy of the GNU General Public License along with thi
                         var splCharUi = $('<ul />', {
                             id: "special_ui"
                         });
-                        if ($('#contentarea').data("splchars2Btn")) {
+                        if ($('#contentarea').data("splcharsBtn")) {
                             flag = 1;
-                            $('#contentarea').data("splchars2Btn", null);
+                            $('#contentarea').data("splcharsBtn", null);
                         } else
-                            $('#contentarea').data("splchars2Btn", 1);
+                            $('#contentarea').data("splcharsBtn", 1);
 
                         if (flag == 0) {
                             for (var i = 0; i < specialchars2.length; i++) {
