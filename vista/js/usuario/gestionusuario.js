@@ -46,7 +46,7 @@ var gestionUsuario = {
 
         ;
 
-        dim.Editor();
+        dim.Editor({'splchars': false,'splchars2': false});
         cli.Editor();
         estra.Editor();
         tecno.Editor();
