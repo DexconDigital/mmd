@@ -19,11 +19,15 @@ var gestionUsuario = {
         var estra = $("#estra");
         var tecno = $("#tecno");
         var opera = $("#opera");
-        var cul = $("#cul")
+        var cul = $("#cul");
+        var loader = $('.loader');
+        var body = $('body');
 
         window.devicePixelRatio = 2;
         gestionUsuario.consultatrespuestas();
         results.click(gestionUsuario.consultatgraficas);
+        loader.fadeOut();
+        body.css('overflow','visible');
 
         $(window).resize(function () {
             if ($(window).width() <= 575.98) {
@@ -43,8 +47,6 @@ var gestionUsuario = {
             data.contenido = $(this).text();
             app.ajax('../controlador/GestionUsuarioControlador.php?opcion=consultar_preguntas', data, gestionUsuario.repuestaConsultarPreg);
         });
-
-        ;
 
         dim.Editor({'splchars': false,'splchars2': false});
         cli.Editor();
