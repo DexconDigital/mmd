@@ -23,7 +23,10 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
     <link href="../css/sb-admin-2.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
 </head>
-
+    
+<div class="loader">
+    <img class="preload" src="../img/preloader.gif">
+</div>
 <body id="page-top">
     <div id="wrapper">
         <div id="content-wrapper" class="d-flex flex-column">

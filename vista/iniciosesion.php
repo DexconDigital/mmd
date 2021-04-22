@@ -21,8 +21,10 @@ session_destroy();
     <link href="../css/styles.css" rel="stylesheet">
 </head>
 
+<div class="loader">
+    <img class="preload" src="../img/preloader.gif">
+</div>
 <body>
-
     <div class="container">
 
         <!-- Outer Row -->
