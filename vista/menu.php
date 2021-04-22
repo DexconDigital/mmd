@@ -279,15 +279,6 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="cli" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
-                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
-                                                Info. Códigos
-                                            </button>
-                                            <div class="collapse mb-2" id="collapse">
-                                                <div class="card card-body text-negro bg-info">
-                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
-                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -326,15 +317,6 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="estra" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
-                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
-                                                Info. Códigos
-                                            </button>
-                                            <div class="collapse mb-2" id="collapse">
-                                                <div class="card card-body text-negro bg-info">
-                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
-                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -372,15 +354,6 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="tecno" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
-                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
-                                                Info. Códigos
-                                            </button>
-                                            <div class="collapse mb-2" id="collapse">
-                                                <div class="card card-body text-negro bg-info">
-                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
-                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -418,15 +391,6 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="opera" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
-                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
-                                                Info. Códigos
-                                            </button>
-                                            <div class="collapse mb-2" id="collapse">
-                                                <div class="card card-body text-negro bg-info">
-                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
-                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -464,15 +428,6 @@ if ( !isset( $_SESSION ['usuario'] ) ) {
                                             </div>
                                             <div id="cul" class="w-100 shadow-none mb-4 fs-14 editor"></div>
                                             <a href="#!" class="observacion_post btn btn-negro text-light mt-2 mb-4 shadow-none">Grabar</a>
-                                            <button class="btn btn-info mt-2 mb-4" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample">
-                                                Info. Códigos
-                                            </button>
-                                            <div class="collapse mb-2" id="collapse">
-                                                <div class="card card-body text-negro bg-info">
-                                                    <div>- Agregar prioridades (Solo numeros de 1 al 5): {#prioridad=1}</div>
-                                                    <div>- Agregar impactos (Solo numeros de 1 al 5): {#impacto=1}</div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
