@@ -1,5 +1,7 @@
 var inicioSesion = {
     constructor: function () {
+        $('.loader').fadeOut();
+        $('body').css('overflow','visible');
         $('#frm').on('submit', inicioSesion.validarinicio);
     },
     validarinicio: function (e) {
