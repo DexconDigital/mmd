@@ -974,9 +974,9 @@ class GestionUsuarioControlador extends GenericoControlador {
                         //valor general de prioridad
                         $val1 = 0;
                         for ( $tot = 1; $tot <= 5; $tot++ ) {
-                            if ( strpos( $propiedad, '{#prioridad='.$tot.'}' ) !== false ) {
-                                $propiedad  = str_replace( '{#prioridad='.$tot.'}', "", $propiedad );
-                                $obser = str_replace( '{#prioridad='.$tot.'}', "", $obser );
+                            if ( strpos( $propiedad, '{prioridad:'.$tot.'}' ) !== false ) {
+                                $propiedad  = str_replace( '{prioridad:'.$tot.'}', "", $propiedad );
+                                $obser = str_replace( '{prioridad:'.$tot.'}', "", $obser );
                                 $val1 = $tot;
                             }
                         }
@@ -984,9 +984,9 @@ class GestionUsuarioControlador extends GenericoControlador {
                         //valor general de impacto
                         $val2 = 0;
                         for ( $tot = 1; $tot <= 5; $tot++ ) {
-                            if ( strpos( $propiedad, '{#impacto='.$tot.'}' ) !== false ) {
-                                $propiedad  = str_replace( '{#impacto='.$tot.'}', "", $propiedad );
-                                $obser = str_replace( '{#impacto='.$tot.'}', "", $obser );
+                            if ( strpos( $propiedad, '{impacto:'.$tot.'}' ) !== false ) {
+                                $propiedad  = str_replace( '{impacto:'.$tot.'}', "", $propiedad );
+                                $obser = str_replace( '{impacto:'.$tot.'}', "", $obser );
                                 $val2 = $tot;
                             }
                         }
