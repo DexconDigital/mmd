@@ -744,197 +744,47 @@ You should have received a copy of the GNU General Public License along with thi
                 }];
 
             var specialchars = [{
-                    name: "Exclamation ",
-                    text: "!"
+                    name: "Prioridad 5",
+                    text: "<span style='background-color:#FDD300;'>{prioridad:5}</span>"
                 },
                 {
-                    name: "At",
-                    text: "@"
+                    name: "Prioridad 4",
+                    text: "<span style='background-color:#FDD300;'>{prioridad:4}</span>"
                 },
                 {
-                    name: "Hash",
-                    text: "#"
+                    name: "Prioridad 3",
+                    text: "<span style='background-color:#FDD300;'>{prioridad:3}</span>"
                 },
                 {
-                    name: "Percentage",
-                    text: "%"
+                    name: "Prioridad 2",
+                    text: "<span style='background-color:#FDD300;'>{prioridad:2}</span>"
                 },
                 {
-                    name: "Uppercase",
-                    text: "^"
+                    name: "Prioridad 1",
+                    text: "<span style='background-color:#FDD300;'>{prioridad:2}</span>"
+                }];
+
+            var specialchars2 = [
+                {
+                    name: "Impacto 5",
+                    text: "<span style='background-color:#FDD300;'>{impacto:5}</span>"
                 },
                 {
-                    name: "Ampersand",
-                    text: "&"
+                    name: "Impacto 4",
+                    text: "<span style='background-color:#FDD300;'>{impacto:4}</span>"
                 },
                 {
-                    name: "Asterisk",
-                    text: "*"
+                    name: "Impacto 3",
+                    text: "<span style='background-color:#FDD300;'>{impacto:3}</span>"
                 },
                 {
-                    name: "OpenBracket",
-                    text: "("
+                    name: "Impacto 2",
+                    text: "<span style='background-color:#FDD300;'>{impacto:2}</span>"
                 },
                 {
-                    name: "CloseBracket",
-                    text: ")"
-                },
-                {
-                    name: "Underscore",
-                    text: "_"
-                },
-                {
-                    name: "Hiphen",
-                    text: "-"
-                },
-                {
-                    name: "Plus",
-                    text: "+"
-                },
-                {
-                    name: "Equalto",
-                    text: "="
-                },
-                {
-                    name: "OpenSquareBracket",
-                    text: "["
-                },
-                {
-                    name: "CloseSquareBracket",
-                    text: "]"
-                },
-                {
-                    name: "OpenCurly",
-                    text: "{"
-                },
-                {
-                    name: "CloseCurly",
-                    text: "}"
-                },
-                {
-                    name: "Pipe",
-                    text: "|"
-                },
-                {
-                    name: "Colon",
-                    text: ":"
-                },
-                {
-                    name: "Semicolon",
-                    text: ";"
-                },
-                {
-                    name: "Single quote",
-                    text: "&#39;"
-                },
-                {
-                    name: "Double quote",
-                    text: "&#34;"
-                },
-                {
-                    name: "Left single curly quote",
-                    text: "&lsquo;"
-                },
-                {
-                    name: "right single curly quote",
-                    text: "&rsquo;"
-                },
-                {
-                    name: "Forward-slash",
-                    text: "&#47;"
-                },
-                {
-                    name: "Back-slash",
-                    text: "&#92;"
-                },
-                {
-                    name: "LessThan",
-                    text: "<"
-                },
-                {
-                    name: "GreaterThan",
-                    text: ">"
-                },
-                {
-                    name: "QuestionMark",
-                    text: "?"
-                },
-                {
-                    name: "Tilda",
-                    text: "~"
-                },
-                {
-                    name: "Grave accent",
-                    text: "`"
-                },
-                {
-                    name: "Micron",
-                    text: "&micro;"
-                },
-                {
-                    name: "Paragraph sign",
-                    text: "&para;"
-                },
-                {
-                    name: "Plus/minus",
-                    text: "&plusmn;"
-                },
-                {
-                    name: "Trademark",
-                    text: "&trade;"
-                },
-                {
-                    name: "Copyright",
-                    text: "&copy;"
-                },
-                {
-                    name: "Registered",
-                    text: "&reg;"
-                },
-                {
-                    name: "Section",
-                    text: "&sect;"
-                },
-                {
-                    name: "right double angle quotes",
-                    text: "&#187;"
-                },
-                {
-                    name: "fraction one quarter",
-                    text: "&#188;"
-                },
-                {
-                    name: "fraction one half",
-                    text: "&#189;"
-                },
-                {
-                    name: "fraction three quarters",
-                    text: "&#190;"
-                },
-                {
-                    name: "Dollar",
-                    text: "$"
-                },
-                {
-                    name: "Euro",
-                    text: "&euro;"
-                },
-                {
-                    name: "Pound",
-                    text: "&pound;"
-                },
-                {
-                    name: "Yen",
-                    text: "&yen;"
-                },
-                {
-                    name: "Cent",
-                    text: "&#162;"
-                },
-                {
-                    name: "IndianRupee",
-                    text: "&#8377;"
-                }, ];
+                    name: "Impacto 1",
+                    text: "<span style='background-color:#FDD300;'>{impacto:1}</span>"
+                }];
 
             var menuItems = {
                 'fonteffects': true,
@@ -1445,9 +1295,8 @@ You should have received a copy of the GNU General Public License along with thi
                 },
 
                 'splchars': {
-                    "text": "S",
-                    "icon": "fa fa-asterisk",
-                    "tooltip": "Insert Special Character",
+                    "text": "Prioridades",
+                    "tooltip": "Insertar prioridades",
                     "commandname": null,
                     "custom": function (button) {
                         methods.restoreIESelection.apply(this);
@@ -1472,14 +1321,64 @@ You should have received a copy of the GNU General Public License along with thi
 
                         if (flag == 0) {
                             for (var i = 0; i < specialchars.length; i++) {
-                                splCharUi.append($('<li />').html(specialchars[i].text).attr('title', specialchars[i].name).mousedown(function (event) {
+                                splCharUi.append($('<li />').html(specialchars[i].name).attr('title', specialchars[i].name).attr('data-src', specialchars[i].text).mousedown(function (event) {
                                     event.preventDefault();
                                 }).click(function (event) {
                                     if (navigator.userAgent.match(/MSIE/i)) {
-                                        var specCharHtml = $(this).html();
+                                        var specCharHtml = $(this).html(specialchars[i].text);
                                         methods.insertTextAtSelection.apply(this, [specCharHtml, 'html']);
                                     } else {
-                                        document.execCommand('insertHTML', false, $(this).html());
+                                        var textos = "<span style='background-color:#FDD300;'>" + $(this).attr("data-src") + "</span>";
+                                        document.execCommand('insertHTML', true, textos);
+                                    }
+                                    $('#specialchar').remove();
+                                    $('#contentarea').data("splcharsBtn", null);
+                                }));
+                            }
+                            splCharUi.prependTo(splCharDiv);
+                            splCharDiv.insertAfter(button)
+                            $('#specialchar').slideDown('slow');
+                        } else
+                            $('#specialchar').remove();
+                    }
+                },
+
+                'splchars2': {
+                    "text": "Impacto",
+                    "tooltip": "Insertar impactos",
+                    "commandname": null,
+                    "custom": function (button) {
+                        methods.restoreIESelection.apply(this);
+                        var flag = 0;
+                        var splCharDiv = $('<div/>', {
+                            id: "specialchar",
+                            class: "specialCntr",
+                            css: {
+                                "display": "none"
+                            }
+                        }).click(function (event) {
+                            event.stopPropagation();
+                        });
+                        var splCharUi = $('<ul />', {
+                            id: "special_ui"
+                        });
+                        if ($('#contentarea').data("splchars2Btn")) {
+                            flag = 1;
+                            $('#contentarea').data("splchars2Btn", null);
+                        } else
+                            $('#contentarea').data("splchars2Btn", 1);
+
+                        if (flag == 0) {
+                            for (var i = 0; i < specialchars2.length; i++) {
+                                splCharUi.append($('<li />').html(specialchars2[i].name).attr('title', specialchars2[i].name).attr('data-src', specialchars2[i].text).mousedown(function (event) {
+                                    event.preventDefault();
+                                }).click(function (event) {
+                                    if (navigator.userAgent.match(/MSIE/i)) {
+                                        var specCharHtml = $(this).html(specialchars2[i].text);
+                                        methods.insertTextAtSelection.apply(this, [specCharHtml, 'html']);
+                                    } else {
+                                        var textos = "<span style='background-color:#FDD300;'>" + $(this).attr("data-src") + "</span>";
+                                        document.execCommand('insertHTML', true, textos);
                                     }
                                     $('#specialchar').remove();
                                     $('#contentarea').data("splcharsBtn", null);
@@ -1535,7 +1434,7 @@ You should have received a copy of the GNU General Public License along with thi
                 'ol': true,
                 'ul': true,
                 'undo': true,
-                'redo': true,
+                'redo': false,
                 'l_align': true,
                 'r_align': true,
                 'c_align': true,
@@ -1556,7 +1455,8 @@ You should have received a copy of the GNU General Public License along with thi
                 'status_bar': false,
                 'font_size': fontsizes,
                 'color': colors,
-                'splchars': false,
+                'splchars': true,
+                'splchars2': true,
                 'insert_table': false,
                 'select_all': false,
                 'togglescreen': false
