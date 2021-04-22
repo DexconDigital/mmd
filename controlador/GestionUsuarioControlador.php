@@ -430,7 +430,7 @@ class GestionUsuarioControlador extends GenericoControlador {
             $razon_social = $respuesta ['razon']['razon_social'];
             $header = '<head> 
                       <style>
-                            h1 { font-family: chronicle; } 
+                            h1 { font-family: chronicle;font-weight: normal; } 
                             h4 { font-family: chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0; }
                             h6 { font-family: chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;}
                             table, td{border-collapse: collapse; color: black !important; text-align: center;font-size:12px; }
@@ -612,9 +612,9 @@ class GestionUsuarioControlador extends GenericoControlador {
             
             $header = '<head> 
                       <style>
-                            h1 { font-family: chronicle;margin-top: 0; margin-bottom: 0; }
-                            h4 { font-family: chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0; }
-                            h6 { font-family: chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;}
+                            h1 { font-family: chronicle;margin-top: 0; margin-bottom: 0;font-weight: normal; }
+                            h4 { font-family: chronicle; font-size: 10pt; text-align:center; margin-top: 0; margin-bottom: 0;font-weight: normal; }
+                            h6 { font-family: chronicle; font-size: 6pt; font-weight: 100; text-align:center; margin-top: 0; margin-bottom: 0;font-weight: normal;}
                             table, td {border-collapse: collapse; color: black !important;font-size:12px; }
                             body{font-family: opensans;}
                             .fs-12 {font-size:12px;}
@@ -1179,13 +1179,20 @@ class GestionUsuarioControlador extends GenericoControlador {
                         <div style='text-align:center;'>
                             <div style='width: 60%; margin: 0 auto;border: 1px solid #0070C0;'>
                                 <div style='background-color: #DEEBFF;'>
-                                    <h1 style='font-size: 22pt;text-align: left;padding-left: 2%;'>Modelo de Madurez Digital</h1> 
+                                    <h1 style='font-size: 22pt;text-align: center;'>Modelo de Madurez Digital</h1> 
                                 </div>
                                 <div style='text-align: left;'>
-                                    <div style='font-size: 14pt;padding-left: 2%;padding-top:1%;'>Empresa: {$razon_social}</div> 
-                                </div>
-                                <div style='text-align: left;'>
-                                    <div style='font-size: 14pt;padding-left: 2%;padding-top:1%;'>NIT: {$nit}</div> 
+                                    <table>
+                                        <tr>
+                                            <td style='font-size: 14pt;padding-left: 2%;padding-top:1%;'>Empresa:</td>
+                                            <td style='font-size: 14pt;padding-left: 2%;padding-top:1%;'>{$razon_social}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='font-size: 14pt;padding-left: 2%;padding-top:1%;'>NIT:</td>
+                                            <td style='font-size: 14pt;padding-left: 2%;padding-top:1%;'>{$nit}</td>
+                                        </tr>
+                                    </table>
+                                    
                                 </div>
                                 <div style='text-align: center;'>
                                     <div style='font-size: 14pt;padding-left: 2%;padding-top:6%;padding-bottom:1%;'>Fecha de reporte: {$fecha}</div> 
