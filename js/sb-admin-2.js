@@ -1344,7 +1344,7 @@ You should have received a copy of the GNU General Public License along with thi
                 },
 
                 'splchars2': {
-                    "text": "Impacto",
+                    "text": "Impactos",
                     "tooltip": "Insertar impactos",
                     "commandname": null,
                     "custom": function (button) {
