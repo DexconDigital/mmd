@@ -1255,9 +1255,9 @@ You should have received a copy of the GNU General Public License along with thi
                 },
 
                 'rm_format': {
-                    "text": "Remove format",
+                    "text": "Remover estilos",
                     "icon": "fa fa-eraser",
-                    "tooltip": "Remove Formatting",
+                    "tooltip": "Remover estilos",
                     "commandname": "removeformat",
                     "custom": null
                 },
@@ -1451,7 +1451,7 @@ You should have received a copy of the GNU General Public License along with thi
                 'fonts': false,
                 'styles': styles,
                 'print': false,
-                'rm_format': false,
+                'rm_format': true,
                 'status_bar': false,
                 'font_size': fontsizes,
                 'color': colors,
